@@ -1,5 +1,6 @@
 package com.accenture.Student_Tracker_System.Entities;
 
+import com.accenture.Student_Tracker_System.Enums.Status;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
@@ -19,6 +20,7 @@ public class Student {
     private String address;
     private String mobileNo;
     private String emailId;
+    private Status status;
 
     @JsonManagedReference
     @OneToOne(mappedBy = "student", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
@@ -86,5 +88,31 @@ public class Student {
 
     public void setEmailId(String emailId) {
         this.emailId = emailId;
+    }
+
+    public void setTC(TransferCertificate TC){
+        this.TC = TC;
+    }
+
+    public TransferCertificate getTC(){
+        return TC;
+    }
+
+    public void setStatus(Status status){
+        this.status=status;
+    }
+
+    public Status getStatus(){
+        return status;
+    }
+
+    @Override
+    public String toString(){
+        return "Student Details: " +
+                "\nFirstname: "+firstName+" Lastname: "+lastName+
+                "\nRoll.No: "+rollNo+" Class: "+standard+
+                "\nMobile.No: "+mobileNo+" EmailId: "+emailId+
+                "\nAdmissionDate: "+admissionDate+" Status: "+status+
+                "\nAddress: "+address+"\n";
     }
 }
