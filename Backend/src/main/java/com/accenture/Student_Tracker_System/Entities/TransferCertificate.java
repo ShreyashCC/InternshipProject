@@ -2,6 +2,8 @@ package com.accenture.Student_Tracker_System.Entities;
 
 import com.accenture.Student_Tracker_System.Enums.ReasonOfLeaving;
 import com.accenture.Student_Tracker_System.Enums.Remarks;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 
 import java.util.Date;
@@ -10,8 +12,8 @@ import java.util.Date;
 public class TransferCertificate {
 
     @Id
-    @GeneratedValue
-    private String uniqueID;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long uniqueID;
 
     @OneToOne
     @JoinColumn(name = "student_id")
@@ -19,13 +21,16 @@ public class TransferCertificate {
 
     private Remarks remark;
     private ReasonOfLeaving reasonOfLeaving;
+
+    @Temporal(TemporalType.DATE)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private Date issuedDate;
 
-    public String getUniqueID() {
+    public Long getUniqueID() {
         return uniqueID;
     }
 
-    public void setUniqueID(String uniqueID) {
+    public void setUniqueID(Long uniqueID) {
         this.uniqueID = uniqueID;
     }
 

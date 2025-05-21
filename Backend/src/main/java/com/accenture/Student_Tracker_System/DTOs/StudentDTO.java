@@ -1,18 +1,18 @@
 package com.accenture.Student_Tracker_System.DTOs;
-
+import com.accenture.Student_Tracker_System.Enums.Status;
 import java.util.Date;
 
 public class StudentDTO {
-    private Integer rollNo;
 
+    private Integer rollNo;
     private String firstName;
     private String lastName;
-
     private Integer standard;
     private Date admissionDate;
     private String address;
     private String mobileNo;
     private String emailId;
+    private Status status;
 
     public Integer getRollNo() {
         return rollNo;
@@ -76,5 +76,13 @@ public class StudentDTO {
 
     public void setEmailId(String emailId) {
         this.emailId = emailId;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
     }
 }

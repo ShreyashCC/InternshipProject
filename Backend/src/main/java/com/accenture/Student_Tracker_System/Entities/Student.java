@@ -1,6 +1,7 @@
 package com.accenture.Student_Tracker_System.Entities;
 
 import com.accenture.Student_Tracker_System.Enums.Status;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
@@ -16,15 +17,18 @@ public class Student {
     private String lastName;
 
     private Integer standard;
+
+    @Temporal(TemporalType.DATE)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private Date admissionDate;
+
     private String address;
     private String mobileNo;
     private String emailId;
     private Status status;
 
-    @JsonManagedReference
     @OneToOne(mappedBy = "student", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private TransferCertificate TC;
+    private TransferCertificate transferCertificate;
 
     public String getFirstName() {
         return firstName;
@@ -87,15 +91,18 @@ public class Student {
     }
 
     public void setEmailId(String emailId) {
+        if (emailId == null || !emailId.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$")) {
+            throw new IllegalArgumentException("Invalid email address format");
+        }
         this.emailId = emailId;
     }
 
-    public void setTC(TransferCertificate TC){
-        this.TC = TC;
+    public void setTC(TransferCertificate transferCertificate){
+        this.transferCertificate = transferCertificate;
     }
 
     public TransferCertificate getTC(){
-        return TC;
+        return transferCertificate;
     }
 
     public void setStatus(Status status){

@@ -10,17 +10,17 @@ import java.util.Date;
 
 public class TransferCertificateDTO {
 
-    private String uniqueID;
+    private Long uniqueID;
     private Student student;
     private Remarks remark;
     private ReasonOfLeaving reasonOfLeaving;
     private Date issuedDate;
 
-    public String getUniqueID() {
+    public Long getUniqueID() {
         return uniqueID;
     }
 
-    public void setUniqueID(String uniqueID) {
+    public void setUniqueID(Long uniqueID) {
         this.uniqueID = uniqueID;
     }
 

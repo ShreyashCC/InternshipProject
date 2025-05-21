@@ -1,5 +1,5 @@
 package com.accenture.Student_Tracker_System.Enums;
 
 public enum Status {
-    ACTIVE, GRADUATED, SUSPENDED;
+    ACTIVE, GRADUATED, RESCINDED;
 }

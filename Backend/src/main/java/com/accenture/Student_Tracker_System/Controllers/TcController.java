@@ -3,12 +3,11 @@ package com.accenture.Student_Tracker_System.Controllers;
 import com.accenture.Student_Tracker_System.DTOs.TransferCertificateDTO;
 import com.accenture.Student_Tracker_System.Entities.TransferCertificate;
 
-public class TcController {
 
+public class TcController {
 
     private TransferCertificate DTOToTC(TransferCertificateDTO transferCertificateDTO){
         TransferCertificate transferCertificate = new TransferCertificate();
-
         transferCertificate.setUniqueID(transferCertificateDTO.getUniqueID());
         transferCertificate.setStudent(transferCertificateDTO.getStudent());
         transferCertificate.setRemark(transferCertificateDTO.getRemark());
