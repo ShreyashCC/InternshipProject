@@ -56,7 +56,11 @@ public class StudentService {
         Student existingStudent = studentRepository.findById(student.getRollNo()).orElseThrow(()-> new RuntimeException("Student not found"));
         updateStudentStatus(existingStudent);
         studentRepository.deleteById(existingStudent.getRollNo());
-        if (existingStudent.getStatus() == Status.GRADUATED) return null;
+        if (existingStudent.getStatus() == Status.GRADUATED) {
+            existingStudent.setRollNo(null);
+            existingStudent.setStandard(null);
+            return existingStudent;
+        }
         List<Integer> existingRollNos = studentRepository.findAllRollNosByStandard(student.getStandard());
         int newRollNo = getNextAvailableRollNo(existingStudent.getStandard(), existingRollNos);
         Student promotedStudent = new Student();
