@@ -1,0 +1,133 @@
+:root {
+    --primary-bg: #ffffff;
+    --sidebar-bg: #2c3e50;
+    --sidebar-text: #ecf0f1;
+    --hover-bg: #34495e;
+    --dropdown-bg: #3b4b5e;
+    --main-text: #2c3e50;
+    --accent: #3498db;
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--primary-bg);
+}
+
+.app-container {
+    display: flex;
+    height: 100vh;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: var(--sidebar-bg);
+    padding: 20px;
+    box-shadow: 2px 0 6px rgba(0, 0, 0, 0.15);
+    color: var(--sidebar-text);
+    transition: all 0.3s ease;
+}
+
+.sidebar-option {
+    padding: 10px 12px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: background-color 0.2s;
+}
+
+.sidebar-option:hover {
+    background-color: var(--hover-bg);
+}
+
+.dropdown {
+    margin-left: 10px;
+    margin-top: 4px;
+    background-color: var(--dropdown-bg);
+    padding: 8px;
+    border-radius: 6px;
+}
+
+.dropdown-option {
+    padding: 6px 8px;
+    margin: 4px 0;
+    cursor: pointer;
+    border-radius: 4px;
+    color: var(--sidebar-text);
+}
+
+.dropdown-option:hover {
+    background-color: #2f3e4f;
+}
+
+.main-content {
+    flex: 1;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    background-color: #f9f9f9;
+}
+
+.header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.header h1 {
+    font-size: 28px;
+    color: var(--main-text);
+}
+
+.burger-btn {
+    font-size: 26px;
+    padding: 6px 12px;
+    background-color: var(--accent);
+    border: none;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.burger-btn:hover {
+    background-color: #2980b9;
+}
+
+.content {
+    margin-top: 30px;
+    font-size: 18px;
+    color: var(--main-text);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+}
+
+.welcome-card {
+    background: white;
+    padding: 40px 60px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    text-align: center;
+    color: var(--sidebar-bg);
+    transition: box-shadow 0.3s ease;
+}
+
+.welcome-card h2 {
+    margin-bottom: 16px;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--accent);
+}
+
+.welcome-card p {
+    font-size: 20px;
+    line-height: 1.4;
+    color: var(--main-text);
+}
+
+.welcome-card:hover {
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}

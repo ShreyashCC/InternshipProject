@@ -1,47 +1,78 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
-</script>
-
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
+  <div class="app-container">
+    <!-- Sidebar -->
+    <div v-if="sidebarOpen" class="sidebar">
+      <div class="sidebar-option" @click="selectView('addStudent')">
+        Add Student
+      </div>
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+      <div class="sidebar-option" @click="toggleDropdown('promote')">
+        Promote Student
+      </div>
+      <div v-if="dropdowns.promote" class="dropdown">
+        <div class="dropdown-option">Promote to Next Standard</div>
+        <div class="dropdown-option">Generate TC</div>
+      </div>
+
+      <div class="sidebar-option" @click="toggleDropdown('details')">
+        Show Student Details
+      </div>
+      <div v-if="dropdowns.details" class="dropdown">
+        <div class="dropdown-option">Show by ID</div>
+        <div class="dropdown-option">Show All</div>
+      </div>
     </div>
-  </header>
 
-  <main>
-    <TheWelcome />
-  </main>
+    <!-- Main Content -->
+    <div class="main-content">
+      <div class="header">
+        <button class="burger-btn" @click="sidebarOpen = !sidebarOpen">
+          ☰
+        </button>
+      </div>
+
+      <div class="content">
+        <component :is="currentComponent" />
+      </div>
+    </div>
+  </div>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
+<script setup>
+import { ref, reactive, computed } from 'vue'
+import AddStudentForm from './components/AddStudent.vue'
+
+const sidebarOpen = ref(true)
+
+const dropdowns = reactive({
+  promote: false,
+  details: false,
+  add: false
+})
+
+const currentView = ref('home') // 'home' | 'addStudent'
+
+function toggleDropdown(menu) {
+  dropdowns[menu] = !dropdowns[menu]
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
+function selectView(view) {
+  currentView.value = view
 }
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
+const currentComponent = computed(() => {
+  switch (currentView.value) {
+    case 'addStudent':
+      return AddStudentForm
+    default:
+      return {
+        template: `
+          <div class="welcome-card">
+            <h2>Student Tracker System</h2>
+            <p>Click options in the sidebar to manage students.</p>
+          </div>`
+      }
   }
+})
 
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-}
-</style>
+</script>

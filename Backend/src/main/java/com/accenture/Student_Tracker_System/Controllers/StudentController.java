@@ -18,6 +18,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/student")
+@CrossOrigin(origins = "http://localhost:5173")
 public class StudentController {
 
     @Autowired
