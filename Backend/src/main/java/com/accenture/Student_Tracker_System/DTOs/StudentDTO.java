@@ -4,6 +4,7 @@ import java.util.Date;
 
 public class StudentDTO {
 
+    private Integer regNo;
     private Integer rollNo;
     private String firstName;
     private String lastName;
@@ -84,5 +85,13 @@ public class StudentDTO {
 
     public void setStatus(Status status) {
         this.status = status;
+    }
+
+    public Integer getRegNo() {
+        return regNo;
+    }
+
+    public void setRegNo(Integer regNo) {
+        this.regNo = regNo;
     }
 }

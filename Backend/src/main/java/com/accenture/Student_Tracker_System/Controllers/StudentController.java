@@ -1,5 +1,4 @@
 package com.accenture.Student_Tracker_System.Controllers;
-
 import com.accenture.Student_Tracker_System.DTOs.StudentDTO;
 import com.accenture.Student_Tracker_System.DTOs.TransferCertificateDTO;
 import com.accenture.Student_Tracker_System.Entities.Student;
@@ -25,13 +24,13 @@ public class StudentController {
     StudentService studentService;
 
 //    Showing student details based upon a unique rollNo
-    @GetMapping("/{rollNo}")
-    public StudentDTO getStudent(@PathVariable String rollNo)  {
+    @GetMapping("/{regNo}")
+    public StudentDTO getStudent(@PathVariable String regNo)  {
         try {
-            Student student = studentService.getStudentById(Integer.parseInt(rollNo));
+            Student student = studentService.getStudentById(Integer.parseInt(regNo));
             return StudentToDTO(student);
         } catch (NumberFormatException e) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid roll number format");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid registration number format");
         }
         catch (Exception e) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Student not found");
@@ -46,20 +45,20 @@ public class StudentController {
     public Student createStudent(@RequestBody StudentDTO studentDTO) {
         Student newStudent = DTOToStudent(studentDTO);
         List<Integer> existingRollNos = studentService.getRollList(newStudent.getStandard());
-        newStudent.setRollNo(studentService.getNextAvailableRollNo(newStudent.getStandard(), existingRollNos));
+        newStudent.setRollNo(studentService.getNextAvailableRollNo(existingRollNos));
         return studentService.saveStudent(newStudent);
     }
-    @GetMapping("/promoted/{rollNo}")
-    public StudentDTO updateStudent(@PathVariable String rollNo) {
+    @GetMapping("/promoted/{regNo}")
+    public StudentDTO updateStudent(@PathVariable String regNo) {
         try {
-            Student student = studentService.getStudentById(Integer.parseInt(rollNo));
+            Student student = studentService.getStudentById(Integer.parseInt(regNo));
             Student promotedStudent = studentService.promoteStudent(student);
             return StudentToDTO(promotedStudent);
         } catch (NumberFormatException e) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid roll number format");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid registration number format");
         }
         catch (Exception e) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid Roll No");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid Registration No");
         }
     }
 
@@ -75,6 +74,7 @@ public class StudentController {
             student.setMobileNo(studentDTO.getMobileNo());
             student.setEmailId(studentDTO.getEmailId());
             student.setStatus(studentDTO.getStatus());
+            student.setRegNo(studentDTO.getRegNo());
             return student;
         } catch (IllegalArgumentException e) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid Input");
@@ -92,6 +92,7 @@ public class StudentController {
         studentDTO.setMobileNo(student.getMobileNo());
         studentDTO.setEmailId(student.getEmailId());
         studentDTO.setStatus(student.getStatus());
+        studentDTO.setRegNo(student.getRegNo());
         return studentDTO;
     }
 }

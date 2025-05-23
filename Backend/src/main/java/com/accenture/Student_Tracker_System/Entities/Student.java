@@ -11,6 +11,9 @@ import java.util.Date;
 public class Student {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer regNo;
+
     private Integer rollNo;
 
     private String firstName;
@@ -121,5 +124,13 @@ public class Student {
                 "\nMobile.No: "+mobileNo+" EmailId: "+emailId+
                 "\nAdmissionDate: "+admissionDate+" Status: "+status+
                 "\nAddress: "+address+"\n";
+    }
+
+    public Integer getRegNo() {
+        return regNo;
+    }
+
+    public void setRegNo(Integer regNo) {
+        this.regNo = regNo;
     }
 }
