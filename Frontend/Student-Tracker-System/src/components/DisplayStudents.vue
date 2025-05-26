@@ -70,17 +70,21 @@ onMounted(() => {
   border-radius: 8px;
   max-width: 1000px;
   margin: auto;
+  overflow-x: auto;
 }
 .students-table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 1rem;
+  table-layout: fixed; /* makes cells shrink to fit */
+  word-wrap: break-word; /* ensures long content wraps */
 }
 .students-table th,
 .students-table td {
-  border: 1px solid #ccc;
-  padding: 0.75rem;
+  padding: 0.5rem;
   text-align: left;
+  word-break: break-word; /* forces wrapping of long text */
+  font-size: 14px; /* optional: reduce font size for tighter fit */
 }
 .students-table th {
   background-color: #007bff;

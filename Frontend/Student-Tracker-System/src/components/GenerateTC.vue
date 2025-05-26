@@ -8,7 +8,6 @@
           v-model="regNo"
           type="text"
           id="regNo"
-          placeholder="e.g. 1"
       />
       <button @click="generateTC">Get Details</button>
     </div>

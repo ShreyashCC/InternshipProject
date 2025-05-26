@@ -8,7 +8,6 @@
           v-model="regNo"
           type="text"
           id="regNo"
-          placeholder="e.g. 2023STU001"
       />
       <button @click="fetchStudentDetails">Get Details</button>
     </div>
@@ -65,38 +64,53 @@ const fetchStudentDetails = async () => {
 
 <style scoped>
 .student-details-container {
-  max-width: 600px;
-  margin: auto;
+  max-width: 100%;
   padding: 1rem;
+  margin: auto;
   background: #f9f9f9;
   border-radius: 8px;
+  overflow-x: auto; /* ✅ prevents overflow */
+  box-sizing: border-box;
 }
+
 .form-group {
   display: flex;
   flex-direction: column;
   margin-bottom: 1rem;
 }
+
 input {
   padding: 0.5rem;
   margin-top: 0.5rem;
+  font-size: 14px;
+  max-width: 100%; /* ✅ makes input responsive */
 }
+
 button {
+  width:  100%;
   margin-top: 0.5rem;
   padding: 0.5rem;
   background-color: #007bff;
   border: none;
   color: white;
   cursor: pointer;
+  font-size: 14px;
 }
+
 .loading {
   color: #666;
 }
+
 .error {
   color: red;
 }
+
 .student-info {
   background: #e0ffe0;
   padding: 1rem;
   border-radius: 6px;
+  font-size: 14px;
+  word-break: break-word; /* ✅ wrap long text */
 }
+
 </style>

@@ -3,10 +3,10 @@
     <h2>Promote Student</h2>
     <form @submit.prevent="promoteStudent">
       <div class="form-field">
-        <label for="studentId">Student ID:</label>
+        <label for="studentId">Enter Registration Number</label>
         <input v-model="studentId" id="studentId" required />
+        <button type="submit">Promote</button>
       </div>
-      <button type="submit">Promote</button>
     </form>
   </div>
 </template>
@@ -30,20 +30,36 @@ async function promoteStudent() {
 </script>
 
 <style scoped>
+
 .form-container {
+  max-width: 600px;
   background: white;
-  padding: 20px;
+  margin: auto;
   border-radius: 10px;
   width: 350px;
+  padding: 1rem;
+  box-sizing: border-box;
 }
+
 .form-field {
-  margin-bottom: 12px;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
 }
-input {
-  width: 100%;
-  padding: 6px;
-}
+
+input,
 button {
-  padding: 8px 12px;
+  width: 100%;
+  padding: 0.5rem;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
+button {
+  margin-top: 0.5rem;
+  background-color: #007bff;
+  border: none;
+  color: white;
+  cursor: pointer;
 }
 </style>

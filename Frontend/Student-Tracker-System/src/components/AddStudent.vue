@@ -13,7 +13,7 @@
       </div>
 
       <div class="form-field">
-        <label>Standard (Class):</label>
+        <label>Standard:</label>
         <input v-model="form.standard" required />
       </div>
 
@@ -77,15 +77,36 @@ async function submitForm() {
   padding: 20px;
   border-radius: 10px;
   width: 400px;
+  box-sizing: border-box;
+  margin: auto;
 }
+
 .form-field {
   margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
 }
+
 input {
   width: 100%;
-  padding: 6px;
+  padding: 8px;
+  box-sizing: border-box;
 }
+
 button {
-  padding: 8px 12px;
+  padding: 10px;
+  width: 100%;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  box-sizing: border-box;
+  margin-top: 10px;
+}
+
+button:hover {
+  background-color: #0056b3;
 }
 </style>
+
