@@ -2,15 +2,15 @@
   <div class="student-details-container">
     <h2>Show Student Details</h2>
 
-    <div class="form-group">
-      <label for="regNumber">Enter Registration Number:</label>
-      <input
-          v-model="regNo"
-          type="text"
-          id="regNo"
-      />
-      <button @click="fetchStudentDetails">Get Details</button>
-    </div>
+<!--    <div class="form-group">-->
+<!--      <label for="regNumber">Enter Registration Number:</label>-->
+<!--      <input-->
+<!--          v-model="regNo"-->
+<!--          type="text"-->
+<!--          id="regNo"-->
+<!--      />-->
+<!--      <button @click="fetchStudentDetails">Get Details</button>-->
+<!--    </div>-->
 
     <div v-if="loading" class="loading">Loading...</div>
 
@@ -35,22 +35,27 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, watch, onMounted } from 'vue'
 import axios from 'axios'
 
-const regNo = ref('')
+// const regNo = ref('')
+const props = defineProps({
+  regNo: String
+})
 const student = ref(null)
 const loading = ref(false)
 const error = ref(null)
 
 const fetchStudentDetails = async () => {
+  if (!props.regNo) return
+
   loading.value = true
   error.value = null
   student.value = null
 
   try {
     const response = await axios.get(
-        `http://localhost:8080/student/${regNo.value}`
+        `http://localhost:8080/student/${props.regNo}`
     )
     student.value = response.data
   } catch (err) {
@@ -59,7 +64,29 @@ const fetchStudentDetails = async () => {
   } finally {
     loading.value = false
   }
+
 }
+
+// Auto-fetch on mount (optional, if regNo is already passed)
+onMounted(() => {
+  if (props.regNo) {
+    fetchStudentDetails()
+  }
+})
+
+// Watch for prop changes
+watch(() => props.regNo, (newVal) => {
+  if (newVal) {
+    fetchStudentDetails()
+  }
+})
+onMounted(() => {
+  console.log("Mounted with regNo:", props.regNo)
+  if (props.regNo) {
+    fetchStudentDetails()
+  }
+})
+
 </script>
 
 <style scoped>

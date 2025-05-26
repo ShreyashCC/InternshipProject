@@ -8,6 +8,7 @@
           v-model="regNo"
           type="text"
           id="regNo"
+          placeholder="e.g. 1"
       />
       <button @click="generateTC">Get Details</button>
     </div>
@@ -45,7 +46,7 @@ const generateTC = async () => {
     student.value = response.data
   } catch (err) {
     error.value =
-        err.response?.data?.message || 'Failed to generate TC .'
+        err.response?.data?.message || 'Failed to fetch TC details.'
   } finally {
     loading.value = false
   }
