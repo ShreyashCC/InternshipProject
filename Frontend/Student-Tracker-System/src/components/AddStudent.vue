@@ -1,38 +1,38 @@
 <template>
   <div class="form-container">
-    <h2>Add New Student</h2>
+    <h2>{{t('SideBar.AddStudent')}}</h2>
     <form @submit.prevent="submitForm">
       <div class="form-field">
-        <label>First Name:</label>
+        <label>{{t('AddNewStudent.FirstName')}}</label>
         <input v-model="form.firstName" required />
       </div>
 
       <div class="form-field">
-        <label>Last Name:</label>
+        <label>{{t('AddNewStudent.LastName')}}</label>
         <input v-model="form.lastName" required />
       </div>
 
       <div class="form-field">
-        <label>Standard:</label>
+        <label>{{t('AddNewStudent.Standard')}}</label>
         <input v-model="form.standard" required />
       </div>
 
       <div class="form-field">
-        <label>Address:</label>
+        <label>{{t('AddNewStudent.Address')}}</label>
         <input v-model="form.address" required />
       </div>
 
       <div class="form-field">
-        <label>Mobile Number:</label>
+        <label>{{t('AddNewStudent.Mobile')}}</label>
         <input v-model="form.mobileNo" type="tel" required />
       </div>
 
       <div class="form-field">
-        <label>Email ID:</label>
+        <label>{{t('AddNewStudent.Email')}}</label>
         <input v-model="form.emailId" type="email" required />
       </div>
 
-      <button type="submit">Submit</button>
+      <button type="submit">{{t('AddNewStudent.Submit')}}</button>
     </form>
   </div>
 </template>
@@ -40,6 +40,8 @@
 <script setup>
 import { reactive } from 'vue'
 import axios from 'axios'
+import {useI18n} from "vue-i18n";
+const {t}  = useI18n();
 
 const form = reactive({
   firstName: '',

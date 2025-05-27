@@ -1,16 +1,16 @@
 <template>
   <div class="generate-TC-container">
-    <h2>Generate Transfer Certificate</h2>
+    <h2>{{t('Promote.GenerateTransferCertificate')}}</h2>
 
     <div class="form-group">
-      <label for="regNumber">Enter Registration Number:</label>
+      <label for="regNumber">{{t('Promote.InputFieldText')}}</label>
       <input
           v-model="regNo"
           type="text"
           id="regNo"
           placeholder="e.g. 1"
       />
-      <button @click="generateTC">Get Details</button>
+      <button @click="generateTC">{{t('Promote.btntext3')}}</button>
     </div>
 
     <div v-if="loading" class="loading">Loading...</div>
@@ -27,6 +27,8 @@
 <script setup>
 import { ref } from 'vue'
 import axios from 'axios'
+import {useI18n} from "vue-i18n";
+const {t}  = useI18n();
 
 const regNo = ref('')
 const TC = ref(null)

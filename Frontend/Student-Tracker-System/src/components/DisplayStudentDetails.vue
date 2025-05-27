@@ -17,19 +17,17 @@
     <div v-if="error" class="error">{{ error }}</div>
 
     <div v-if="student" class="student-info">
-      <h3>Student Information</h3>
-      <p><strong>Registration Number:</strong> {{ student.regNo }}</p>
-      <p><strong>Roll.No:</strong> {{ student.rollNo}}</p>
-      <p><strong>Firstname:</strong> {{ student.firstName }}</p>
-      <p><strong>Lastname:</strong> {{ student.lastName}}</p>
-      <p><strong>Standard:</strong> {{ student.standard}}</p>
-      <p><strong>Admission Date:</strong> {{ student.admissionDate}}</p>
-      <p><strong>Address:</strong> {{ student.address}}</p>
-      <p><strong>Mobile.No:</strong> {{ student.mobileNo}}</p>
-      <p><strong>EmailId:</strong> {{ student.emailId}}</p>
-      <p><strong>Status:</strong> {{ student.status}}</p>
-
-      <!-- Add more fields as needed -->
+      <h3>{{t('ShowAllStudents.StudentInformation')}}</h3>
+      <p><strong>{{t('ShowAllStudents.RegistrationNo')}}</strong> {{student.regNo}}</p>
+      <p><strong>{{t('ShowAllStudents.RollNo')}}</strong> {{student.rollNo}}</p>
+      <p><strong>{{t('ShowAllStudents.FirstName')}}</strong> {{student.firstName}}</p>
+      <p><strong>{{t('ShowAllStudents.LastName')}}</strong> {{student.lastName}}</p>
+      <p><strong>{{t('ShowAllStudents.Standard')}}</strong> {{student.standard}}</p>
+      <p><strong>{{t('ShowAllStudents.AdmissionDate')}}</strong> {{student.admissionDate}}</p>
+      <p><strong>{{t('ShowAllStudents.Address')}}</strong> {{student.address}}</p>
+      <p><strong>{{t('ShowAllStudents.Mobile')}}</strong> {{student.mobileNo}}</p>
+      <p><strong>{{t('ShowAllStudents.Email')}}</strong> {{student.emailId}}</p>
+      <p><strong>{{t('ShowAllStudents.Status')}}</strong> {{student.status}}</p>
     </div>
   </div>
 </template>
@@ -37,8 +35,9 @@
 <script setup>
 import { ref, watch, onMounted } from 'vue'
 import axios from 'axios'
+import {useI18n} from "vue-i18n";
+const {t, availableLocales, locale}  = useI18n();
 
-// const regNo = ref('')
 const props = defineProps({
   regNo: String
 })
@@ -67,7 +66,6 @@ const fetchStudentDetails = async () => {
 
 }
 
-// Auto-fetch on mount (optional, if regNo is already passed)
 onMounted(() => {
   if (props.regNo) {
     fetchStudentDetails()
