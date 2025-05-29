@@ -3,9 +3,8 @@ package com.accenture.Student_Tracker_System.DTOs;
 import com.accenture.Student_Tracker_System.Entities.Student;
 import com.accenture.Student_Tracker_System.Enums.ReasonOfLeaving;
 import com.accenture.Student_Tracker_System.Enums.Remarks;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class TransferCertificateDTO {
@@ -14,7 +13,19 @@ public class TransferCertificateDTO {
     private Student student;
     private Remarks remark;
     private ReasonOfLeaving reasonOfLeaving;
-    private Date issuedDate;
+    private LocalDate issuedDate;
+    private Date DOB;
+    private String GuardianName;
+
+
+//    private String studentDetails;
+//
+//    public void setStudentDetails(){
+//        this.studentDetails = student.toString();
+//    }
+//    public String getStudentDetails(){
+//        return studentDetails;
+//    }
 
     public Long getUniqueID() {
         return uniqueID;
@@ -48,11 +59,27 @@ public class TransferCertificateDTO {
         this.reasonOfLeaving = reasonOfLeaving;
     }
 
-    public Date getIssuedDate() {
+    public LocalDate getIssuedDate() {
         return issuedDate;
     }
 
-    public void setIssuedDate(Date issuedDate) {
+    public void setIssuedDate(LocalDate issuedDate) {
         this.issuedDate = issuedDate;
+    }
+
+    public Date getDOB() {
+        return DOB;
+    }
+
+    public void setDOB(Date DOB) {
+        this.DOB = DOB;
+    }
+
+    public String getGuardianName() {
+        return GuardianName;
+    }
+
+    public void setGuardianName(String guardianName) {
+        GuardianName = guardianName;
     }
 }

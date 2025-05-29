@@ -14,6 +14,9 @@ public class StudentDTO {
     private String mobileNo;
     private String emailId;
     private Status status;
+    private Date issuedDate;
+    private Date DOB;
+    private String GuardianName;
 
     public Integer getRollNo() {
         return rollNo;
