@@ -35,7 +35,7 @@
 </template>
 
 <script setup>
-import { ref, watch, onMounted } from 'vue'
+import {ref, watch, onMounted, onBeforeUpdate} from 'vue'
 import axios from 'axios'
 
 // const regNo = ref('')
@@ -68,24 +68,15 @@ const fetchStudentDetails = async () => {
 }
 
 // Auto-fetch on mount (optional, if regNo is already passed)
-onMounted(() => {
-  if (props.regNo) {
+
+
+// Watch for prop changes
+watch(() => props.regNo, (newVal, oldValue) => {
+  if (newVal && newVal != oldValue) {
     fetchStudentDetails()
   }
 })
 
-// Watch for prop changes
-watch(() => props.regNo, (newVal) => {
-  if (newVal) {
-    fetchStudentDetails()
-  }
-})
-onMounted(() => {
-  console.log("Mounted with regNo:", props.regNo)
-  if (props.regNo) {
-    fetchStudentDetails()
-  }
-})
 
 </script>
 
