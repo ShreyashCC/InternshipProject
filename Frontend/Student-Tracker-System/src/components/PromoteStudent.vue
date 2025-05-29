@@ -1,11 +1,11 @@
 <template>
   <div class="form-container">
-    <h2>Promote Student</h2>
+    <h2>{{t('Promote.promote')}}</h2>
     <form @submit.prevent="promoteStudent">
       <div class="form-field">
-        <label for="studentId">Enter Registration Number</label>
+        <label for="studentId">{{t('Promote.InputFieldText')}}</label>
         <input v-model="studentId" id="studentId" required />
-        <button type="submit">Promote</button>
+        <button type="submit">{{t('Promote.btnText')}}</button>
       </div>
     </form>
   </div>
@@ -14,6 +14,8 @@
 <script setup>
 import { ref } from 'vue'
 import axios from 'axios'
+import {useI18n} from "vue-i18n";
+const {t}  = useI18n();
 
 const studentId = ref('')
 

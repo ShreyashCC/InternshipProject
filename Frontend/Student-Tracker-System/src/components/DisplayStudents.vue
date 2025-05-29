@@ -6,18 +6,19 @@
     <table v-if="students.length" class="students-table">
       <thead>
       <tr>
-        <th>Registration No.</th>
-        <th>Roll No.</th>
-        <th>Firstname</th>
-        <th>Lastname</th>
-        <th>Standard</th>
-        <th>Admission Date</th>
-        <th>Address</th>
-        <th>Mobile No</th>
-        <th>Email Id</th>
-        <th>Status</th>
-        <th>Promote Student</th>
-        <th> TC Generation </th>
+        <th>{{t('ShowAllStudents.RegistrationNo')}}</th>
+        <th>{{t('ShowAllStudents.RollNo')}}</th>
+        <th>{{t('ShowAllStudents.FirstName')}}</th>
+        <th>{{t('ShowAllStudents.LastName')}}</th>
+        <th>{{t('ShowAllStudents.Standard')}}</th>
+        <th>{{t('ShowAllStudents.AdmissionDate')}}</th>
+        <th>{{t('ShowAllStudents.Address')}}</th>
+        <th>{{t('ShowAllStudents.Mobile')}}</th>
+        <th>{{t('ShowAllStudents.Email')}}</th>
+        <th>{{t('ShowAllStudents.Status')}}</th>
+        <th>{{t('ShowAllStudents.PromoteStudent')}}</th>
+        <th>{{t('ShowAllStudents.TCGeneration')}}</th>
+
       </tr>
       </thead>
       <tbody>
@@ -32,8 +33,8 @@
         <td>{{student.mobileNo}}</td>
         <td>{{student.emailId}}</td>
         <td>{{student.status}}</td>
-        <td><button @click="promoteStudent(student.regNo)" class="promote-button">Promote</button></td>
-        <td><button @click="generateTC(student.regNo)" class="promote-button">TC</button></td>
+        <td><button @click="promoteStudent(student.regNo)" class="promote-button">{{t('Promote.btnText')}}</button></td>
+        <td><button @click="generateTC(student.regNo)" class="promote-button">{{t('Promote.btnText2')}}</button></td>
       </tr>
       </tbody>
     </table>
@@ -43,7 +44,8 @@
 <script setup>
 import {ref, onMounted, onUpdated} from 'vue'
 import axios, {HttpStatusCode} from 'axios'
-
+import {useI18n} from "vue-i18n";
+const {t, availableLocales, locale}  = useI18n();
 const students = ref([])
 const loading = ref(true)
 const error = ref(null)

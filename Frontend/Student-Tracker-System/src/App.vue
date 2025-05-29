@@ -3,18 +3,18 @@
     <!-- Sidebar -->
     <div v-if="sidebarOpen" class="sidebar">
       <div class="sidebar-option" @click="selectView('home')">
-        Home
+        {{t('SideBar.Home')}}
       </div>
       <div class="sidebar-option" @click="selectView('addStudent')">
-        Add Student
+        {{t('SideBar.AddStudent')}}
       </div>
 
       <div class="sidebar-option" @click="toggleDropdown('promote')">
-        Promote Student
+        {{t('SideBar.PromoteStudent')}}
       </div>
       <div v-if="dropdowns.promote" class="dropdown">
-        <div class="dropdown-option" @click="selectView('promoteStudent')">Promote to Next Standard</div>
-        <div class="dropdown-option" @click="selectView('generateTC')">Generate TC</div>
+        <div class="dropdown-option" @click="selectView('promoteStudent')">{{t('SideBar.PromoteStudent')}}</div>
+        <div class="dropdown-option" @click="selectView('generateTC')">{{t('SideBar.GenerateTC')}}</div>
       </div>
 <!--      <div class="sidebar-option" @click="toggleDropdown('details')">-->
 <!--        Show Student Details-->
@@ -24,7 +24,7 @@
 <!--        <div class="dropdown-option" @click="selectView('showAllStudents')">Show All</div>-->
 <!--      </div>-->
       <div class="sidebar-option" @click="selectView('showAllStudents')">
-        Show All Students
+        {{t('SideBar.ShowAllStudents')}}
       </div>
     </div>
 
@@ -36,18 +36,17 @@
 <!--        </button>-->
 <!--      </div>-->
       <div class="header">
-        <h1 class="app-title">Student Management System</h1>
+        <h1 class="app-title">{{t('header.name')}}</h1>
         <div class="search-bar">
           <!--          <label for="search">Search Students by Registration No:</label>-->
-          <input id="search" type="text" v-model="searchInput" placeholder="Enter Student Registration No." />
-          <button @click="searchStudent">Search</button>
+          <input id="search" type="text" v-model="searchInput" :placeholder="t('header.Placeholder')" />
+          <button @click="searchStudent">{{t('header.Search')}}</button>
         </div>
         <div class="language-selector">
-          <label for="language">Change Language:</label>
-          <select id="language">
-            <button class="language-btn">Change Language</button>
-            <option>English</option>
-            <option>Hindi</option>
+          <label for="language">{{t('header.ChangeLanguage')}}</label>
+          <select v-model = "locale" id="language">
+<!--            <button class="language-btn">Change Language</button>-->
+            <option v-for = "locale in availableLocales" :value="locale" key="`locale-${locale}`">{{locale}}</option>
           </select>
         </div>
         <button class="burger-btn" @click="sidebarOpen = !sidebarOpen">☰</button>
@@ -71,6 +70,8 @@ import PromoteStudent from './components/PromoteStudent.vue'
 import DisplayStudentDetails from './components/DisplayStudentDetails.vue'
 import GenerateTC from "@/components/GenerateTC.vue";
 import DisplayStudents from './components/DisplayStudents.vue'
+import {useI18n} from "vue-i18n";
+const {t, availableLocales, locale}  = useI18n();
 
 const searchInput = ref('')
 const selectedRegNo = ref('')
@@ -123,6 +124,9 @@ const currentComponent = computed(() => {
   display: flex;
   align-items: flex-start;
 }
+.main-content {
+  padding: 0.5rem;
+}
 .header {
   display: flex;
   align-items: start;
@@ -142,7 +146,9 @@ const currentComponent = computed(() => {
   font-size: 1.5rem;
   flex-grow: 1;
 }
-
+.burger-btn {
+  font-size: 1rem;
+}
 .search-bar input {
   padding: 0.4rem;
 }
