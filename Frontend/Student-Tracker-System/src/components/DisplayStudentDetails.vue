@@ -66,20 +66,18 @@ const fetchStudentDetails = async () => {
 
 }
 
-<<<<<<< HEAD
-// Auto-fetch on mount (optional, if regNo is already passed)
-
-
-// Watch for prop changes
-watch(() => props.regNo, (newVal, oldValue) => {
-  if (newVal && newVal != oldValue) {
-=======
 onMounted(() => {
   if (props.regNo) {
->>>>>>> 088a205cbe3321d9f162ed12f9a2b1f1bb0f015b
     fetchStudentDetails()
   }
 })
+
+watch(() => props.regNo, (newVal, oldVal) => {
+  if (newVal && newVal !== oldVal) {
+    fetchStudentDetails()
+  }
+})
+
 
 
 </script>
