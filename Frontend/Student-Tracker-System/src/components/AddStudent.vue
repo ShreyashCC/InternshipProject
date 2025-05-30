@@ -9,7 +9,7 @@
 
       <div class="form-field">
         <label>{{t('AddNewStudent.LastName')}}</label>
-        <input v-model="form.lastName" required />
+        <input v-model="form.lastName"/>
       </div>
 
       <div class="form-field">
