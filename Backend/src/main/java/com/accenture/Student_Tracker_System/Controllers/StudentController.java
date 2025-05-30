@@ -52,12 +52,16 @@ public class StudentController {
     public StudentDTO updateStudent(@PathVariable String regNo) {
         try {
             Student student = studentService.getStudentById(Integer.parseInt(regNo));
+            if (student.getStandard() == 12) {
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Student from standard 12 cannot be promoted");
+            }
             Student promotedStudent = studentService.promoteStudent(student);
             return StudentToDTO(promotedStudent);
         } catch (NumberFormatException e) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid registration number format");
-        }
-        catch (Exception e) {
+        } catch (ResponseStatusException e) {
+            throw e; // rethrow so it's not caught by the generic Exception block
+        } catch (Exception e) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid Registration No");
         }
     }
