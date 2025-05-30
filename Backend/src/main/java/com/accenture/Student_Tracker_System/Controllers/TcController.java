@@ -31,34 +31,33 @@ public class TcController {
     }
 
     @PostMapping
-    public TransferCertificate issueTC(@RequestBody TransferCertificateDTO tc) {
-        TransferCertificate transferCertificate = DTOToTC(tc);
-        tcService.issueTC(transferCertificate.getStudent());
-        return tcService.saveTC(transferCertificate);
+    public TransferCertificate createTC(@RequestBody TransferCertificateDTO tcDTO) {
+        return tcService.issueTC(tcDTO.getStudentId(), tcDTO);
     }
 
-    private TransferCertificate DTOToTC(TransferCertificateDTO transferCertificateDTO){
-        TransferCertificate transferCertificate = new TransferCertificate();
-        transferCertificate.setUniqueID(transferCertificateDTO.getUniqueID());
-        transferCertificate.setStudent(transferCertificateDTO.getStudent());
-        transferCertificate.setRemark(transferCertificateDTO.getRemark());
-        transferCertificate.setReasonOfLeaving(transferCertificateDTO.getReasonOfLeaving());
-        transferCertificate.setIssuedDate(transferCertificateDTO.getIssuedDate());
-        transferCertificate.setDOB(transferCertificateDTO.getDOB());
-        transferCertificate.setGuardianName(transferCertificateDTO.getGuardianName());
-        return transferCertificate;
-    }
+//
+//    private TransferCertificate DTOToTC(TransferCertificateDTO transferCertificateDTO){
+//        TransferCertificate transferCertificate = new TransferCertificate();
+//        transferCertificate.setUniqueID(transferCertificateDTO.getUniqueID());
+//        transferCertificate.setStudent(transferCertificateDTO.getStudent());
+//        transferCertificate.setRemark(transferCertificateDTO.getRemark());
+//        transferCertificate.setReasonOfLeaving(transferCertificateDTO.getReasonOfLeaving());
+//        transferCertificate.setIssuedDate(transferCertificateDTO.getIssuedDate());
+//        transferCertificate.setDOB(transferCertificateDTO.getDOB());
+//        transferCertificate.setGuardianName(transferCertificateDTO.getGuardianName());
+//        return transferCertificate;
+//    }
 
     private TransferCertificateDTO TcToDTO(TransferCertificate transferCertificate){
         TransferCertificateDTO transferCertificateDTO = new TransferCertificateDTO();
-
         transferCertificateDTO.setUniqueID(transferCertificate.getUniqueID());
-        transferCertificateDTO.setStudent(transferCertificate.getStudent());
+//        transferCertificateDTO.setStudent(transferCertificate.getStudent());
         transferCertificateDTO.setRemark(transferCertificate.getRemark());
         transferCertificateDTO.setReasonOfLeaving(transferCertificate.getReasonOfLeaving());
         transferCertificateDTO.setIssuedDate(transferCertificate.getIssuedDate());
         transferCertificateDTO.setDOB(transferCertificate.getDOB());
         transferCertificateDTO.setGuardianName(transferCertificate.getGuardianName());
+        transferCertificateDTO.setStudentId(transferCertificate.getStudent().getRegNo());
         return transferCertificateDTO;
     }
 }

@@ -1,7 +1,9 @@
 package com.accenture.Student_Tracker_System.Entities;
 
 import com.accenture.Student_Tracker_System.Enums.Status;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
@@ -31,6 +33,7 @@ public class Student {
     private Status status;
 
     @OneToOne(mappedBy = "student", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonManagedReference
     private TransferCertificate transferCertificate;
 
     public String getFirstName() {
@@ -103,11 +106,6 @@ public class Student {
     public void setTC(TransferCertificate transferCertificate){
         this.transferCertificate = transferCertificate;
     }
-
-    public TransferCertificate getTC(){
-        return transferCertificate;
-    }
-
     public void setStatus(Status status){
         this.status=status;
     }

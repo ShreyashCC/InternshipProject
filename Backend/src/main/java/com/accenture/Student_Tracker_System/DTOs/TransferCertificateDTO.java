@@ -10,15 +10,21 @@ import java.util.Date;
 public class TransferCertificateDTO {
 
     private Long uniqueID;
-    private Student student;
+//    private Student student;
     private Remarks remark;
     private ReasonOfLeaving reasonOfLeaving;
     private LocalDate issuedDate;
     private Date DOB;
     private String GuardianName;
+    private Integer studentId;
 
+    public Integer getStudentId() {
+        return studentId;
+    }
 
-//    private String studentDetails;
+    public void setStudentId(Integer studentId) {
+        this.studentId = studentId;
+    }
 //
 //    public void setStudentDetails(){
 //        this.studentDetails = student.toString();
@@ -35,13 +41,13 @@ public class TransferCertificateDTO {
         this.uniqueID = uniqueID;
     }
 
-    public Student getStudent() {
-        return student;
-    }
-
-    public void setStudent(Student student) {
-        this.student = student;
-    }
+//    public Student getStudent() {
+//        return student;
+//    }
+//
+//    public void setStudent(Student student) {
+//        this.student = student;
+//    }
 
     public Remarks getRemark() {
         return remark;

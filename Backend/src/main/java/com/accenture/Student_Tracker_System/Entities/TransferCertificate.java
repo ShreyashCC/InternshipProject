@@ -2,7 +2,10 @@ package com.accenture.Student_Tracker_System.Entities;
 
 import com.accenture.Student_Tracker_System.Enums.ReasonOfLeaving;
 import com.accenture.Student_Tracker_System.Enums.Remarks;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import org.springframework.cglib.core.Local;
 
@@ -18,6 +21,7 @@ public class TransferCertificate {
 
     @OneToOne
     @JoinColumn(name = "student_id")
+    @JsonBackReference
     private Student student;
 
     private Remarks remark;
