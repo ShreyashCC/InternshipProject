@@ -16,8 +16,8 @@
         <th>{{t('ShowAllStudents.Mobile')}}</th>
         <th>{{t('ShowAllStudents.Email')}}</th>
         <th>{{t('ShowAllStudents.Status')}}</th>
-        <th>{{t('ShowAllStudents.PromoteStudent')}}</th>
         <th>{{t('ShowAllStudents.TCGeneration')}}</th>
+        <th>{{t('ShowAllStudents.PromoteStudent')}}</th>
 
       </tr>
       </thead>
@@ -33,8 +33,8 @@
         <td>{{student.mobileNo}}</td>
         <td>{{student.emailId}}</td>
         <td>{{student.status}}</td>
-        <td><button @click="promoteStudent(student.regNo)" class="promote-button">{{t('Promote.btnText')}}</button></td>
         <td><button @click="generateTC(student.regNo)" class="promote-button">{{t('Promote.btnText2')}}</button></td>
+        <td v-if = "student.standard != '12'"><button @click="promoteStudent(student.regNo)" class="promote-button">{{t('Promote.btnText')}}</button></td>
       </tr>
       </tbody>
     </table>
