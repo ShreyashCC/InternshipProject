@@ -33,7 +33,7 @@
         <td>{{student.mobileNo}}</td>
         <td>{{student.emailId}}</td>
         <td>{{student.status}}</td>
-        <td><button @click="generateTC(student.regNo)" class="promote-button">{{t('Promote.btnText2')}}</button></td>
+        <td><button @click="generateEditablePDF(student.regNo)" class="promote-button">{{t('Promote.btnText2')}}</button></td>
         <td v-if = "student.standard != '12'"><button @click="promoteStudent(student.regNo)" class="promote-button">{{t('Promote.btnText')}}</button></td>
       </tr>
       </tbody>
@@ -46,6 +46,7 @@ import {ref, onMounted, onUpdated} from 'vue'
 import axios, {HttpStatusCode} from 'axios'
 import {useI18n} from "vue-i18n";
 const {t, availableLocales, locale}  = useI18n();
+import { PDFDocument, StandardFonts, rgb } from 'pdf-lib'
 const students = ref([])
 const loading = ref(true)
 const error = ref(null)
@@ -71,23 +72,111 @@ const promoteStudent = async (regNo) => {
     alert('Failed to promote student. The Student is Already Graduated')
   }
 }
-
-const generateTC = async (regNoParam) => {
-  loading.value = true
-  error.value = null
-  TC.value = null
-
+const fetchStudentsById = async (regId) => {
   try {
-    const response = await axios.get(`http://localhost:8080/student/tc/${regNoParam}`)
-    TC.value = response.data
-    alert(`TC for Reg No ${regNoParam} generated successfully!`)
+    const response = await axios.get(`http://localhost:8080/student/${regId}`)
+    // console.log(response.data);
+    return response.data
   } catch (err) {
-    error.value = err.response?.data?.message || 'Failed to generate TC.'
-    alert(`Failed to generate TC for Reg No ${regNoParam}`)
+    error.value = err.response?.data?.message || 'Failed to fetch students.'
+    throw new Error("No such Student");
   } finally {
     loading.value = false
   }
 }
+
+async function generateEditablePDF(regNo) {
+  students.value = await fetchStudentsById(regNo);
+  console.log(students);
+  const pdfDoc = await PDFDocument.create();
+  const page = pdfDoc.addPage([595, 842]); // A4 size
+  const { width, height } = page.getSize();
+  const font = await pdfDoc.embedFont(StandardFonts.Courier);
+  const fontSize = 12;
+  let y = height - 50;
+
+  const drawText = (text, offset = 50, space = 20) => {
+    page.drawText(text, { x: offset, y, size: fontSize, font });
+    y -= space;
+  };
+
+  // Header
+  page.drawText('SCHOOL/INSTITUTE NAME', {
+    x: 180,
+    y,
+    size: 16,
+    font,
+    color: rgb(0, 0, 0),
+  });
+  y -= 30;
+  page.drawText('Transfer Certificate (TC)', {
+    x: 200,
+    y,
+    size: 14,
+    font,
+    color: rgb(0, 0, 0),
+  });
+  y -= 25;
+
+  drawText('--------------------------------------------------------------', 50, 15);
+
+  // Student Details
+  drawText(`1. Student's Full Name        : ${students.value.firstName} ${students.value.lastName}`);
+  drawText(`2. Registration Number        : ${students.value.regNo}`);
+  drawText(`3. Roll Number                : ${students.value.rollNo}`);
+  drawText(`4. Standard/Class             : ${students.value.standard}`);
+  drawText(`5. Date of Birth (DOB)        : ${students.value.dob}`);
+  drawText(`6. Admission Date             : ${students.value.admissionDate}`);
+  drawText(`8. Address                    : ${students.value.address}`);
+  drawText(`9. Mobile Number              : ${students.value.mobileNo}`);
+  drawText(`10. Email ID                  : ${students.value.emailId}`);
+  y -= 15;
+
+  // Draw labels for editable fields with spacing
+  page.drawText('11. Guardian Name:', { x: 50, y: y, size: fontSize, font });
+  const guardianY = y;
+  y -= 40;
+
+  page.drawText('12. Reason of Leaving:', { x: 50, y: y, size: fontSize, font });
+  const reasonY = y;
+  y -= 40;
+
+  page.drawText('13. Remarks:', { x: 50, y: y, size: fontSize, font });
+  const remarksY = y;
+
+  // Create form
+  const form = pdfDoc.getForm();
+
+  // Add Guardian Name text field (editable)
+  const guardianNameField = form.createTextField('guardianName');
+  guardianNameField.setText('');
+  guardianNameField.addToPage(page, { x: 200, y: guardianY - 10, width: 300, height: 20 });
+
+  // Reason of Leaving dropdown
+  const reasonField = form.createDropdown('reasonOfLeaving');
+  reasonField.addOptions(['PASSED_AND_LEFT', 'RUSTICATED', 'ADMISSION_REVOKED']);
+  reasonField.select('PASSED_AND_LEFT');
+  reasonField.addToPage(page, { x: 200, y: reasonY - 10, width: 300, height: 20 });
+
+  // Remarks dropdown
+  const remarksField = form.createDropdown('remarks');
+  remarksField.addOptions(['BAD', 'BELOW_AVERAGE', 'AVERAGE', 'GOOD', 'EXCELLENT', 'BRILLIANT']);
+  remarksField.select('AVERAGE');
+  remarksField.addToPage(page, { x: 200, y: remarksY - 10, width: 300, height: 20 });
+
+  // Save and download
+  const pdfBytes = await pdfDoc.save();
+  const blob = new Blob([pdfBytes], { type: 'application/pdf' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'TransferCertificate.pdf';
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+
+
 
 onMounted(() => {
   fetchStudents()

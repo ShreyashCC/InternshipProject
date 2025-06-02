@@ -27,8 +27,9 @@
 <script setup>
 import { ref } from 'vue'
 import axios from 'axios'
-import {useI18n} from "vue-i18n";
-const {t}  = useI18n();
+import { PDFDocument, StandardFonts, rgb } from 'pdf-lib'
+import { useI18n } from 'vue-i18n'
+const { t } = useI18n()
 
 const regNo = ref('')
 const TC = ref(null)
@@ -41,19 +42,87 @@ const generateTC = async () => {
   TC.value = null
 
   try {
-    const response = await axios.get(
-        // `http://localhost:8080/student/${regNo.value}`
-    //     call TC Interface
-    )
-    student.value = response.data
+    const response = await axios.get(`http://localhost:8080/student/${regNo.value}`)
+    TC.value = response.data
+    await generateEditablePDF(TC.value)
   } catch (err) {
-    error.value =
-        err.response?.data?.message || 'Failed to fetch TC details.'
+    error.value = err.response?.data?.message || 'Failed to fetch TC details.'
   } finally {
     loading.value = false
   }
 }
+
+async function generateEditablePDF(tc) {
+  const pdfDoc = await PDFDocument.create()
+  const page = pdfDoc.addPage([595, 842])
+  const form = pdfDoc.getForm()
+  const font = await pdfDoc.embedFont(StandardFonts.HELVETICA)
+
+  const drawLabel = (text, x, y) => {
+    page.drawText(text, { x, y, size: 12, font, color: rgb(0, 0, 0) })
+  }
+
+  let y = 780
+  const lineHeight = 25
+
+  drawLabel('TRANSFER CERTIFICATE', 200, y)
+  y -= lineHeight * 2
+
+  drawLabel(`Name: ${tc.student.firstName} ${tc.student.lastName}`, 50, y)
+  y -= lineHeight
+  drawLabel(`Reg No: ${tc.student.regNo}    Roll No: ${tc.student.rollNo}`, 50, y)
+  y -= lineHeight
+  drawLabel(`Class: ${tc.student.standard}`, 50, y)
+  y -= lineHeight
+  drawLabel(`DOB: ${tc.DOB}`, 50, y)
+  y -= lineHeight
+  drawLabel(`Admission Date: ${tc.student.admissionDate}`, 50, y)
+  y -= lineHeight
+  drawLabel(`Mobile: ${tc.student.mobileNo}`, 50, y)
+  y -= lineHeight
+  drawLabel(`Email: ${tc.student.emailId}`, 50, y)
+  y -= lineHeight
+
+  // Editable: Guardian Name
+  drawLabel('Guardian Name:', 50, y)
+  const guardianField = form.createTextField('guardianName')
+  guardianField.setText(tc.guardianName)
+  guardianField.addToPage(page, { x: 160, y: y - 4, width: 300, height: 20 })
+  y -= lineHeight
+
+  // Editable: Reason of Leaving
+  drawLabel('Reason of Leaving:', 50, y)
+  const reasonField = form.createDropdown('reasonOfLeaving')
+  reasonField.addOptions(['PASSED_AND_LEFT', 'RUSTICATED', 'ADMISSION_REVOKED'])
+  reasonField.select(tc.reasonOfLeaving || 'PASSED_AND_LEFT')
+  reasonField.addToPage(page, { x: 180, y: y - 4, width: 200, height: 20 })
+  y -= lineHeight
+
+  // Editable: Remarks
+  drawLabel('Remarks:', 50, y)
+  const remarksField = form.createDropdown('remarks')
+  remarksField.addOptions(['BAD', 'BELOW_AVERAGE', 'AVERAGE', 'GOOD', 'EXCELLENT', 'BRILLIANT'])
+  remarksField.select(tc.remark || 'GOOD')
+  remarksField.addToPage(page, { x: 120, y: y - 4, width: 150, height: 20 })
+  y -= lineHeight * 2
+
+  drawLabel('Signature of Principal', 400, y)
+  y -= lineHeight
+  drawLabel('(With Seal)', 420, y)
+
+  const pdfBytes = await pdfDoc.save()
+  const blob = new Blob([pdfBytes], { type: 'application/pdf' })
+  const url = URL.createObjectURL(blob)
+  const link = document.createElement('a')
+  link.href = url
+  link.download = `Editable_TC_${tc.student.regNo}.pdf`
+  document.body.appendChild(link)
+  link.click()
+  document.body.removeChild(link)
+  URL.revokeObjectURL(url)
+}
 </script>
+
 
 <style scoped>
 .generate-TC-container {
