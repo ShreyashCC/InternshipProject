@@ -139,12 +139,12 @@ const confirmPromote = async () => {
   }
 };
 
-const updateStatusToRESCINDED = async (regNo) => {
+const updateStatusToRESCINDED = async () => {
   try {
     console.log("error here")
-    await axios.get(`http://localhost:8080/student/status/tc/${regNo}`)
+    await axios.get(`http://localhost:8080/student/status/tc/${currentStudentRegNo.value}`)
 
-    await generateEditablePDF(regNo)
+    await generateEditablePDF(currentStudentRegNo.value)
     successMessage.value = `Transfer certificate generated for ID ${currentStudentRegNo.value}`;
     showSuccess.value = true;
     setTimeout(() => (showSuccess.value = false), 3000);
@@ -154,7 +154,6 @@ const updateStatusToRESCINDED = async (regNo) => {
   } finally {
     showGenerateTCWarning.value = false;
   }
-
 }
 
 const fetchStudents = async () => {
