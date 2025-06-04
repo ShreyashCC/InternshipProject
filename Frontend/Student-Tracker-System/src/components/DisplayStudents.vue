@@ -33,7 +33,7 @@
         <td>{{student.mobileNo}}</td>
         <td>{{student.emailId}}</td>
         <td>{{student.status}}</td>
-        <td v-if="student.status === 'ACTIVE'" > <button @click="UpdateStatusToRESCINDED(student.regNo)" class="promote-button">{{ t('Promote.btnText2') }}</button></td>
+        <td v-if="student.status === 'ACTIVE'" > <button @click="showTCModel(student.regNo)" class="promote-button">{{ t('Promote.btnText2') }}</button></td>
         <td v-if = "student.standard != '12' && student.status == 'ACTIVE'"><button @click="showPromoteModel(student.regNo)" class="promote-button">{{t('Promote.btnText')}}</button></td>
         <td v-if="student.standard == '12' && student.status == 'ACTIVE'"><button @click="showGraduationModel(student.regNo)" class="promote-button">{{t('Promote.btnText4')}}</button></td>
       </tr>
@@ -64,6 +64,18 @@
       </div>
     </div>
 
+    <div v-if="showGenerateTCWarning" class="modal-backdrop">
+      <div class="modal-overlay">
+        <div class="model">
+          <h3>Generate Student TC?</h3>
+          <div class="button-group">
+            <button @click="updateStatusToRESCINDED">Ok</button>
+            <button @click="cancelFxn">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
 
     <div v-if="showSuccess" class="top-notification">
       {{ successMessage }}
@@ -86,6 +98,7 @@ const TC = ref(null)
 
 const showGraduationWarning = ref(false)
 const showPromoteWarning = ref(false)
+const showGenerateTCWarning = ref(false)
 const showSuccess = ref(false)
 const currentStudentRegNo = ref(null)
 const successMessage = ref("")
@@ -93,22 +106,25 @@ const successMessage = ref("")
 const cancelFxn = async() => {
   showGraduationWarning.value=false;
   showPromoteWarning.value=false;
+  showGenerateTCWarning.value=false;
   console.log("cancelled")
 }
 
 const confirmGraduation = async () => {
   try {
     await axios.get(`http://localhost:8080/student/status/${currentStudentRegNo.value}`);
-    await generateEditablePDF(currentStudentRegNo.value);
+    generateEditablePDF(currentStudentRegNo.value);
     successMessage.value = `Transfer certificate generated for ID ${currentStudentRegNo.value}`;
     showSuccess.value = true;
     setTimeout(() => (showSuccess.value = false), 3000);
   } catch (err) {
     alert('Error graduating student');
   } finally {
-    showWarning.value = false;
+    showGraduationWarning.value = false;
   }
 };
+
+
 
 const confirmPromote = async () => {
   try {
@@ -123,6 +139,24 @@ const confirmPromote = async () => {
   }
 };
 
+const updateStatusToRESCINDED = async (regNo) => {
+  try {
+    console.log("error here")
+    await axios.get(`http://localhost:8080/student/status/tc/${regNo}`)
+
+    await generateEditablePDF(regNo)
+    successMessage.value = `Transfer certificate generated for ID ${currentStudentRegNo.value}`;
+    showSuccess.value = true;
+    setTimeout(() => (showSuccess.value = false), 3000);
+
+  } catch (error) {
+    alert('Failed to generate TC. The Student is Already Graduated');
+  } finally {
+    showGenerateTCWarning.value = false;
+  }
+
+}
+
 const fetchStudents = async () => {
   try {
     const response = await axios.get('http://localhost:8080/student')
@@ -134,10 +168,12 @@ const fetchStudents = async () => {
   }
 }
 
-const UpdateStatusToRESCINDED = async (regNo) => {
-  await axios.get(`http://localhost:8080/student/status/tc/${regNo}`)
-  await generateEditablePDF(regNo)
+const showTCModel = (regNo) =>{
+  currentStudentRegNo.value = regNo;
+  showGenerateTCWarning.value = true;
 }
+
+
 const promoteStudent = async (regNo) => {
   try {
     const res = await axios.get(`http://localhost:8080/student/promoted/${regNo}`)

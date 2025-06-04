@@ -1,4 +1,8 @@
 <template>
+  <div v-if="notification.message" :class="['notification', notification.type]">
+    {{ notification.message }}
+  </div>
+
   <div class="form-container">
     <h2>{{t('SideBar.AddStudent')}}</h2>
     <form @submit.prevent="submitForm">
@@ -34,11 +38,16 @@
 
       <button type="submit">{{t('AddNewStudent.Submit')}}</button>
     </form>
+
+    <div v-if="notification.message" :class="['notification', notification.type]">
+      {{ notification.message }}
+    </div>
+
   </div>
 </template>
 
 <script setup>
-import { reactive } from 'vue'
+import { reactive , ref} from 'vue'
 import axios from 'axios'
 import {useI18n} from "vue-i18n";
 const {t}  = useI18n();
@@ -51,6 +60,22 @@ const form = reactive({
   mobileNo: '',
   emailId: '',
 })
+
+const notification = ref({
+  message: '',
+  type: ''
+})
+
+function  showNotification(message , type){
+  notification.value = {message , type}
+
+  setTimeout(()=>{
+    notification.value.message = ''
+  } , 3500)
+}
+
+
+
 async function submitForm() {
   const studentData = {
     ...form,
@@ -60,7 +85,7 @@ async function submitForm() {
 
   try {
     const response = await axios.post('http://localhost:8080/student', studentData)
-    alert('Student Added Successfully!')
+    showNotification('Student Added Successfully!', 'success')
     console.log(response.data)
 
     // Reset form
@@ -68,7 +93,7 @@ async function submitForm() {
 
   } catch (error) {
     console.error('Error submitting form:', error)
-    alert('Failed to add student.')
+    showNotification('Failed to add student.', 'error')
   }
 }
 </script>
@@ -110,5 +135,33 @@ button {
 button:hover {
   background-color: #0056b3;
 }
+
+.notification {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+  padding: 12px 20px;
+  border-radius: 6px;
+  text-align: center;
+  font-weight: bold;
+  min-width: 300px;
+  max-width: 80%;
+  transition: opacity 0.5s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.notification.success {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.notification.error {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+
 </style>
 
