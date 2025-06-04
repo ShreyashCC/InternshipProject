@@ -113,7 +113,7 @@ const cancelFxn = async() => {
 const confirmGraduation = async () => {
   try {
     await axios.get(`http://localhost:8080/student/status/${currentStudentRegNo.value}`);
-    generateEditablePDF(currentStudentRegNo.value);
+    await generateEditablePDF(currentStudentRegNo.value);
     successMessage.value = `Transfer certificate generated for ID ${currentStudentRegNo.value}`;
     showSuccess.value = true;
     setTimeout(() => (showSuccess.value = false), 3000);
@@ -139,12 +139,12 @@ const confirmPromote = async () => {
   }
 };
 
-const updateStatusToRESCINDED = async (regNo) => {
+const updateStatusToRESCINDED = async () => {
   try {
     console.log("error here")
-    await axios.get(`http://localhost:8080/student/status/tc/${regNo}`)
+    await axios.get(`http://localhost:8080/student/status/tc/${currentStudentRegNo.value}`)
 
-    await generateEditablePDF(regNo)
+    await generateEditablePDF(currentStudentRegNo.value)
     successMessage.value = `Transfer certificate generated for ID ${currentStudentRegNo.value}`;
     showSuccess.value = true;
     setTimeout(() => (showSuccess.value = false), 3000);
