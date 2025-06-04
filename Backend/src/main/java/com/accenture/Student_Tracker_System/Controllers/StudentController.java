@@ -3,6 +3,7 @@ import com.accenture.Student_Tracker_System.DTOs.StudentDTO;
 import com.accenture.Student_Tracker_System.DTOs.TransferCertificateDTO;
 import com.accenture.Student_Tracker_System.Entities.Student;
 import com.accenture.Student_Tracker_System.Entities.TransferCertificate;
+import com.accenture.Student_Tracker_System.Enums.Status;
 import com.accenture.Student_Tracker_System.Services.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.crossstore.ChangeSetPersister;
@@ -48,12 +49,27 @@ public class StudentController {
         newStudent.setRollNo(studentService.getNextAvailableRollNo(existingRollNos));
         return studentService.saveStudent(newStudent);
     }
+    @GetMapping("/status/{regNo}")
+    public StudentDTO changeStatus(@PathVariable String regNo) {
+        try {
+            Student student = studentService.getStudentById(Integer.parseInt(regNo));
+            studentService.changeStudentStatus(student);
+            return StudentToDTO(student);
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "FAILED TO GENERATE PDF");
+        }
+    }
     @GetMapping("/promoted/{regNo}")
     public StudentDTO updateStudent(@PathVariable String regNo) {
         try {
             Student student = studentService.getStudentById(Integer.parseInt(regNo));
-            if (student.getStandard() == 12) {
+            if (student.getStandard() == 12 && student.getStatus() == Status.GRADUATED) {
                 throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Student from standard 12 cannot be promoted");
+            }
+            else if(student.getStandard() == 12 && student.getStatus() == Status.ACTIVE) {
+                studentService.changeStudentStatus(student);
+                student.setStatus(Status.GRADUATED);
+                return StudentToDTO(student);
             }
             Student promotedStudent = studentService.promoteStudent(student);
             return StudentToDTO(promotedStudent);

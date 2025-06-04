@@ -59,16 +59,17 @@ public class StudentService {
         existingStudent.setRollNo(newRollNo);
         updateStudentStatus(existingStudent); // already increments standard
 
-        if (existingStudent.getStatus() == Status.GRADUATED) {
-            existingStudent.setRollNo(null);
-            existingStudent.setStandard(null);
-            return studentRepository.save(existingStudent);
-        }
-
+//        if (existingStudent.getStatus() == Status.GRADUATED) {
+//            existingStudent.setRollNo(null);
+//            existingStudent.setStandard(null);
+//        }
         return studentRepository.save(existingStudent);
     }
-
-
+    public void changeStudentStatus(Student student) {
+        if (student.getStandard() == 12) student.setStatus(Status.GRADUATED);
+        else student.setStatus(Status.RESCINDED);
+        studentRepository.save(student);
+    }
     public List<Integer> getRollList(Integer standard) {
         List<Integer> existingRollNos = studentRepository.findAllRollNosByStandard(standard);
         return existingRollNos;

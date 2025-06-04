@@ -33,8 +33,9 @@
         <td>{{student.mobileNo}}</td>
         <td>{{student.emailId}}</td>
         <td>{{student.status}}</td>
-        <td><button @click="generateEditablePDF(student.regNo)" class="promote-button">{{t('Promote.btnText2')}}</button></td>
-        <td v-if = "student.standard != '12'"><button @click="promoteStudent(student.regNo)" class="promote-button">{{t('Promote.btnText')}}</button></td>
+        <td v-if="student.status === 'ACTIVE'" > <button @click="UpdateStudentStatus(student.regNo)" class="promote-button">{{ t('Promote.btnText2') }}</button></td>
+        <td v-if = "student.standard != '12' && student.status == 'ACTIVE'"><button @click="promoteStudent(student.regNo)" class="promote-button">{{t('Promote.btnText')}}</button></td>
+        <td v-if="student.standard == '12' && student.status == 'ACTIVE'"><button @click="UpdateStudentStatus(student.regNo)" class="promote-button">{{t('Promote.btnText4')}}</button></td>
       </tr>
       </tbody>
     </table>
@@ -64,18 +65,23 @@ const fetchStudents = async () => {
 }
 const promoteStudent = async (regNo) => {
   try {
-    await axios.get(`http://localhost:8080/student/promoted/${regNo}`)
+    const res = await axios.get(`http://localhost:8080/student/promoted/${regNo}`)
     alert(`Student ID ${regNo} promoted successfully!`)
-    // fetchStudents() // Optional: Refresh the table
+
   } catch (error) {
     console.error('Error:', error)
     alert('Failed to promote student. The Student is Already Graduated')
   }
 }
+
+const UpdateStudentStatus = async (regNo) => {
+  const res = await axios.get(`http://localhost:8080/student/status/${regNo}`)
+  await generateEditablePDF(regNo);
+}
 const fetchStudentsById = async (regId) => {
   try {
     const response = await axios.get(`http://localhost:8080/student/${regId}`)
-    // console.log(response.data);
+    // if (response.data.standard === 12 && response.data.Status === 'ACTIVE') {
     return response.data
   } catch (err) {
     error.value = err.response?.data?.message || 'Failed to fetch students.'
@@ -85,8 +91,7 @@ const fetchStudentsById = async (regId) => {
   }
 }
 async function generateEditablePDF(regNo) {
-  const students = await fetchStudentsById(regNo);
-
+  const students = await  fetchStudentsById(regNo);
   const pdfDoc = await PDFDocument.create();
   const page = pdfDoc.addPage([595, 842]); // A4 size
   const { height } = page.getSize();
