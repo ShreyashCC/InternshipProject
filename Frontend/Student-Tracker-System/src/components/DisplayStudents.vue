@@ -33,17 +33,48 @@
         <td>{{student.mobileNo}}</td>
         <td>{{student.emailId}}</td>
         <td>{{student.status}}</td>
-        <td v-if="student.status === 'ACTIVE'" > <button @click="UpdateStudentStatus(student.regNo)" class="promote-button">{{ t('Promote.btnText2') }}</button></td>
-        <td v-if = "student.standard != '12' && student.status == 'ACTIVE'"><button @click="promoteStudent(student.regNo)" class="promote-button">{{t('Promote.btnText')}}</button></td>
-        <td v-if="student.standard == '12' && student.status == 'ACTIVE'"><button @click="UpdateStudentStatus(student.regNo)" class="promote-button">{{t('Promote.btnText4')}}</button></td>
+        <td v-if="student.status === 'ACTIVE'" > <button @click="UpdateStatusToRESCINDED(student.regNo)" class="promote-button">{{ t('Promote.btnText2') }}</button></td>
+        <td v-if = "student.standard != '12' && student.status == 'ACTIVE'"><button @click="showPromoteModel(student.regNo)" class="promote-button">{{t('Promote.btnText')}}</button></td>
+        <td v-if="student.standard == '12' && student.status == 'ACTIVE'"><button @click="showGraduationModel(student.regNo)" class="promote-button">{{t('Promote.btnText4')}}</button></td>
       </tr>
       </tbody>
     </table>
+
+    <div v-if="showGraduationWarning" class="modal-backdrop">
+      <div class="modal-overlay">
+        <div class="model">
+          <h3>Graduate Student?</h3>
+          <div class="button-group">
+            <button @click="confirmGraduation">Ok</button>
+            <button @click="cancelFxn">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div v-if="showPromoteWarning" class="modal-backdrop">
+      <div class="modal-overlay">
+        <div class="model">
+          <h3>Promote Student?</h3>
+          <div class="button-group">
+            <button @click="confirmPromote">Ok</button>
+            <button @click="cancelFxn">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div v-if="showSuccess" class="top-notification">
+      {{ successMessage }}
+    </div>
   </div>
+
+
 </template>
 
 <script setup>
-import {ref, onMounted, onUpdated} from 'vue'
+import {ref, onMounted, onUpdated, watch} from 'vue'
 import axios, {HttpStatusCode} from 'axios'
 import {useI18n} from "vue-i18n";
 const {t, availableLocales, locale}  = useI18n();
@@ -52,6 +83,45 @@ const students = ref([])
 const loading = ref(true)
 const error = ref(null)
 const TC = ref(null)
+
+const showGraduationWarning = ref(false)
+const showPromoteWarning = ref(false)
+const showSuccess = ref(false)
+const currentStudentRegNo = ref(null)
+const successMessage = ref("")
+
+const cancelFxn = async() => {
+  showGraduationWarning.value=false;
+  showPromoteWarning.value=false;
+  console.log("cancelled")
+}
+
+const confirmGraduation = async () => {
+  try {
+    await axios.get(`http://localhost:8080/student/status/${currentStudentRegNo.value}`);
+    await generateEditablePDF(currentStudentRegNo.value);
+    successMessage.value = `Transfer certificate generated for ID ${currentStudentRegNo.value}`;
+    showSuccess.value = true;
+    setTimeout(() => (showSuccess.value = false), 3000);
+  } catch (err) {
+    alert('Error graduating student');
+  } finally {
+    showWarning.value = false;
+  }
+};
+
+const confirmPromote = async () => {
+  try {
+    await axios.get(`http://localhost:8080/student/promoted/${currentStudentRegNo.value}`);
+    successMessage.value = `Student ID ${currentStudentRegNo.value} promoted successfully!`;
+    showSuccess.value = true;
+    setTimeout(() => (showSuccess.value = false), 3000);
+  } catch (error) {
+    alert('Failed to promote student. The Student is Already Graduated');
+  } finally {
+    showPromoteWarning.value = false;
+  }
+};
 
 const fetchStudents = async () => {
   try {
@@ -62,6 +132,11 @@ const fetchStudents = async () => {
   } finally {
     loading.value = false
   }
+}
+
+const UpdateStatusToRESCINDED = async (regNo) => {
+  await axios.get(`http://localhost:8080/student/status/tc/${regNo}`)
+  await generateEditablePDF(regNo)
 }
 const promoteStudent = async (regNo) => {
   try {
@@ -74,10 +149,20 @@ const promoteStudent = async (regNo) => {
   }
 }
 
-const UpdateStudentStatus = async (regNo) => {
+const showGraduationModel = (regNo) =>{
+  currentStudentRegNo.value = regNo;
+  showGraduationWarning.value = true;
+}
+
+const showPromoteModel = (regNo) =>{
+  currentStudentRegNo.value = regNo;
+  showPromoteWarning.value = true;
+}
+
+/*const UpdateStudentStatus = async (regNo) => {
   const res = await axios.get(`http://localhost:8080/student/status/${regNo}`)
   await generateEditablePDF(regNo);
-}
+}*/
 const fetchStudentsById = async (regId) => {
   try {
     const response = await axios.get(`http://localhost:8080/student/${regId}`)
@@ -179,11 +264,10 @@ async function generateEditablePDF(regNo) {
 }
 
 
-
-
 onMounted(() => {
   fetchStudents()
 })
+
 onUpdated(()=> {
   fetchStudents()
 })
@@ -260,6 +344,84 @@ onUpdated(()=> {
 
 .error {
   color: red;
+}
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(173, 216, 230, 0.5); /* light blue transparent */
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(1px); /* Optional: adds blur effect */
+}
+
+.modal-overlay  {
+  background-color: #ffeeba;
+  color: #856404;
+  border: 1px solid #ffc107;
+  padding: 1.2rem 2rem 1.7rem 2rem;
+  min-width: 360px;
+  max-width: 90vw;
+  border-radius: 10px;
+  z-index: 1000;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  animation: slide-down 0.3s ease;
+}
+
+.button-group {
+  margin-top: 10px;
+}
+
+.button-group button {
+  margin: 0 5px;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.button-group button:first-child {
+  background-color: #28a745;
+  color: white;
+}
+
+.button-group button:last-child {
+  background-color: #dc3545;
+  color: white;
+}
+
+.top-notification {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #d4edda;
+  color: #155724;
+  padding: 12px 24px;
+  border-radius: 8px;
+  border: 1px solid #c3e6cb;
+  z-index: 1001;
+  font-weight: bold;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  animation: fade-slide-down 0.3s ease;
+}
+
+@keyframes fade-slide-down {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
 }
 
 /* Responsive tweaks for smaller screens */

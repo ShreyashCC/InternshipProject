@@ -70,6 +70,11 @@ public class StudentService {
         else student.setStatus(Status.RESCINDED);
         studentRepository.save(student);
     }
+    public void changeStudentStatusToRESCINDED(Student student) {
+        student.setStatus(Status.RESCINDED);
+        studentRepository.save(student);
+    }
+
     public List<Integer> getRollList(Integer standard) {
         List<Integer> existingRollNos = studentRepository.findAllRollNosByStandard(standard);
         return existingRollNos;

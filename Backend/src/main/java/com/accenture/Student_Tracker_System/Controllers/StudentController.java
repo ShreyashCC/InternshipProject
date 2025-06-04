@@ -49,11 +49,22 @@ public class StudentController {
         newStudent.setRollNo(studentService.getNextAvailableRollNo(existingRollNos));
         return studentService.saveStudent(newStudent);
     }
+
     @GetMapping("/status/{regNo}")
     public StudentDTO changeStatus(@PathVariable String regNo) {
         try {
             Student student = studentService.getStudentById(Integer.parseInt(regNo));
             studentService.changeStudentStatus(student);
+            return StudentToDTO(student);
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "FAILED TO GENERATE PDF");
+        }
+    }
+    @GetMapping("/status/tc/{regNo}")
+    public StudentDTO changeStatusToRESCINDED(@PathVariable String regNo) {
+        try {
+            Student student = studentService.getStudentById(Integer.parseInt(regNo));
+            studentService.changeStudentStatusToRESCINDED(student);
             return StudentToDTO(student);
         } catch (Exception e) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "FAILED TO GENERATE PDF");
