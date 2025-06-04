@@ -113,7 +113,7 @@ const cancelFxn = async() => {
 const confirmGraduation = async () => {
   try {
     await axios.get(`http://localhost:8080/student/status/${currentStudentRegNo.value}`);
-    generateEditablePDF(currentStudentRegNo.value);
+    await generateEditablePDF(currentStudentRegNo.value);
     successMessage.value = `Transfer certificate generated for ID ${currentStudentRegNo.value}`;
     showSuccess.value = true;
     setTimeout(() => (showSuccess.value = false), 3000);
