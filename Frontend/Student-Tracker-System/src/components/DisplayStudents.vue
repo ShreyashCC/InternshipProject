@@ -80,6 +80,10 @@
     <div v-if="showSuccess" class="top-notification">
       {{ successMessage }}
     </div>
+
+    <div v-if="showFailed" class="top-notification-failed">
+      {{ failedMessage }}
+    </div>
   </div>
 
 
@@ -102,6 +106,8 @@ const showGenerateTCWarning = ref(false)
 const showSuccess = ref(false)
 const currentStudentRegNo = ref(null)
 const successMessage = ref("")
+const showFailed = ref(false)
+const failedMessage = ref("")
 
 const cancelFxn = async() => {
   showGraduationWarning.value=false;
@@ -118,7 +124,10 @@ const confirmGraduation = async () => {
     showSuccess.value = true;
     setTimeout(() => (showSuccess.value = false), 3000);
   } catch (err) {
-    alert('Error graduating student');
+    showFailed.value = true;
+    failedMessage.value = 'Failed to graduate!'
+    showGraduationWarning.value = false
+    setTimeout(() => (showFailed.value = false), 3000);
   } finally {
     showGraduationWarning.value = false;
   }
@@ -133,7 +142,10 @@ const confirmPromote = async () => {
     showSuccess.value = true;
     setTimeout(() => (showSuccess.value = false), 3000);
   } catch (error) {
-    alert('Failed to promote student. The Student is Already Graduated');
+    showFailed.value = true;
+    failedMessage.value = 'Failed to promote!'
+    showPromoteWarning.value = false
+    setTimeout(() => (showFailed.value = false), 3000);
   } finally {
     showPromoteWarning.value = false;
   }
@@ -150,7 +162,10 @@ const updateStatusToRESCINDED = async () => {
     setTimeout(() => (showSuccess.value = false), 3000);
 
   } catch (error) {
-    alert('Failed to generate TC. The Student is Already Graduated');
+    showFailed.value = true;
+    failedMessage.value = 'Failed to generate TC!'
+    showGenerateTCWarning.value = false;
+    setTimeout(() => (showFailed.value = false), 3000);
   } finally {
     showGenerateTCWarning.value = false;
   }
@@ -173,16 +188,16 @@ const showTCModel = (regNo) =>{
 }
 
 
-const promoteStudent = async (regNo) => {
-  try {
-    const res = await axios.get(`http://localhost:8080/student/promoted/${regNo}`)
-    alert(`Student ID ${regNo} promoted successfully!`)
-
-  } catch (error) {
-    console.error('Error:', error)
-    alert('Failed to promote student. The Student is Already Graduated')
-  }
-}
+// const promoteStudent = async (regNo) => {
+//   try {
+//     const res = await axios.get(`http://localhost:8080/student/promoted/${regNo}`)
+//     alert(`Student ID ${regNo} promoted successfully!`)
+//
+//   } catch (error) {
+//     console.error('Error:', error)
+//     alert('Failed to promote student. The Student is Already Graduated')
+//   }
+// }
 
 const showGraduationModel = (regNo) =>{
   currentStudentRegNo.value = regNo;
@@ -439,6 +454,22 @@ onUpdated(()=> {
   transform: translateX(-50%);
   background-color: #d4edda;
   color: #155724;
+  padding: 12px 24px;
+  border-radius: 8px;
+  border: 1px solid #c3e6cb;
+  z-index: 1001;
+  font-weight: bold;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  animation: fade-slide-down 0.3s ease;
+}
+
+.top-notification-failed {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #f8d7da;
+  color: #721c24;
   padding: 12px 24px;
   border-radius: 8px;
   border: 1px solid #c3e6cb;
