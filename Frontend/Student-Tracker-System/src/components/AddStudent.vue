@@ -61,24 +61,35 @@ const form = reactive({
   emailId: '',
 })
 
-const notification = ref({
+const notification = reactive({
   message: '',
   type: ''
 })
 
 function  showNotification(message , type){
-  notification.value = {message , type}
+  notification.message = message;
+  notification.type = type;
 
   setTimeout(()=>{
-    notification.value.message = ''
-  } , 3500)
+    notification.message = ''
+  } , 2500)
 }
 
 
-
 async function submitForm() {
+  const namePattern = /^\d+$/;
+  if (namePattern.test(String(form.firstName).trim()) || namePattern.test(String(form.lastName).trim())) {
+    showNotification("FirstName or LastName cannot be number", 'error');
+    return;
+  }
+  const standard = parseInt(form.standard);
+  if (isNaN(standard) || standard < 1 || standard > 12) {
+    showNotification('standard must be between 1 and 12', 'error');
+    return;
+  }
   const studentData = {
     ...form,
+    standard: standard,
     admissionDate: Date.now(),
     status: "ACTIVE"
   }
@@ -87,13 +98,11 @@ async function submitForm() {
     const response = await axios.post('http://localhost:8080/student', studentData)
     showNotification('Student Added Successfully!', 'success')
     console.log(response.data)
-
-    // Reset form
     Object.keys(form).forEach(key => form[key] = '')
 
   } catch (error) {
     console.error('Error submitting form:', error)
-    showNotification('Failed to add student.', 'error')
+    showNotification('Failed to add Student', 'error');
   }
 }
 </script>
@@ -138,9 +147,9 @@ button:hover {
 
 .notification {
   position: fixed;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
+  top: 80px;
+  right: -2%;
+  transform: translateX(-10%);
   z-index: 9999;
   padding: 12px 20px;
   border-radius: 6px;
@@ -161,7 +170,6 @@ button:hover {
   background-color: #f8d7da;
   color: #721c24;
 }
-
 
 </style>
 

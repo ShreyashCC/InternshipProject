@@ -45,7 +45,7 @@
         <div class="model">
           <h3>Graduate Student?</h3>
           <div class="button-group">
-            <button @click="confirmGraduation">Ok</button>
+            <button @click="confirmGraduation">Confirm</button>
             <button @click="cancelFxn">Cancel</button>
           </div>
         </div>
@@ -57,7 +57,7 @@
         <div class="model">
           <h3>Promote Student?</h3>
           <div class="button-group">
-            <button @click="confirmPromote">Ok</button>
+            <button @click="confirmPromote">Confirm</button>
             <button @click="cancelFxn">Cancel</button>
           </div>
         </div>
@@ -69,7 +69,7 @@
         <div class="model">
           <h3>Generate Student TC?</h3>
           <div class="button-group">
-            <button @click="updateStatusToRESCINDED">Ok</button>
+            <button @click="updateStatusToRESCINDED">Confirm</button>
             <button @click="cancelFxn">Cancel</button>
           </div>
         </div>
@@ -119,7 +119,7 @@ const cancelFxn = async() => {
 const confirmGraduation = async () => {
   try {
     await axios.get(`http://localhost:8080/student/status/${currentStudentRegNo.value}`);
-    await generateEditablePDF(currentStudentRegNo.value);
+    window.open(`http://localhost:8080/pdf/generate/${currentStudentRegNo.value}`, '_blank');
     successMessage.value = `Transfer certificate generated for ID ${currentStudentRegNo.value}`;
     showSuccess.value = true;
     setTimeout(() => (showSuccess.value = false), 3000);
@@ -132,7 +132,6 @@ const confirmGraduation = async () => {
     showGraduationWarning.value = false;
   }
 };
-
 
 
 const confirmPromote = async () => {
@@ -153,18 +152,16 @@ const confirmPromote = async () => {
 
 const updateStatusToRESCINDED = async () => {
   try {
-    console.log("error here")
-    await axios.get(`http://localhost:8080/student/status/tc/${currentStudentRegNo.value}`)
+    await axios.get(`http://localhost:8080/student/status/tc/${currentStudentRegNo.value}`);
 
-    await generateEditablePDF(currentStudentRegNo.value)
-    successMessage.value = `Transfer certificate generated for ID ${currentStudentRegNo.value}`;
+    // ✅ Open the PDF in a new tab
+    window.open(`http://localhost:8080/pdf/generate/${currentStudentRegNo.value}`, '_blank');
+
     showSuccess.value = true;
     setTimeout(() => (showSuccess.value = false), 3000);
-
   } catch (error) {
+    console.error(error);
     showFailed.value = true;
-    failedMessage.value = 'Failed to generate TC!'
-    showGenerateTCWarning.value = false;
     setTimeout(() => (showFailed.value = false), 3000);
   } finally {
     showGenerateTCWarning.value = false;
@@ -225,94 +222,6 @@ const fetchStudentsById = async (regId) => {
     loading.value = false
   }
 }
-async function generateEditablePDF(regNo) {
-  const students = await  fetchStudentsById(regNo);
-  const pdfDoc = await PDFDocument.create();
-  const page = pdfDoc.addPage([595, 842]); // A4 size
-  const { height } = page.getSize();
-  const font = await pdfDoc.embedFont(StandardFonts.Courier);
-  const fontSize = 10;
-  let y = height - 80;
-
-  const lineSpacing = 40;
-
-  const drawText = (text, offset = 50, space = lineSpacing) => {
-    page.drawText(text, { x: offset, y, size: fontSize, font });
-    y -= space;
-  };
-
-  // Header
-  page.drawText('Kendriya Vidyalaya', {
-    x: 210,
-    y,
-    size: 16,
-    font,
-    color: rgb(0, 0, 0),
-  });
-  y -= 45;
-
-  page.drawText('Transfer Certificate (TC)', {
-    x: 200,
-    y,
-    size: 14,
-    font,
-    color: rgb(1, 0, 0),
-  });
-  y -= 40;
-
-  drawText('-----------------------------------------------------------------------------------', 50, 20);
-
-  // Student Details
-  drawText(`1. Student's Full Name        : ${students.firstName} ${students.lastName}`);
-  drawText(`2. Registration Number        : ${students.regNo}`);
-  drawText(`3. Roll Number                : ${students.rollNo}`);
-  drawText(`4. Standard/Class             : ${students.standard}`);
-  drawText('5. Date of Birth (DOB)        :', 50);
-  const dobY = y + lineSpacing;
-  drawText(`6. Admission Date             : ${students.admissionDate}`);
-  drawText(`7. Address                    : ${students.address}`);
-  drawText(`8. Mobile Number              : ${students.mobileNo}`);
-  drawText(`9. Email ID                   : ${students.emailId}`);
-
-  drawText('11. Guardian Name              :', 44);
-  const guardianY = y + lineSpacing;
-
-  drawText('12. Reason of Leaving          :', 44);
-  const reasonY = y + lineSpacing;
-
-  drawText('13. Remarks                    :', 44);
-  const remarksY = y + lineSpacing;
-
-  // Create form
-  const form = pdfDoc.getForm();
-  const dobField = form.createTextField('dobField');
-  dobField.setText(students.dob);
-  dobField.addToPage(page, { x: 245, y: dobY - 14, width: 150, height: 25 });
-
-  const guardianNameField = form.createTextField('guardianName');
-  guardianNameField.addToPage(page, { x: 242, y: guardianY - 14, width: 300, height: 25 });
-
-  const reasonField = form.createDropdown('reasonOfLeaving');
-  reasonField.addOptions(['PASSED_AND_LEFT', 'RUSTICATED', 'ADMISSION_REVOKED']);
-  reasonField.select('PASSED_AND_LEFT');
-  reasonField.addToPage(page, { x: 242, y: reasonY - 14, width: 300, height: 25 });
-
-  const remarksField = form.createDropdown('remarks');
-  remarksField.addOptions(['BAD', 'BELOW_AVERAGE', 'AVERAGE', 'GOOD', 'EXCELLENT', 'BRILLIANT']);
-  remarksField.select('AVERAGE');
-  remarksField.addToPage(page, { x: 242, y: remarksY - 14, width: 300, height: 25 });
-
-  // Save and download
-  const pdfBytes = await pdfDoc.save();
-  const blob = new Blob([pdfBytes], { type: 'application/pdf' });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = 'TransferCertificate.pdf';
-  a.click();
-  URL.revokeObjectURL(url);
-}
-
 
 onMounted(() => {
   fetchStudents()
