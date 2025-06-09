@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -43,11 +44,14 @@ public class StudentController {
         return students.stream().map(this::StudentToDTO).collect(Collectors.toList());
     }
     @PostMapping
-    public Student createStudent(@RequestBody StudentDTO studentDTO) {
+    public ResponseEntity<?> createStudent(@RequestBody StudentDTO studentDTO) {
+        if (studentDTO.getFirstName().matches("\\d")) {
+            return ResponseEntity.badRequest().body("Name cannot be number");
+        }
         Student newStudent = DTOToStudent(studentDTO);
         List<Integer> existingRollNos = studentService.getRollList(newStudent.getStandard());
         newStudent.setRollNo(studentService.getNextAvailableRollNo(existingRollNos));
-        return studentService.saveStudent(newStudent);
+        return ResponseEntity.ok(studentService.saveStudent(newStudent));
     }
 
     @GetMapping("/status/{regNo}")

@@ -16,7 +16,7 @@
         <div class="model">
           <h3>Promote Student?</h3>
           <div class="button-group">
-            <button @click="promoteStudent">Ok</button>
+            <button @click="promoteStudent">Confirm</button>
             <button @click="cancelFxn">Cancel</button>
           </div>
         </div>

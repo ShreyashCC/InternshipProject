@@ -63,7 +63,7 @@
 </template>
 
 <script setup>
-import {ref, reactive, computed} from 'vue'
+import {ref, reactive, computed , onMounted} from 'vue'
 import AddStudentForm from './components/AddStudent.vue'
 import HomeComponent from "./components/HomeComponent.vue";
 import PromoteStudent from './components/PromoteStudent.vue'
@@ -116,7 +116,9 @@ const currentComponent = computed(() => {
     default:
       return HomeComponent
   }
+
 })
+
 
 </script>
 <style scoped>
