@@ -1,8 +1,5 @@
 package com.accenture.Student_Tracker_System.Controllers;
-
-import com.accenture.Student_Tracker_System.DTOs.StudentDTO;
 import com.accenture.Student_Tracker_System.DTOs.TransferCertificateDTO;
-import com.accenture.Student_Tracker_System.Entities.Student;
 import com.accenture.Student_Tracker_System.Entities.TransferCertificate;
 import com.accenture.Student_Tracker_System.Services.TCService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,19 +31,6 @@ public class TcController {
     public TransferCertificate createTC(@RequestBody TransferCertificateDTO tcDTO) {
         return tcService.issueTC(tcDTO.getStudentId(), tcDTO);
     }
-
-//
-//    private TransferCertificate DTOToTC(TransferCertificateDTO transferCertificateDTO){
-//        TransferCertificate transferCertificate = new TransferCertificate();
-//        transferCertificate.setUniqueID(transferCertificateDTO.getUniqueID());
-//        transferCertificate.setStudent(transferCertificateDTO.getStudent());
-//        transferCertificate.setRemark(transferCertificateDTO.getRemark());
-//        transferCertificate.setReasonOfLeaving(transferCertificateDTO.getReasonOfLeaving());
-//        transferCertificate.setIssuedDate(transferCertificateDTO.getIssuedDate());
-//        transferCertificate.setDOB(transferCertificateDTO.getDOB());
-//        transferCertificate.setGuardianName(transferCertificateDTO.getGuardianName());
-//        return transferCertificate;
-//    }
 
     private TransferCertificateDTO TcToDTO(TransferCertificate transferCertificate){
         TransferCertificateDTO transferCertificateDTO = new TransferCertificateDTO();
