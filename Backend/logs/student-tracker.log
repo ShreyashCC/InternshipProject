@@ -1,0 +1,87 @@
+2025-06-10 09:36:31 INFO  com.accenture.Student_Tracker_System.Services.StudentService - Found gap at position 0: returning 1
+2025-06-10 09:36:32 INFO  com.accenture.Student_Tracker_System.Services.StudentService - Student status set to GRADUATED: 1
+2025-06-10 09:36:32 INFO  com.accenture.Student_Tracker_System.Services.StudentService - Changing student status based on standard for: 1
+2025-06-10 09:36:32 INFO  com.accenture.Student_Tracker_System.Services.StudentService - Student rescinded: 1
+2025-06-10 09:36:32 INFO  com.accenture.Student_Tracker_System.Services.StudentService - Promoting student: 1
+2025-06-10 09:36:32 ERROR com.accenture.Student_Tracker_System.Services.StudentService - Student not found for promotion: 1
+2025-06-10 09:36:32 INFO  com.accenture.Student_Tracker_System.Services.StudentService - Saving new student: Student Details: 
+Firstname: null Lastname: null
+Roll.No: 1 Class: 10
+Mobile.No: null EmailId: null
+AdmissionDate: null Status: ACTIVE
+Address: null
+
+2025-06-10 09:36:32 INFO  com.accenture.Student_Tracker_System.Services.StudentService - Student details: Student Details: 
+Firstname: null Lastname: null
+Roll.No: 1 Class: 10
+Mobile.No: null EmailId: null
+AdmissionDate: null Status: ACTIVE
+Address: null
+
+2025-06-10 09:36:32 INFO  com.accenture.Student_Tracker_System.Services.StudentService - Promoting student: 1
+2025-06-10 09:36:32 INFO  com.accenture.Student_Tracker_System.Services.StudentService - No gaps found, assigning next roll number: 1
+2025-06-10 09:36:32 INFO  com.accenture.Student_Tracker_System.Services.StudentService - Student status set to GRADUATED: 1
+2025-06-10 09:36:32 INFO  com.accenture.Student_Tracker_System.Services.StudentService - Promoted student: 1 to standard 13, new roll no: 1
+2025-06-10 09:36:32 INFO  com.accenture.Student_Tracker_System.Services.StudentService - No gaps found, assigning next roll number: 1
+2025-06-10 09:36:32 INFO  com.accenture.Student_Tracker_System.Services.StudentService - Changing student status based on standard for: 1
+2025-06-10 09:36:32 INFO  com.accenture.Student_Tracker_System.Services.StudentService - Student graduated: 1
+2025-06-10 09:36:32 INFO  com.accenture.Student_Tracker_System.Services.StudentService - Promoting student: 1
+2025-06-10 09:36:32 INFO  com.accenture.Student_Tracker_System.Services.StudentService - No gaps found, assigning next roll number: 3
+2025-06-10 09:36:32 INFO  com.accenture.Student_Tracker_System.Services.StudentService - Student status set to ACTIVE: 1
+2025-06-10 09:36:32 INFO  com.accenture.Student_Tracker_System.Services.StudentService - Promoted student: 1 to standard 11, new roll no: 3
+2025-06-10 09:36:32 INFO  com.accenture.Student_Tracker_System.Services.StudentService - Student status set to ACTIVE: 1
+2025-06-10 09:36:32 INFO  com.accenture.Student_Tracker_System.Services.StudentService - Found gap at position 2: returning 3
+2025-06-10 09:36:32 INFO  com.accenture.Student_Tracker_System.Services.StudentService - Student status set to GRADUATED: 1
+2025-06-10 09:36:32 INFO  com.accenture.Student_Tracker_System.Services.StudentService - No gaps found, assigning next roll number: 5
+2025-06-10 09:36:32 INFO  com.accenture.Student_Tracker_System.Services.StudentService - Setting status to RESCINDED for student: 1
+2025-06-10 09:36:32 INFO  com.accenture.Student_Tracker_System.Services.TCService - Issuing TransferCertificate for studentId: 1
+2025-06-10 09:36:32 INFO  com.accenture.Student_Tracker_System.Services.TCService - Student 1 graduated
+2025-06-10 09:36:32 INFO  com.accenture.Student_Tracker_System.Services.TCService - Issuing TransferCertificate for studentId: 1
+2025-06-10 09:36:32 INFO  com.accenture.Student_Tracker_System.Services.TCService - Student 1 status set to RESCINDED
+2025-06-10 09:36:32 INFO  com.accenture.Student_Tracker_System.Services.TCService - Issuing TransferCertificate for studentId: 1
+2025-06-10 09:36:32 INFO  com.accenture.Student_Tracker_System.Services.TCService - Student 1 status set to RESCINDED
+2025-06-10 09:36:33 INFO  com.accenture.Student_Tracker_System.StudentTrackerSystemApplicationTests - Starting StudentTrackerSystemApplicationTests using Java 21.0.6 with PID 3576 (started by manthan.modi in C:\Users\manthan.modi\Downloads\InternshipProject\Backend)
+2025-06-10 09:36:33 INFO  com.accenture.Student_Tracker_System.StudentTrackerSystemApplicationTests - The following 1 profile is active: "test"
+2025-06-10 09:36:41 INFO  com.accenture.Student_Tracker_System.StudentTrackerSystemApplicationTests - Started StudentTrackerSystemApplicationTests in 7.954 seconds (process running for 18.407)
+2025-06-10 09:36:41 INFO  com.accenture.Student_Tracker_System.Services.TCService - Issuing TransferCertificate for studentId: 1
+2025-06-10 09:36:41 INFO  com.accenture.Student_Tracker_System.Services.TCService - Student 1 graduated
+2025-06-10 09:36:41 INFO  com.accenture.Student_Tracker_System.Services.TCService - Issuing TransferCertificate for studentId: 1
+2025-06-10 09:36:41 INFO  com.accenture.Student_Tracker_System.Services.TCService - Student 1 status set to RESCINDED
+2025-06-10 09:36:41 INFO  com.accenture.Student_Tracker_System.Services.TCService - Issuing TransferCertificate for studentId: 1
+2025-06-10 09:36:41 INFO  com.accenture.Student_Tracker_System.Services.TCService - Student 1 status set to RESCINDED
+2025-06-10 09:36:41 INFO  com.accenture.Student_Tracker_System.Services.StudentService - Found gap at position 0: returning 1
+2025-06-10 09:36:41 INFO  com.accenture.Student_Tracker_System.Services.StudentService - Student status set to GRADUATED: 1
+2025-06-10 09:36:41 INFO  com.accenture.Student_Tracker_System.Services.StudentService - Changing student status based on standard for: 1
+2025-06-10 09:36:41 INFO  com.accenture.Student_Tracker_System.Services.StudentService - Student rescinded: 1
+2025-06-10 09:36:41 INFO  com.accenture.Student_Tracker_System.Services.StudentService - Promoting student: 1
+2025-06-10 09:36:41 ERROR com.accenture.Student_Tracker_System.Services.StudentService - Student not found for promotion: 1
+2025-06-10 09:36:41 INFO  com.accenture.Student_Tracker_System.Services.StudentService - Saving new student: Student Details: 
+Firstname: null Lastname: null
+Roll.No: 1 Class: 10
+Mobile.No: null EmailId: null
+AdmissionDate: null Status: ACTIVE
+Address: null
+
+2025-06-10 09:36:41 INFO  com.accenture.Student_Tracker_System.Services.StudentService - Student details: Student Details: 
+Firstname: null Lastname: null
+Roll.No: 1 Class: 10
+Mobile.No: null EmailId: null
+AdmissionDate: null Status: ACTIVE
+Address: null
+
+2025-06-10 09:36:41 INFO  com.accenture.Student_Tracker_System.Services.StudentService - Promoting student: 1
+2025-06-10 09:36:41 INFO  com.accenture.Student_Tracker_System.Services.StudentService - No gaps found, assigning next roll number: 1
+2025-06-10 09:36:41 INFO  com.accenture.Student_Tracker_System.Services.StudentService - Student status set to GRADUATED: 1
+2025-06-10 09:36:41 INFO  com.accenture.Student_Tracker_System.Services.StudentService - Promoted student: 1 to standard 13, new roll no: 1
+2025-06-10 09:36:41 INFO  com.accenture.Student_Tracker_System.Services.StudentService - No gaps found, assigning next roll number: 1
+2025-06-10 09:36:41 INFO  com.accenture.Student_Tracker_System.Services.StudentService - Changing student status based on standard for: 1
+2025-06-10 09:36:41 INFO  com.accenture.Student_Tracker_System.Services.StudentService - Student graduated: 1
+2025-06-10 09:36:41 INFO  com.accenture.Student_Tracker_System.Services.StudentService - Promoting student: 1
+2025-06-10 09:36:41 INFO  com.accenture.Student_Tracker_System.Services.StudentService - No gaps found, assigning next roll number: 3
+2025-06-10 09:36:41 INFO  com.accenture.Student_Tracker_System.Services.StudentService - Student status set to ACTIVE: 1
+2025-06-10 09:36:41 INFO  com.accenture.Student_Tracker_System.Services.StudentService - Promoted student: 1 to standard 11, new roll no: 3
+2025-06-10 09:36:41 INFO  com.accenture.Student_Tracker_System.Services.StudentService - Student status set to ACTIVE: 1
+2025-06-10 09:36:41 INFO  com.accenture.Student_Tracker_System.Services.StudentService - Found gap at position 2: returning 3
+2025-06-10 09:36:41 INFO  com.accenture.Student_Tracker_System.Services.StudentService - Student status set to GRADUATED: 1
+2025-06-10 09:36:41 INFO  com.accenture.Student_Tracker_System.Services.StudentService - No gaps found, assigning next roll number: 5
+2025-06-10 09:36:41 INFO  com.accenture.Student_Tracker_System.Services.StudentService - Setting status to RESCINDED for student: 1

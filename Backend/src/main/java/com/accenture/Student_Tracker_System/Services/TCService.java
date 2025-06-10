@@ -39,7 +39,7 @@ public class TCService {
                 .orElseThrow(() -> {
                     logger.error("Student not found with id: {}", studentId);
                     return new RuntimeException("Student not found");
-        });
+                });
 
         TransferCertificate tc = new TransferCertificate();
         tc.setIssuedDate(LocalDate.now());

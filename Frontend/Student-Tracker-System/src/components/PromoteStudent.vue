@@ -173,9 +173,9 @@ button {
 
 .top-notification-success {
   position: fixed;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
+  top: 80px;
+  right: -2%;
+  transform: translateX(-15%);
   background-color: #d4edda;
   color: #155724;
   padding: 12px 24px;
@@ -184,14 +184,13 @@ button {
   z-index: 1001;
   font-weight: bold;
   box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-  animation: fade-slide-down 0.3s ease;
 }
 
 .top-notification-failed {
   position: fixed;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
+  top: 80px;
+  right: -2%;
+  transform: translateX(-15%);
   background-color: #f8d7da;
   color: #721c24;
   padding: 12px 24px;
@@ -200,7 +199,7 @@ button {
   z-index: 1001;
   font-weight: bold;
   box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-  animation: fade-slide-down 0.3s ease;
+  transition: opacity 0.5s ease;
 }
 
 @keyframes fade-slide-down {

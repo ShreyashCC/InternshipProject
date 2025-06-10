@@ -358,9 +358,9 @@ onUpdated(()=> {
 
 .top-notification {
   position: fixed;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
+  top: 80px;
+  right: -2%;
+  transform: translateX(-15%);
   background-color: #d4edda;
   color: #155724;
   padding: 12px 24px;
