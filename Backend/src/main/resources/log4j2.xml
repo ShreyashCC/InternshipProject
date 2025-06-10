@@ -14,15 +14,12 @@
     </Appenders>
 
     <Loggers>
-        <!-- Your app package logger: log everything from INFO and above -->
         <Logger name="com.accenture.Student_Tracker_System" level="info" additivity="false">
             <AppenderRef ref="ConsoleAppender"/>
             <AppenderRef ref="FileAppender"/>
         </Logger>
 
-        <!-- Suppress other loggers (root) by setting level to ERROR or OFF -->
         <Root level="error">
-            <!-- no appenders attached to root -->
         </Root>
     </Loggers>
 </Configuration>

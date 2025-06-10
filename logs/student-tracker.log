@@ -1,0 +1,39 @@
+2025-06-09 23:55:30 INFO  com.accenture.Student_Tracker_System.StudentTrackerSystemApplication - Application starting up
+2025-06-09 23:55:30 WARN  com.accenture.Student_Tracker_System.StudentTrackerSystemApplication - This is a warning message
+2025-06-09 23:55:31 INFO  com.accenture.Student_Tracker_System.StudentTrackerSystemApplication - Starting StudentTrackerSystemApplication using Java 21.0.7 with PID 302518 (/home/icarus/Documents/Projects/Student-Tracker-System/Backend/target/classes started by Zeus in /home/icarus/Documents/Projects/Student-Tracker-System)
+2025-06-09 23:55:31 INFO  com.accenture.Student_Tracker_System.StudentTrackerSystemApplication - No active profile set, falling back to 1 default profile: "default"
+2025-06-09 23:55:34 INFO  com.accenture.Student_Tracker_System.StudentTrackerSystemApplication - Started StudentTrackerSystemApplication in 3.391 seconds (process running for 4.445)
+2025-06-10 00:11:25 ERROR com.accenture.Student_Tracker_System.Services.StudentService - Student not found with ID: 1
+2025-06-10 00:11:25 ERROR com.accenture.Student_Tracker_System.Services.StudentService - Student not found with ID: 1
+2025-06-10 00:11:25 ERROR com.accenture.Student_Tracker_System.Services.StudentService - Student not found with ID: 1
+2025-06-10 00:11:25 ERROR com.accenture.Student_Tracker_System.Services.StudentService - Student not found with ID: 1
+2025-06-10 00:11:25 ERROR com.accenture.Student_Tracker_System.Services.StudentService - Student not found with ID: 999
+2025-06-10 00:11:26 ERROR com.accenture.Student_Tracker_System.Services.StudentService - Student not found with ID: 1
+2025-06-10 00:11:26 ERROR com.accenture.Student_Tracker_System.Services.StudentService - Student not found with ID: 1
+2025-06-10 00:11:26 ERROR com.accenture.Student_Tracker_System.Services.StudentService - Student not found with ID: 1
+2025-06-10 00:11:26 ERROR com.accenture.Student_Tracker_System.Services.StudentService - Student not found with ID: 1
+2025-06-10 00:11:26 ERROR com.accenture.Student_Tracker_System.Services.StudentService - Student not found with ID: 999
+2025-06-10 00:20:23 INFO  com.accenture.Student_Tracker_System.StudentTrackerSystemApplication - Application starting up
+2025-06-10 00:20:23 WARN  com.accenture.Student_Tracker_System.StudentTrackerSystemApplication - This is a warning message
+2025-06-10 00:20:24 INFO  com.accenture.Student_Tracker_System.StudentTrackerSystemApplication - Starting StudentTrackerSystemApplication using Java 21.0.7 with PID 305777 (/home/icarus/Documents/Projects/Student-Tracker-System/Backend/target/classes started by Zeus in /home/icarus/Documents/Projects/Student-Tracker-System)
+2025-06-10 00:20:24 INFO  com.accenture.Student_Tracker_System.StudentTrackerSystemApplication - No active profile set, falling back to 1 default profile: "default"
+2025-06-10 00:20:27 INFO  com.accenture.Student_Tracker_System.StudentTrackerSystemApplication - Started StudentTrackerSystemApplication in 3.027 seconds (process running for 3.856)
+2025-06-10 00:21:26 INFO  com.accenture.Student_Tracker_System.Services.StudentService - No gaps found, assigning next roll number: 1
+2025-06-10 00:21:26 INFO  com.accenture.Student_Tracker_System.Services.StudentService - Saving new student: Student Details: 
+Firstname: Manthan Lastname: Modi
+Roll.No: 1 Class: 12
+Mobile.No: 08160612616 EmailId: manthanmodi2003@gmail.com
+AdmissionDate: Tue Jun 10 00:21:25 IST 2025 Status: ACTIVE
+Address: 5A-404 Shagun Residency Nr.Iskon Temple Jahangirpura
+
+2025-06-10 00:21:30 INFO  com.accenture.Student_Tracker_System.Services.StudentService - Setting status to RESCINDED for student: 1
+2025-06-10 00:23:05 INFO  com.accenture.Student_Tracker_System.StudentTrackerSystemApplication - Application starting up
+2025-06-10 00:23:05 WARN  com.accenture.Student_Tracker_System.StudentTrackerSystemApplication - This is a warning message
+2025-06-10 00:23:06 INFO  com.accenture.Student_Tracker_System.StudentTrackerSystemApplication - Starting StudentTrackerSystemApplication using Java 21.0.7 with PID 306318 (/home/icarus/Documents/Projects/Student-Tracker-System/Backend/target/classes started by Zeus in /home/icarus/Documents/Projects/Student-Tracker-System)
+2025-06-10 00:23:06 INFO  com.accenture.Student_Tracker_System.StudentTrackerSystemApplication - No active profile set, falling back to 1 default profile: "default"
+2025-06-10 00:23:09 INFO  com.accenture.Student_Tracker_System.StudentTrackerSystemApplication - Started StudentTrackerSystemApplication in 3.25 seconds (process running for 4.042)
+2025-06-10 09:02:42 INFO  com.accenture.Student_Tracker_System.StudentTrackerSystemApplication - Application starting up
+2025-06-10 09:02:42 WARN  com.accenture.Student_Tracker_System.StudentTrackerSystemApplication - This is a warning message
+2025-06-10 09:02:43 INFO  com.accenture.Student_Tracker_System.StudentTrackerSystemApplication - Starting StudentTrackerSystemApplication using Java 21.0.7 with PID 316552 (/home/icarus/Documents/Projects/Student-Tracker-System/Backend/target/classes started by Zeus in /home/icarus/Documents/Projects/Student-Tracker-System)
+2025-06-10 09:02:43 INFO  com.accenture.Student_Tracker_System.StudentTrackerSystemApplication - No active profile set, falling back to 1 default profile: "default"
+2025-06-10 09:02:45 INFO  com.accenture.Student_Tracker_System.StudentTrackerSystemApplication - Started StudentTrackerSystemApplication in 3.051 seconds (process running for 4.092)
