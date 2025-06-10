@@ -40,6 +40,7 @@
       </tbody>
     </table>
 
+
     <div v-if="showGraduationWarning" class="modal-backdrop">
       <div class="modal-overlay">
         <div class="model">

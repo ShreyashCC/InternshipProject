@@ -1,56 +1,56 @@
 <template>
   <div class="generate-TC-container">
-    <h2>{{t('Promote.GenerateTransferCertificate')}}</h2>
+    <template v-if="!TC">
+      <h2>{{ t('Promote.GenerateTransferCertificate') }}</h2>
 
-    <div class="form-group">
-      <label for="regNumber">{{t('Promote.InputFieldText')}}</label>
-      <input
-          v-model="regNo"
-          type="number"
-          id="regNo"
-          placeholder="e.g. 1"
-      />
-      <button @click="showGenerateTCModel(regNo)">{{t('Promote.btntext3')}}</button>
-    </div>
+      <div class="form-group">
+        <label for="regNumber">{{ t('Promote.InputFieldText') }}</label>
+        <input
+            v-model="regNo"
+            type="number"
+            id="regNo"
+            placeholder="e.g. 1"
+        />
+        <button @click="showGenerateTCModel(regNo)">{{ t('Promote.btntext3') }}</button>
+      </div>
 
-    <div v-if="loading" class="loading">Loading...</div>
+      <div v-if="loading" class="loading">Loading...</div>
+      <div v-if="error" class="error">{{ error }}</div>
 
-    <div v-if="error" class="error">{{ error }}</div>
-
-    <div v-if="TC" class="TC-message">
-      <h3>TC Generated</h3>
-
-    </div>
-
-    <div v-if="showGenerateTCWarning" class="modal-backdrop">
-      <div class="modal-overlay">
-        <div class="model">
-          <h3>Generate Student TC?</h3>
-          <div class="button-group">
-            <button @click="updateStatusToRESCINDED">Confirm</button>
-            <button @click="cancelFxn">Cancel</button>
+      <div v-if="showGenerateTCWarning" class="modal-backdrop">
+        <div class="modal-overlay">
+          <div class="model">
+            <h3>Generate Student TC?</h3>
+            <div class="button-group">
+              <button @click="updateStatusToRESCINDED">Confirm</button>
+              <button @click="cancelFxn">Cancel</button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+
+      <div v-if="showSuccess" class="top-notification-success">TC Generated</div>
+      <div v-if="showFailed" class="top-notification-failed">Failed to generate TC!</div>
+    </template>
+
+    <!-- ✅ Show only PDF Editor if TC is true -->
+    <template v-else>
+      <PDFEditor :regNo="currentStudentRegNo" @goBack="TC = false" />
+    </template>
 
 
-    <div v-if="showSuccess" class="top-notification-success">
-      TC Generated
-    </div>
-
-    <div v-if="showFailed" class="top-notification-failed">
-      Failed to generate TC!
-    </div>
   </div>
 </template>
+
 
 <script setup>
 import { ref } from 'vue'
 import axios from 'axios'
-import { PDFDocument, StandardFonts, rgb } from 'pdf-lib'
 import { useI18n } from 'vue-i18n'
 const { t } = useI18n()
+
+import PDFEditor from './PDFEditor.vue'
+
 
 const currentStudentRegNo = ref("")
 const regNo = ref(null)
@@ -60,6 +60,8 @@ const error = ref(null)
 const showGenerateTCWarning = ref(null)
 const showSuccess = ref(null)
 const showFailed = ref(null)
+
+
 
 const cancelFxn = async() => {
   showGenerateTCWarning.value=false;
@@ -77,7 +79,9 @@ const updateStatusToRESCINDED = async () => {
     await axios.get(`http://localhost:8080/student/status/tc/${currentStudentRegNo.value}`);
 
     // ✅ Open the PDF in a new tab
-    window.open(`http://localhost:8080/pdf/generate/${currentStudentRegNo.value}`, '_blank');
+    // window.open(`http://localhost:8080/pdf/generate/${currentStudentRegNo.value}`, '_blank');
+    TC.value = true  // Show the PDFEditor component
+
 
     showSuccess.value = true;
     setTimeout(() => (showSuccess.value = false), 3000);

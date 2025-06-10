@@ -31,6 +31,32 @@ public class PdfController {
         this.restTemplate = restTemplate;
     }
 
+    @GetMapping("/generate/raw/{regNo}")
+    public ResponseEntity<byte[]> generateRawPDF(@PathVariable String regNo) throws IOException {
+        try (PDDocument document = new PDDocument()) {
+            String studentApiUrl = "http://localhost:8080/student/" + regNo;
+            Map<String, Object> studentData = restTemplate.getForObject(studentApiUrl, Map.class);
+
+            if (studentData == null) {
+                return ResponseEntity.notFound().build();
+            }
+
+            PDPage page = new PDPage(PDRectangle.A4);
+            document.addPage(page);
+            createPdfContent(document, page, studentData);
+
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            document.save(baos);
+
+            HttpHeaders headers = new HttpHeaders();
+            headers.setContentType(MediaType.APPLICATION_PDF);
+            return ResponseEntity.ok()
+                    .headers(headers)
+                    .body(baos.toByteArray());
+        }
+    }
+
+
     @GetMapping("/generate/{regNo}")
     public ResponseEntity<byte[]> generatePdf(@PathVariable String regNo) throws IOException {
         try (PDDocument document = new PDDocument()) {

@@ -36,21 +36,29 @@
 <!--        </button>-->
 <!--      </div>-->
       <div class="header">
-        <h1 class="app-title">{{t('header.name')}}</h1>
+        <div class="title-container">
+          <h1 class="app-title">{{t('header.name')}}</h1>
+        <h1 class = "school-title">Kendriya Vidyalaya</h1>
+        </div>
         <div class="search-bar">
           <!--          <label for="search">Search Students by Registration No:</label>-->
           <input id="search" type="text" v-model="searchInput" :placeholder="t('header.Placeholder')" />
           <button @click="searchStudent">{{t('header.Search')}}</button>
         </div>
-        <div class="language-selector">
-          <label for="language">{{t('header.ChangeLanguage')}}</label>
-          <select v-model = "locale" id="language">
-<!--            <button class="language-btn">Change Language</button>-->
-            <option v-for = "locale in availableLocales" :value="locale" key="`locale-${locale}`">{{locale}}</option>
-          </select>
-        </div>
-        <button class="burger-btn" @click="sidebarOpen = !sidebarOpen">☰</button>
-      </div>
+
+          <div class="end-container">
+            <div class="language-selector">
+              <label for="language">{{t('header.ChangeLanguage')}}</label>
+              <select v-model = "locale" id="language">
+                <!--            <button class="language-btn">Change Language</button>-->
+                <option v-for = "locale in availableLocales" :value="locale" key="`locale-${locale}`">{{locale}}</option>
+              </select>
+            </div>
+          </div>
+          <button class="burger-btn" @click="sidebarOpen = !sidebarOpen">☰</button>
+
+          </div>
+
 <!--      <div>-->
 <!--        <component :is="currentComponent" :reg-no="selectedRegNo" />-->
 <!--      </div>-->
@@ -58,6 +66,8 @@
      <div :class="currentView === 'home' ? 'home-content' : 'content'">
         <component :is="currentComponent" :regNo="selectedRegNo" />
       </div>
+
+
       </div>
   </div>
 </template>
@@ -133,7 +143,7 @@ const currentComponent = computed(() => {
   display: flex;
   align-items: start;
   gap: 1rem;
-  padding: 1rem;
+  padding: 10px 10px 5px 5px;
   background-color: #f4f4f4;
   border-bottom: 1px solid #ccc;
 }
@@ -143,14 +153,23 @@ const currentComponent = computed(() => {
   align-items: center;
   height: 100vh;
 }
+.end-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-left: auto;
+}
 .app-title {
   margin: 0;
   font-size: 1.5rem;
   flex-grow: 1;
+  color: #3498DB
 }
 .burger-btn {
   font-size: 1rem;
 }
+
 .search-bar input {
   padding: 0.4rem;
 }
@@ -165,5 +184,13 @@ const currentComponent = computed(() => {
   margin-left: 0.5rem;
   padding: 0.4rem;
 }
-
+.title-container {
+  display: flex;
+  flex-direction: column;
+}
+.school-title {
+  font-size: 1rem;
+  margin-top: 0;
+  flex-grow: 1;
+}
 </style>

@@ -9,27 +9,28 @@ import lombok.Setter;
 import java.util.Date;
 
 @Entity
+@Getter @Setter
 public class Student {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Getter @Setter private Integer regNo;
+     private Integer regNo;
 
-    @Getter @Setter private Integer rollNo;
+     private Integer rollNo;
 
-    @Getter @Setter private String firstName;
-    @Getter @Setter private String lastName;
+     private String firstName;
+     private String lastName;
 
-    @Getter @Setter private Integer standard;
+     private Integer standard;
 
     @Temporal(TemporalType.DATE)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-    @Getter @Setter private Date admissionDate;
+     private Date admissionDate;
 
-    @Getter @Setter private String address;
-    @Getter @Setter private String mobileNo;
-    @Getter private String emailId;
-    @Getter @Setter private Status status;
+     private String address;
+     private String mobileNo;
+    private String emailId;
+     private Status status;
 
     @OneToOne(mappedBy = "student", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonManagedReference

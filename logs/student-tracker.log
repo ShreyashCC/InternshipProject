@@ -37,3 +37,68 @@ Address: 5A-404 Shagun Residency Nr.Iskon Temple Jahangirpura
 2025-06-10 09:02:43 INFO  com.accenture.Student_Tracker_System.StudentTrackerSystemApplication - Starting StudentTrackerSystemApplication using Java 21.0.7 with PID 316552 (/home/icarus/Documents/Projects/Student-Tracker-System/Backend/target/classes started by Zeus in /home/icarus/Documents/Projects/Student-Tracker-System)
 2025-06-10 09:02:43 INFO  com.accenture.Student_Tracker_System.StudentTrackerSystemApplication - No active profile set, falling back to 1 default profile: "default"
 2025-06-10 09:02:45 INFO  com.accenture.Student_Tracker_System.StudentTrackerSystemApplication - Started StudentTrackerSystemApplication in 3.051 seconds (process running for 4.092)
+2025-06-10 17:12:48 INFO  com.accenture.Student_Tracker_System.StudentTrackerSystemApplication - Application starting up
+2025-06-10 17:12:48 WARN  com.accenture.Student_Tracker_System.StudentTrackerSystemApplication - This is a warning message
+2025-06-10 17:12:48 INFO  com.accenture.Student_Tracker_System.StudentTrackerSystemApplication - Starting StudentTrackerSystemApplication using Java 21.0.7 with PID 331390 (/home/icarus/Documents/Projects/Student-Tracker-System/Backend/target/classes started by Zeus in /home/icarus/Documents/Projects/Student-Tracker-System)
+2025-06-10 17:12:48 INFO  com.accenture.Student_Tracker_System.StudentTrackerSystemApplication - No active profile set, falling back to 1 default profile: "default"
+2025-06-10 17:12:51 INFO  com.accenture.Student_Tracker_System.StudentTrackerSystemApplication - Started StudentTrackerSystemApplication in 3.427 seconds (process running for 4.594)
+2025-06-10 17:21:03 INFO  com.accenture.Student_Tracker_System.Services.StudentService - No gaps found, assigning next roll number: 1
+2025-06-10 17:21:03 INFO  com.accenture.Student_Tracker_System.Services.StudentService - No gaps found, assigning next roll number: 1
+2025-06-10 17:21:03 INFO  com.accenture.Student_Tracker_System.Services.StudentService - Saving new student: Student Details: 
+Firstname: Manthan Lastname: Modi
+Roll.No: 1 Class: 12
+Mobile.No: 08160612616 EmailId: manthanmodi2003@gmail.com
+AdmissionDate: Tue Jun 10 17:21:03 IST 2025 Status: ACTIVE
+Address: 5A-404 Shagun Residency Nr.Iskon Temple Jahangirpura
+
+2025-06-10 17:21:03 INFO  com.accenture.Student_Tracker_System.Services.StudentService - Saving new student: Student Details: 
+Firstname: Manthan Lastname: Modi
+Roll.No: 1 Class: 12
+Mobile.No: 08160612616 EmailId: manthanmodi2003@gmail.com
+AdmissionDate: Tue Jun 10 17:21:01 IST 2025 Status: ACTIVE
+Address: 5A-404 Shagun Residency Nr.Iskon Temple Jahangirpura
+
+2025-06-10 17:21:14 INFO  com.accenture.Student_Tracker_System.Services.StudentService - Changing student status based on standard for: 1
+2025-06-10 17:21:14 INFO  com.accenture.Student_Tracker_System.Services.StudentService - Student graduated: 1
+2025-06-10 19:02:00 INFO  com.accenture.Student_Tracker_System.Services.StudentService - No gaps found, assigning next roll number: 1
+2025-06-10 19:02:00 INFO  com.accenture.Student_Tracker_System.Services.StudentService - Saving new student: Student Details: 
+Firstname: Manthan Lastname: Modi
+Roll.No: 1 Class: 10
+Mobile.No: 08160612616 EmailId: manthanmodi2003@gmail.com
+AdmissionDate: Tue Jun 10 19:02:00 IST 2025 Status: ACTIVE
+Address: 5A-404 Shagun Residency Nr.Iskon Temple Jahangirpura
+
+2025-06-10 19:18:02 INFO  com.accenture.Student_Tracker_System.Services.StudentService - Setting status to RESCINDED for student: 1
+2025-06-10 19:20:15 INFO  com.accenture.Student_Tracker_System.Services.StudentService - Setting status to RESCINDED for student: 1
+2025-06-10 19:22:01 INFO  com.accenture.Student_Tracker_System.Services.StudentService - Setting status to RESCINDED for student: 1
+2025-06-10 19:49:12 INFO  com.accenture.Student_Tracker_System.Services.StudentService - Setting status to RESCINDED for student: 2
+2025-06-10 19:49:22 INFO  com.accenture.Student_Tracker_System.Services.StudentService - Changing student status based on standard for: 2
+2025-06-10 19:49:22 INFO  com.accenture.Student_Tracker_System.Services.StudentService - Student graduated: 2
+2025-06-10 19:49:37 INFO  com.accenture.Student_Tracker_System.Services.StudentService - Setting status to RESCINDED for student: 2
+2025-06-10 19:49:56 INFO  com.accenture.Student_Tracker_System.Services.StudentService - Setting status to RESCINDED for student: 3
+2025-06-10 19:51:01 INFO  com.accenture.Student_Tracker_System.Services.StudentService - Found gap at position 1: returning 2
+2025-06-10 19:51:01 INFO  com.accenture.Student_Tracker_System.Services.StudentService - Saving new student: Student Details: 
+Firstname: Manthan Lastname: Modi
+Roll.No: 2 Class: 12
+Mobile.No: 08160612616 EmailId: manthanmodi2003@gmail.com
+AdmissionDate: Tue Jun 10 19:51:01 IST 2025 Status: ACTIVE
+Address: 5A-404 Shagun Residency Nr.Iskon Temple Jahangirpura
+
+2025-06-10 19:51:11 INFO  com.accenture.Student_Tracker_System.Services.StudentService - Setting status to RESCINDED for student: 4
+2025-06-10 19:51:50 INFO  com.accenture.Student_Tracker_System.Services.StudentService - Found gap at position 1: returning 2
+2025-06-10 19:51:50 INFO  com.accenture.Student_Tracker_System.Services.StudentService - Saving new student: Student Details: 
+Firstname: Manthan Lastname: Modi
+Roll.No: 2 Class: 12
+Mobile.No: 08160612616 EmailId: manthanmodi2003@gmail.com
+AdmissionDate: Tue Jun 10 19:51:50 IST 2025 Status: ACTIVE
+Address: 5A-404 Shagun Residency Nr.Iskon Temple Jahangirpura
+
+2025-06-10 19:51:54 INFO  com.accenture.Student_Tracker_System.Services.StudentService - Setting status to RESCINDED for student: 5
+2025-06-10 19:52:07 INFO  com.accenture.Student_Tracker_System.Services.StudentService - No gaps found, assigning next roll number: 1
+2025-06-10 19:52:07 INFO  com.accenture.Student_Tracker_System.Services.StudentService - Saving new student: Student Details: 
+Firstname: Manthan Lastname: Modi
+Roll.No: 1 Class: 11
+Mobile.No: 08160612616 EmailId: manthanmodi2003@gmail.com
+AdmissionDate: Tue Jun 10 19:52:07 IST 2025 Status: ACTIVE
+Address: 5A-404 Shagun Residency Nr.Iskon Temple Jahangirpura
+

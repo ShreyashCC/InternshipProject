@@ -1,24 +1,35 @@
 <Configuration status="WARN" monitorInterval="30">
     <Properties>
         <Property name="LOG_FILE">logs/student-tracker.log</Property>
-        <Property name="LOG_PATTERN">%d{yyyy-MM-dd HH:mm:ss} %-5level %logger{36} - %msg%n</Property>
+        <Property name="LOG_PATTERN_NORMAL">%d{yyyy-MM-dd HH:mm:ss} %-5level %logger{36} - %msg%n</Property>
+        <Property name="LOG_PATTERN_ERROR">%d{yyyy-MM-dd HH:mm:ss} %-5level %logger{36} [%C{1}.%M:%L] - %msg%n</Property>
     </Properties>
-
     <Appenders>
-        <Console name="ConsoleAppender" target="SYSTEM_OUT">
-            <PatternLayout pattern="${LOG_PATTERN}" />
+        <Console name="ConsoleAppenderNormal" target="SYSTEM_OUT">
+            <PatternLayout pattern="${LOG_PATTERN_NORMAL}" />
+            <LevelRangeFilter minLevel="TRACE" maxLevel="WARN" onMatch="ACCEPT" onMismatch="DENY"/>
         </Console>
-        <File name="FileAppender" fileName="${LOG_FILE}">
-            <PatternLayout pattern="${LOG_PATTERN}" />
+        <Console name="ConsoleAppenderError" target="SYSTEM_OUT">
+            <PatternLayout pattern="${LOG_PATTERN_ERROR}" />
+            <LevelRangeFilter minLevel="ERROR" maxLevel="FATAL" onMatch="ACCEPT" onMismatch="DENY"/>
+        </Console>
+
+        <File name="FileAppenderNormal" fileName="${LOG_FILE}">
+            <PatternLayout pattern="${LOG_PATTERN_NORMAL}" />
+            <LevelRangeFilter minLevel="TRACE" maxLevel="WARN" onMatch="ACCEPT" onMismatch="DENY"/>
+        </File>
+        <File name="FileAppenderError" fileName="${LOG_FILE}">
+            <PatternLayout pattern="${LOG_PATTERN_ERROR}" />
+            <LevelRangeFilter minLevel="ERROR" maxLevel="FATAL" onMatch="ACCEPT" onMismatch="DENY"/>
         </File>
     </Appenders>
-
     <Loggers>
         <Logger name="com.accenture.Student_Tracker_System" level="info" additivity="false">
-            <AppenderRef ref="ConsoleAppender"/>
-            <AppenderRef ref="FileAppender"/>
+            <AppenderRef ref="ConsoleAppenderNormal"/>
+            <AppenderRef ref="ConsoleAppenderError"/>
+            <AppenderRef ref="FileAppenderNormal"/>
+            <AppenderRef ref="FileAppenderError"/>
         </Logger>
-
         <Root level="error">
         </Root>
     </Loggers>
