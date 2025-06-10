@@ -1,0 +1,136 @@
+2025-06-10 09:26:39 INFO  com.accenture.Student_Tracker_System.StudentTrackerSystemApplication - Starting StudentTrackerSystemApplication using Java 21.0.6 with PID 22892 (C:\Users\manthan.modi\Downloads\InternshipProject\Backend\target\classes started by manthan.modi in C:\Users\manthan.modi\Downloads\InternshipProject)
+2025-06-10 09:26:39 INFO  com.accenture.Student_Tracker_System.StudentTrackerSystemApplication - No active profile set, falling back to 1 default profile: "default"
+2025-06-10 09:26:44 INFO  com.accenture.Student_Tracker_System.StudentTrackerSystemApplication - Started StudentTrackerSystemApplication in 5.148 seconds (process running for 6.874)
+2025-06-10 09:31:15 INFO  com.accenture.Student_Tracker_System.StudentTrackerSystemApplication - Application starting up
+2025-06-10 09:31:15 WARN  com.accenture.Student_Tracker_System.StudentTrackerSystemApplication - This is a warning message
+2025-06-10 09:31:16 INFO  com.accenture.Student_Tracker_System.StudentTrackerSystemApplication - Starting StudentTrackerSystemApplication using Java 21.0.6 with PID 13344 (C:\Users\manthan.modi\Downloads\InternshipProject\Backend\target\classes started by manthan.modi in C:\Users\manthan.modi\Downloads\InternshipProject)
+2025-06-10 09:31:16 INFO  com.accenture.Student_Tracker_System.StudentTrackerSystemApplication - No active profile set, falling back to 1 default profile: "default"
+2025-06-10 09:31:20 INFO  com.accenture.Student_Tracker_System.StudentTrackerSystemApplication - Started StudentTrackerSystemApplication in 5.089 seconds (process running for 8.29)
+2025-06-10 09:33:14 INFO  com.accenture.Student_Tracker_System.Services.StudentService - No gaps found, assigning next roll number: 1
+2025-06-10 09:33:14 INFO  com.accenture.Student_Tracker_System.Services.StudentService - Saving new student: Student Details: 
+Firstname: Manthan Lastname: Modi
+Roll.No: 1 Class: 10
+Mobile.No: 08160612616 EmailId: manthanmodi2003@gmail.com
+AdmissionDate: Tue Jun 10 09:33:13 IST 2025 Status: ACTIVE
+Address: Pune, Maharastra
+
+2025-06-10 09:39:37 INFO  com.accenture.Student_Tracker_System.StudentTrackerSystemApplication - Application starting up
+2025-06-10 09:39:37 WARN  com.accenture.Student_Tracker_System.StudentTrackerSystemApplication - This is a warning message
+2025-06-10 09:39:38 INFO  com.accenture.Student_Tracker_System.StudentTrackerSystemApplication - Starting StudentTrackerSystemApplication using Java 21.0.6 with PID 24756 (C:\Users\manthan.modi\Downloads\InternshipProject\Backend\target\classes started by manthan.modi in C:\Users\manthan.modi\Downloads\InternshipProject)
+2025-06-10 09:39:38 INFO  com.accenture.Student_Tracker_System.StudentTrackerSystemApplication - No active profile set, falling back to 1 default profile: "default"
+2025-06-10 09:39:42 INFO  com.accenture.Student_Tracker_System.StudentTrackerSystemApplication - Started StudentTrackerSystemApplication in 4.878 seconds (process running for 15.585)
+2025-06-10 09:43:12 INFO  com.accenture.Student_Tracker_System.Services.StudentService - No gaps found, assigning next roll number: 1
+2025-06-10 09:43:12 INFO  com.accenture.Student_Tracker_System.Services.StudentService - Saving new student: Student Details: 
+Firstname: Manthan Lastname: Modi
+Roll.No: 1 Class: 10
+Mobile.No: 08160612616 EmailId: manthanmodi2003@gmail.com
+AdmissionDate: Tue Jun 10 09:43:12 IST 2025 Status: ACTIVE
+Address: Pune, Maharastra
+
+2025-06-10 09:43:21 INFO  com.accenture.Student_Tracker_System.Services.StudentService - Promoting student: 1
+2025-06-10 09:43:21 INFO  com.accenture.Student_Tracker_System.Services.StudentService - No gaps found, assigning next roll number: 1
+2025-06-10 09:43:21 INFO  com.accenture.Student_Tracker_System.Services.StudentService - Student status set to ACTIVE: 1
+2025-06-10 09:43:21 INFO  com.accenture.Student_Tracker_System.Services.StudentService - Promoted student: 1 to standard 11, new roll no: 1
+2025-06-10 09:43:28 INFO  com.accenture.Student_Tracker_System.Services.StudentService - Setting status to RESCINDED for student: 1
+2025-06-10 09:46:09 INFO  com.accenture.Student_Tracker_System.StudentTrackerSystemApplication - Application starting up
+2025-06-10 09:46:09 WARN  com.accenture.Student_Tracker_System.StudentTrackerSystemApplication - This is a warning message
+2025-06-10 09:46:10 INFO  com.accenture.Student_Tracker_System.StudentTrackerSystemApplication - Starting StudentTrackerSystemApplication using Java 21.0.6 with PID 21028 (C:\Users\manthan.modi\Downloads\InternshipProject\Backend\target\classes started by manthan.modi in C:\Users\manthan.modi\Downloads\InternshipProject)
+2025-06-10 09:46:10 INFO  com.accenture.Student_Tracker_System.StudentTrackerSystemApplication - No active profile set, falling back to 1 default profile: "default"
+2025-06-10 09:46:14 INFO  com.accenture.Student_Tracker_System.StudentTrackerSystemApplication - Started StudentTrackerSystemApplication in 4.793 seconds (process running for 6.328)
+2025-06-10 09:46:31 INFO  com.accenture.Student_Tracker_System.Services.StudentService - No gaps found, assigning next roll number: 1
+2025-06-10 09:46:31 INFO  com.accenture.Student_Tracker_System.Services.StudentService - Saving new student: Student Details: 
+Firstname: Manthan Lastname: Modi
+Roll.No: 1 Class: 10
+Mobile.No: 08160612616 EmailId: manthanmodi2003@gmail.com
+AdmissionDate: Tue Jun 10 09:46:31 IST 2025 Status: ACTIVE
+Address: Pune, Maharastra
+
+2025-06-10 09:46:53 INFO  com.accenture.Student_Tracker_System.Services.StudentService - Promoting student: 1
+2025-06-10 09:46:53 INFO  com.accenture.Student_Tracker_System.Services.StudentService - No gaps found, assigning next roll number: 1
+2025-06-10 09:46:53 INFO  com.accenture.Student_Tracker_System.Services.StudentService - Student status set to ACTIVE: 1
+2025-06-10 09:46:53 INFO  com.accenture.Student_Tracker_System.Services.StudentService - Promoted student: 1 to standard 11, new roll no: 1
+2025-06-10 09:48:03 INFO  com.accenture.Student_Tracker_System.StudentTrackerSystemApplication - Application starting up
+2025-06-10 09:48:03 WARN  com.accenture.Student_Tracker_System.StudentTrackerSystemApplication - This is a warning message
+2025-06-10 09:48:03 INFO  com.accenture.Student_Tracker_System.StudentTrackerSystemApplication - Starting StudentTrackerSystemApplication using Java 21.0.6 with PID 16884 (C:\Users\manthan.modi\Downloads\InternshipProject\Backend\target\classes started by manthan.modi in C:\Users\manthan.modi\Downloads\InternshipProject)
+2025-06-10 09:48:03 INFO  com.accenture.Student_Tracker_System.StudentTrackerSystemApplication - No active profile set, falling back to 1 default profile: "default"
+2025-06-10 09:48:08 INFO  com.accenture.Student_Tracker_System.StudentTrackerSystemApplication - Started StudentTrackerSystemApplication in 4.934 seconds (process running for 6.796)
+2025-06-10 09:48:20 INFO  com.accenture.Student_Tracker_System.Services.StudentService - No gaps found, assigning next roll number: 1
+2025-06-10 09:48:20 INFO  com.accenture.Student_Tracker_System.Services.StudentService - No gaps found, assigning next roll number: 1
+2025-06-10 09:48:20 INFO  com.accenture.Student_Tracker_System.Services.StudentService - Saving new student: Student Details: 
+Firstname: Manthan Lastname: Modi
+Roll.No: 1 Class: 10
+Mobile.No: 08160612616 EmailId: manthanmodi2003@gmail.com
+AdmissionDate: Tue Jun 10 09:48:20 IST 2025 Status: ACTIVE
+Address: Pune, Maharastra
+
+2025-06-10 09:48:20 INFO  com.accenture.Student_Tracker_System.Services.StudentService - Saving new student: Student Details: 
+Firstname: Manthan Lastname: Modi
+Roll.No: 1 Class: 10
+Mobile.No: 08160612616 EmailId: manthanmodi2003@gmail.com
+AdmissionDate: Tue Jun 10 09:48:20 IST 2025 Status: ACTIVE
+Address: Pune, Maharastra
+
+2025-06-10 09:48:27 INFO  com.accenture.Student_Tracker_System.Services.StudentService - Promoting student: 1
+2025-06-10 09:48:27 INFO  com.accenture.Student_Tracker_System.Services.StudentService - No gaps found, assigning next roll number: 1
+2025-06-10 09:48:27 INFO  com.accenture.Student_Tracker_System.Services.StudentService - Student status set to ACTIVE: 1
+2025-06-10 09:48:27 INFO  com.accenture.Student_Tracker_System.Services.StudentService - Promoted student: 1 to standard 11, new roll no: 1
+2025-06-10 09:49:06 INFO  com.accenture.Student_Tracker_System.Services.StudentService - Promoting student: 1
+2025-06-10 09:49:06 INFO  com.accenture.Student_Tracker_System.Services.StudentService - No gaps found, assigning next roll number: 1
+2025-06-10 09:49:06 INFO  com.accenture.Student_Tracker_System.Services.StudentService - Student status set to ACTIVE: 1
+2025-06-10 09:49:06 INFO  com.accenture.Student_Tracker_System.Services.StudentService - Promoted student: 1 to standard 12, new roll no: 1
+2025-06-10 09:49:27 INFO  com.accenture.Student_Tracker_System.Services.StudentService - Changing student status based on standard for: 1
+2025-06-10 09:49:27 INFO  com.accenture.Student_Tracker_System.Services.StudentService - Student graduated: 1
+2025-06-10 09:51:44 INFO  com.accenture.Student_Tracker_System.Services.StudentService - Promoting student: 2
+2025-06-10 09:51:44 INFO  com.accenture.Student_Tracker_System.Services.StudentService - No gaps found, assigning next roll number: 1
+2025-06-10 09:51:44 INFO  com.accenture.Student_Tracker_System.Services.StudentService - Student status set to ACTIVE: 2
+2025-06-10 09:51:44 INFO  com.accenture.Student_Tracker_System.Services.StudentService - Promoted student: 2 to standard 11, new roll no: 1
+2025-06-10 09:52:01 INFO  com.accenture.Student_Tracker_System.Services.StudentService - Promoting student: 2
+2025-06-10 09:52:01 INFO  com.accenture.Student_Tracker_System.Services.StudentService - No gaps found, assigning next roll number: 2
+2025-06-10 09:52:01 INFO  com.accenture.Student_Tracker_System.Services.StudentService - Student status set to ACTIVE: 2
+2025-06-10 09:52:01 INFO  com.accenture.Student_Tracker_System.Services.StudentService - Promoted student: 2 to standard 12, new roll no: 2
+2025-06-10 09:52:20 INFO  com.accenture.Student_Tracker_System.Services.StudentService - Changing student status based on standard for: 2
+2025-06-10 09:52:20 INFO  com.accenture.Student_Tracker_System.Services.StudentService - Student graduated: 2
+2025-06-10 09:53:30 INFO  com.accenture.Student_Tracker_System.Services.StudentService - No gaps found, assigning next roll number: 1
+2025-06-10 09:53:30 INFO  com.accenture.Student_Tracker_System.Services.StudentService - Saving new student: Student Details: 
+Firstname: Manthan Lastname: Modi
+Roll.No: 1 Class: 10
+Mobile.No: 08160612616 EmailId: manthanmodi2003@gmail.com
+AdmissionDate: Tue Jun 10 09:53:30 IST 2025 Status: ACTIVE
+Address: Pune, Maharastra
+
+2025-06-10 09:53:35 INFO  com.accenture.Student_Tracker_System.Services.StudentService - Promoting student: 3
+2025-06-10 09:53:35 INFO  com.accenture.Student_Tracker_System.Services.StudentService - No gaps found, assigning next roll number: 1
+2025-06-10 09:53:35 INFO  com.accenture.Student_Tracker_System.Services.StudentService - Student status set to ACTIVE: 3
+2025-06-10 09:53:35 INFO  com.accenture.Student_Tracker_System.Services.StudentService - Promoted student: 3 to standard 11, new roll no: 1
+2025-06-10 09:54:57 INFO  com.accenture.Student_Tracker_System.Services.StudentService - Promoting student: 3
+2025-06-10 09:54:57 INFO  com.accenture.Student_Tracker_System.Services.StudentService - No gaps found, assigning next roll number: 3
+2025-06-10 09:54:57 INFO  com.accenture.Student_Tracker_System.Services.StudentService - Student status set to ACTIVE: 3
+2025-06-10 09:54:57 INFO  com.accenture.Student_Tracker_System.Services.StudentService - Promoted student: 3 to standard 12, new roll no: 3
+2025-06-10 10:03:30 INFO  com.accenture.Student_Tracker_System.StudentTrackerSystemApplication - Application starting up
+2025-06-10 10:03:30 WARN  com.accenture.Student_Tracker_System.StudentTrackerSystemApplication - This is a warning message
+2025-06-10 10:03:31 INFO  com.accenture.Student_Tracker_System.StudentTrackerSystemApplication - Starting StudentTrackerSystemApplication using Java 21.0.6 with PID 27332 (C:\Users\manthan.modi\Downloads\InternshipProject\Backend\target\classes started by manthan.modi in C:\Users\manthan.modi\Downloads\InternshipProject)
+2025-06-10 10:03:31 INFO  com.accenture.Student_Tracker_System.StudentTrackerSystemApplication - No active profile set, falling back to 1 default profile: "default"
+2025-06-10 10:03:37 INFO  com.accenture.Student_Tracker_System.StudentTrackerSystemApplication - Started StudentTrackerSystemApplication in 6.764 seconds (process running for 15.542)
+2025-06-10 10:03:48 INFO  com.accenture.Student_Tracker_System.StudentTrackerSystemApplication - Application starting up
+2025-06-10 10:03:48 WARN  com.accenture.Student_Tracker_System.StudentTrackerSystemApplication - This is a warning message
+2025-06-10 10:03:49 INFO  com.accenture.Student_Tracker_System.StudentTrackerSystemApplication - Starting StudentTrackerSystemApplication using Java 21.0.6 with PID 10376 (C:\Users\manthan.modi\Downloads\InternshipProject\Backend\target\classes started by manthan.modi in C:\Users\manthan.modi\Downloads\InternshipProject)
+2025-06-10 10:03:49 INFO  com.accenture.Student_Tracker_System.StudentTrackerSystemApplication - No active profile set, falling back to 1 default profile: "default"
+2025-06-10 10:03:55 INFO  com.accenture.Student_Tracker_System.StudentTrackerSystemApplication - Started StudentTrackerSystemApplication in 6.304 seconds (process running for 8.249)
+2025-06-10 10:04:32 INFO  com.accenture.Student_Tracker_System.Services.StudentService - No gaps found, assigning next roll number: 1
+2025-06-10 10:04:32 INFO  com.accenture.Student_Tracker_System.Services.StudentService - Saving new student: Student Details: 
+Firstname: Manthan Lastname: Modi
+Roll.No: 1 Class: 10
+Mobile.No: 08160612616 EmailId: manthanmodi2003@gmail.com
+AdmissionDate: Tue Jun 10 10:04:32 IST 2025 Status: ACTIVE
+Address: Pune, Maharastra
+
+2025-06-10 10:04:44 INFO  com.accenture.Student_Tracker_System.Services.StudentService - Setting status to RESCINDED for student: 1
+2025-06-10 10:06:30 INFO  com.accenture.Student_Tracker_System.Services.StudentService - No gaps found, assigning next roll number: 1
+2025-06-10 10:06:30 INFO  com.accenture.Student_Tracker_System.Services.StudentService - Saving new student: Student Details: 
+Firstname: Manthan Lastname: Modi
+Roll.No: 1 Class: 12
+Mobile.No: 08160612616 EmailId: manthanmodi2003@gmail.com
+AdmissionDate: Tue Jun 10 10:06:30 IST 2025 Status: ACTIVE
+Address: Pune, Maharastra
+
+2025-06-10 10:06:39 INFO  com.accenture.Student_Tracker_System.Services.StudentService - Setting status to RESCINDED for student: 2

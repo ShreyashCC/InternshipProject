@@ -1,0 +1,25 @@
+<Configuration status="WARN" monitorInterval="30">
+    <Properties>
+        <Property name="LOG_FILE">logs/student-tracker.log</Property>
+        <Property name="LOG_PATTERN">%d{yyyy-MM-dd HH:mm:ss} %-5level %logger{36} - %msg%n</Property>
+    </Properties>
+
+    <Appenders>
+        <Console name="ConsoleAppender" target="SYSTEM_OUT">
+            <PatternLayout pattern="${LOG_PATTERN}" />
+        </Console>
+        <File name="FileAppender" fileName="${LOG_FILE}">
+            <PatternLayout pattern="${LOG_PATTERN}" />
+        </File>
+    </Appenders>
+
+    <Loggers>
+        <Logger name="com.accenture.Student_Tracker_System" level="info" additivity="false">
+            <AppenderRef ref="ConsoleAppender"/>
+            <AppenderRef ref="FileAppender"/>
+        </Logger>
+
+        <Root level="error">
+        </Root>
+    </Loggers>
+</Configuration>
