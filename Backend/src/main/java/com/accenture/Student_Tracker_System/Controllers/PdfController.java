@@ -99,7 +99,7 @@ public class PdfController {
             cs.setFont(PDType1Font.HELVETICA, 12);
             addFormContent(cs, labelX, fieldX, yStart, lineGap, studentData);
 
-            // Draw field boxes
+            // Draw field boxes (only for editable fields)
             addFieldBoxes(cs, fieldX, yStart, lineGap);
         }
 
@@ -122,7 +122,7 @@ public class PdfController {
         String[] labels = {
                 "Student's Full Name:", "Registration Number:", "Standard/Class:",
                 "Admission Date:", "Address:", "Mobile Number:", "Email ID:",
-                "Date of Birth:", "Guardian Name:", "Reason of Leaving:", "Remarks:"
+                "Date of Birth:", "Reason of Leaving:", "Guardian Name:", "Remarks:"
         };
 
         String[] values = {
@@ -134,7 +134,9 @@ public class PdfController {
                 safeGetString(studentData.get("mobileNo")),
                 safeGetString(studentData.get("emailId")),
                 safeGetString(studentData.get("DOB")),
-                "", "", ""
+                safeGetString(studentData.get("status")), // Fetch directly from student object
+                safeGetString(studentData.get("guardianName")),
+                safeGetString(studentData.get("remarks"))
         };
 
         for (int i = 0; i < labels.length; i++) {
@@ -144,7 +146,10 @@ public class PdfController {
             cs.showText(labels[i]);
             cs.endText();
 
-            if (i < 8) {
+            // Display values as text for non-editable fields
+            // Date of Birth (index 7), Guardian Name (index 9), and Remarks (index 10) will be editable
+            // Reason of Leaving (index 8) will be plain text from student object
+            if (i < 7 || i == 8) {  // Show text for fields 0-6 and Reason of Leaving (index 8)
                 cs.beginText();
                 cs.newLineAtOffset(fieldX, y);
                 cs.showText(values[i]);
@@ -155,7 +160,9 @@ public class PdfController {
 
     private void addFieldBoxes(PDPageContentStream cs, float fieldX, float yStart, float lineGap) throws IOException {
         cs.setLineWidth(0.5f);
-        for (int i = 7; i <= 10; i++) {
+        // Add boxes for editable fields: Date of Birth (index 7), Guardian Name (index 9), and Remarks (index 10)
+        int[] editableFields = {7, 9, 10};
+        for (int i : editableFields) {
             cs.addRect(fieldX, yStart - i * lineGap - 5, 300, 20);
         }
         cs.stroke();
@@ -172,24 +179,17 @@ public class PdfController {
         acroForm.setDefaultResources(resources);
         acroForm.setDefaultAppearance("/Helv 12 Tf 0 g");
 
+        // Add editable text field for Date of Birth
         addTextField(document, acroForm, page, "Date of Birth",
                 safeGetString(studentData.get("DOB")), fieldX, yStart - 7 * lineGap);
-        addTextField(document, acroForm, page, "guardianName",
-                safeGetString(studentData.get("guardianName")), fieldX, yStart - 8 * lineGap);
-        addDropdownField(document, acroForm, page, "reasonOfLeaving",
-                getReasonOfLeavingOptions(),
-                safeGetString(studentData.get("reasonOfLeaving")), fieldX, yStart - 9 * lineGap);
-        addDropdownField(document, acroForm, page, "remarks",
-                getRemarksOptions(),
+
+        // Add editable text field for Guardian Name
+        addTextField(document, acroForm, page, "Guardian Name",
+                safeGetString(studentData.get("guardianName")), fieldX, yStart - 9 * lineGap);
+
+        // Add editable text field for Remarks
+        addTextField(document, acroForm, page, "Remarks",
                 safeGetString(studentData.get("remarks")), fieldX, yStart - 10 * lineGap);
-    }
-
-    private String[] getReasonOfLeavingOptions() {
-        return new String[]{"Select Option", "PASSED_AND_LEFT", "RUSTICATED"};
-    }
-
-    private String[] getRemarksOptions() {
-        return new String[]{"Select Option", "BAD", "BELOW_AVERAGE", "AVERAGE", "GOOD", "EXCELLENT", "BRILLIANT"};
     }
 
     private String safeGetString(Object value) {

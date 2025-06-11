@@ -105,7 +105,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import {ref, onMounted, watch} from 'vue'
 import axios from 'axios'
 import { useI18n } from "vue-i18n";
 import PDFEditor from './PDFEditor.vue'
@@ -138,6 +138,7 @@ const confirmGraduation = async () => {
     showPDFEditor.value = true;
     successMessage.value = `Transfer certificate generated for ID ${currentStudentRegNo.value}`;
     showSuccess.value = true;
+    await fetchStudents();
     setTimeout(() => (showSuccess.value = false), 3000);
   } catch (err) {
     showFailed.value = true;
@@ -153,8 +154,8 @@ const confirmPromote = async () => {
     await axios.get(`http://localhost:8080/student/promoted/${currentStudentRegNo.value}`);
     successMessage.value = `Student ID ${currentStudentRegNo.value} promoted successfully!`;
     showSuccess.value = true;
+    await fetchStudents();
     setTimeout(() => (showSuccess.value = false), 3000);
-    fetchStudents(); // Refresh the list
   } catch (error) {
     showFailed.value = true;
     failedMessage.value = 'Failed to promote!'
@@ -169,7 +170,9 @@ const updateStatusToRESCINDED = async () => {
     await axios.get(`http://localhost:8080/student/status/tc/${currentStudentRegNo.value}`);
     showPDFEditor.value = true;
     showSuccess.value = true;
+    await fetchStudents();
     setTimeout(() => (showSuccess.value = false), 3000);
+
   } catch (error) {
     console.error(error);
     showFailed.value = true;
@@ -210,6 +213,7 @@ const showPromoteModel = (regNo) => {
 onMounted(() => {
   fetchStudents()
 })
+
 </script>
 
 <style scoped>
