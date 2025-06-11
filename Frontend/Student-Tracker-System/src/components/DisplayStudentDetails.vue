@@ -1,16 +1,16 @@
 <template>
-  <div class="student-details-container">
+  <div v-if="!showPDFeditor" class="student-details-container">
     <h2>Student Details</h2>
 
-<!--    <div class="form-group">-->
-<!--      <label for="regNumber">Enter Registration Number:</label>-->
-<!--      <input-->
-<!--          v-model="regNo"-->
-<!--          type="text"-->
-<!--          id="regNo"-->
-<!--      />-->
-<!--      <button @click="fetchStudentDetails">Get Details</button>-->
-<!--    </div>-->
+    <!--    <div class="form-group">-->
+    <!--      <label for="regNumber">Enter Registration Number:</label>-->
+    <!--      <input-->
+    <!--          v-model="regNo"-->
+    <!--          type="text"-->
+    <!--          id="regNo"-->
+    <!--      />-->
+    <!--      <button @click="fetchStudentDetails">Get Details</button>-->
+    <!--    </div>-->
 
     <div v-if="loading" class="loading">Loading...</div>
 
@@ -18,61 +18,84 @@
 
     <div v-if="student" class="student-info">
       <h3>{{t('ShowAllStudents.StudentInformation')}}</h3>
-<!--      <p><strong>{{t('ShowAllStudents.RegistrationNo')}}</strong> {{student.regNo}}</p>-->
-<!--      <p><strong>{{t('ShowAllStudents.RollNo')}}</strong> {{student.rollNo}}</p>-->
-<!--      <p><strong>{{t('ShowAllStudents.FirstName')}}</strong> {{student.firstName}}</p>-->
-<!--      <p><strong>{{t('ShowAllStudents.LastName')}}</strong> {{student.lastName}}</p>-->
-<!--      <p><strong>{{t('ShowAllStudents.Standard')}}</strong> {{student.standard}}</p>-->
-<!--      <p><strong>{{t('ShowAllStudents.AdmissionDate')}}</strong> {{student.admissionDate}}</p>-->
-<!--      <p><strong>{{t('ShowAllStudents.Address')}}</strong> {{student.address}}</p>-->
-<!--      <p><strong>{{t('ShowAllStudents.Mobile')}}</strong> {{student.mobileNo}}</p>-->
-<!--      <p><strong>{{t('ShowAllStudents.Email')}}</strong> {{student.emailId}}</p>-->
-<!--      <p><strong>{{t('ShowAllStudents.Status')}}</strong> {{student.status}}</p>-->
+      <!--      <p><strong>{{t('ShowAllStudents.RegistrationNo')}}</strong> {{student.regNo}}</p>-->
+      <!--      <p><strong>{{t('ShowAllStudents.RollNo')}}</strong> {{student.rollNo}}</p>-->
+      <!--      <p><strong>{{t('ShowAllStudents.FirstName')}}</strong> {{student.firstName}}</p>-->
+      <!--      <p><strong>{{t('ShowAllStudents.LastName')}}</strong> {{student.lastName}}</p>-->
+      <!--      <p><strong>{{t('ShowAllStudents.Standard')}}</strong> {{student.standard}}</p>-->
+      <!--      <p><strong>{{t('ShowAllStudents.AdmissionDate')}}</strong> {{student.admissionDate}}</p>-->
+      <!--      <p><strong>{{t('ShowAllStudents.Address')}}</strong> {{student.address}}</p>-->
+      <!--      <p><strong>{{t('ShowAllStudents.Mobile')}}</strong> {{student.mobileNo}}</p>-->
+      <!--      <p><strong>{{t('ShowAllStudents.Email')}}</strong> {{student.emailId}}</p>-->
+      <!--      <p><strong>{{t('ShowAllStudents.Status')}}</strong> {{student.status}}</p>-->
       <table class="student-table">
+        <tbody>
         <tr>
           <td><strong>{{ t('ShowAllStudents.RegistrationNo') }}</strong></td>
           <td>{{ student.regNo }}</td>
         </tr>
+        </tbody>
+        <tbody>
         <tr>
           <td><strong>{{ t('ShowAllStudents.RollNo') }}</strong></td>
           <td>{{ student.rollNo }}</td>
         </tr>
+        </tbody>
+        <tbody>
         <tr>
           <td><strong>{{ t('ShowAllStudents.FirstName') }}</strong></td>
           <td>{{ student.firstName }}</td>
         </tr>
+        </tbody>
+        <tbody>
         <tr>
           <td><strong>{{ t('ShowAllStudents.LastName') }}</strong></td>
           <td>{{ student.lastName }}</td>
         </tr>
+        </tbody>
+        <tbody>
         <tr>
           <td><strong>{{ t('ShowAllStudents.Standard') }}</strong></td>
           <td>{{ student.standard }}</td>
         </tr>
+        </tbody>
+        <tbody>
         <tr>
           <td><strong>{{ t('ShowAllStudents.AdmissionDate') }}</strong></td>
           <td>{{ student.admissionDate }}</td>
         </tr>
-        <tr>
-          <td><strong>{{ t('ShowAllStudents.Address') }}</strong></td>
-          <td>{{ student.address }}</td>
-        </tr>
+        </tbody>
+      <tbody>
+      <tr>
+        <td><strong>{{ t('ShowAllStudents.Address') }}</strong></td>
+        <td>{{ student.address }}</td>
+      </tr>
+      </tbody>
+        <tbody>
         <tr>
           <td><strong>{{ t('ShowAllStudents.Mobile') }}</strong></td>
           <td>{{ student.mobileNo }}</td>
         </tr>
+        </tbody>
+        <tbody>
         <tr>
           <td><strong>{{ t('ShowAllStudents.Email') }}</strong></td>
           <td>{{ student.emailId }}</td>
         </tr>
+        </tbody>
+
+        <tbody>
         <tr>
           <td><strong>{{ t('ShowAllStudents.Status') }}</strong></td>
           <td>{{ student.status }}</td>
         </tr>
+        </tbody>
       </table>
+      <div class = "btn-container">
       <div v-if="student.status === 'ACTIVE'" > <button @click="showTCModel(student.regNo)" class="promote-button">{{ t('Promote.btnText2') }}</button></div>
       <div v-if = "student.standard != '12' && student.status == 'ACTIVE'"><button @click="showPromoteModel(student.regNo)" class="promote-button">{{t('Promote.btnText')}}</button></div>
       <div v-if="student.standard == '12' && student.status == 'ACTIVE'"><button @click="showGraduationModel(student.regNo)" class="promote-button">{{t('Promote.btnText4')}}</button></div>
+      </div>
     </div>
     <div v-if="showGraduationWarning" class="modal-backdrop">
       <div class="modal-overlay">
@@ -111,20 +134,27 @@
     </div>
 
 
-    <div v-if="showSuccess" class="top-notification">
-      {{ successMessage }}
-    </div>
 
-    <div v-if="showFailed" class="top-notification-failed">
-      {{ failedMessage }}
-    </div>
   </div>
+  <template v-else>
+    <PDFEditor :regNo="currentStudentRegNo" @goBack="showPDFeditor = false" />
+  </template>
+
+  <div v-if="showSuccess" class="top-notification">
+    {{ successMessage }}
+  </div>
+
+  <div v-if="showFailed" class="top-notification-failed">
+    {{ failedMessage }}
+  </div>
+
 </template>
 
 <script setup>
 import {ref, watch, onMounted, onBeforeUpdate} from 'vue'
 import axios from 'axios'
 import {useI18n} from "vue-i18n";
+import PDFEditor from "@/components/PDFEditor.vue";
 const {t, availableLocales, locale}  = useI18n();
 
 const props = defineProps({
@@ -141,6 +171,7 @@ const currentStudentRegNo = ref(null)
 const successMessage = ref("")
 const showFailed = ref(false)
 const failedMessage = ref("")
+const showPDFeditor = ref(null)
 
 const cancelFxn = async() => {
   showGraduationWarning.value=false;
@@ -152,10 +183,13 @@ const cancelFxn = async() => {
 const confirmGraduation = async () => {
   try {
     await axios.get(`http://localhost:8080/student/status/${currentStudentRegNo.value}`);
-    window.open(`http://localhost:8080/pdf/generate/${currentStudentRegNo.value}`, '_blank');
+    // window.open(`http://localhost:8080/pdf/generate/${currentStudentRegNo.value}`, '_blank');
+    showPDFeditor.value = true;
     successMessage.value = `Transfer certificate generated for ID ${currentStudentRegNo.value}`;
     showSuccess.value = true;
     setTimeout(() => (showSuccess.value = false), 3000);
+
+    fetchStudentDetails();
   } catch (err) {
     showFailed.value = true;
     failedMessage.value = 'Failed to graduate!'
@@ -172,6 +206,8 @@ const confirmPromote = async () => {
     successMessage.value = `Student ID ${currentStudentRegNo.value} promoted successfully!`;
     showSuccess.value = true;
     setTimeout(() => (showSuccess.value = false), 3000);
+
+    fetchStudentDetails();
   } catch (error) {
     showFailed.value = true;
     failedMessage.value = 'Failed to promote!'
@@ -187,10 +223,13 @@ const updateStatusToRESCINDED = async () => {
     await axios.get(`http://localhost:8080/student/status/tc/${currentStudentRegNo.value}`);
 
     // ✅ Open the PDF in a new tab
-    window.open(`http://localhost:8080/pdf/generate/${currentStudentRegNo.value}`, '_blank');
+    // window.open(`http://localhost:8080/pdf/generate/${currentStudentRegNo.value}`, '_blank');
+    showPDFeditor.value = true;
 
     showSuccess.value = true;
     setTimeout(() => (showSuccess.value = false), 3000);
+
+    fetchStudentDetails();
   } catch (error) {
     console.error(error);
     showFailed.value = true;
@@ -295,17 +334,6 @@ input {
   max-width: 100%; /* ✅ makes input responsive */
 }
 
-button {
-  width:  100%;
-  margin-top: 0.5rem;
-  padding: 0.5rem;
-  background-color: #007bff;
-  border: none;
-  color: white;
-  cursor: pointer;
-  font-size: 14px;
-}
-
 .loading {
   color: #666;
 }
@@ -348,6 +376,107 @@ button {
   text-align: center;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   animation: slide-down 0.3s ease;
+}
+
+
+.promote-button {
+  margin: 0.5rem 2rem 0 1.5rem;
+  flex: 1 1 160px;
+  max-width: 220px;
+  padding: 0.6rem 1rem;
+  background-color: #007bff;
+  border: none;
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 6px;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.promote-button:hover {
+  background-color: #0056b3;
+  transform: translateY(-1px);
+}
+
+.promote-button:focus {
+  outline: 2px solid #0056b3;
+  outline-offset: 2px;
+}
+
+.btn-container {
+  display: flex;
+  flex-wrap: wrap;            /* Allows buttons to wrap on smaller screens */
+  gap: 0.75rem;               /* Space between buttons */
+  justify-content: center;    /* Center buttons */
+  margin-top: 1rem;
+}
+
+.button-group {
+  margin-top: 10px;
+}
+
+.button-group button {
+  margin: 0 5px;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.button-group button:first-child {
+  background-color: #28a745;
+  color: white;
+}
+
+.button-group button:last-child {
+  background-color: #dc3545;
+  color: white;
+}
+
+.top-notification {
+  position: fixed;
+  top: 80px;
+  right: -2%;
+  transform: translateX(-15%);
+  background-color: #d4edda;
+  color: #155724;
+  padding: 12px 24px;
+  border-radius: 8px;
+  border: 1px solid #c3e6cb;
+  z-index: 1001;
+  font-weight: bold;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  animation: fade-slide-down 0.3s ease;
+}
+
+.top-notification-failed {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 12px 24px;
+  border-radius: 8px;
+  border: 1px solid #c3e6cb;
+  z-index: 1001;
+  font-weight: bold;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  animation: fade-slide-down 0.3s ease;
+}
+
+@keyframes fade-slide-down {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
 }
 
 </style>

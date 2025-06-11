@@ -1,105 +1,121 @@
 <template>
-  <div class="students-table-container">
-    <div v-if="loading" class="loading">Loading student records...</div>
-    <div v-if="error" class="error">{{ error }}</div>
+  <div>
+    <div>
+    <!-- Show table view by default -->
+    <div v-if="!showPDFEditor" class="students-table-container">
+      <div v-if="loading" class="loading">Loading student records...</div>
+      <div v-if="error" class="error">{{ error }}</div>
 
-    <table v-if="students.length" class="students-table">
-      <thead>
-      <tr>
-        <th>{{t('ShowAllStudents.RegistrationNo')}}</th>
-        <th>{{t('ShowAllStudents.RollNo')}}</th>
-        <th>{{t('ShowAllStudents.FirstName')}}</th>
-        <th>{{t('ShowAllStudents.LastName')}}</th>
-        <th>{{t('ShowAllStudents.Standard')}}</th>
-        <th>{{t('ShowAllStudents.AdmissionDate')}}</th>
-        <th>{{t('ShowAllStudents.Address')}}</th>
-        <th>{{t('ShowAllStudents.Mobile')}}</th>
-        <th>{{t('ShowAllStudents.Email')}}</th>
-        <th>{{t('ShowAllStudents.Status')}}</th>
-        <th>{{t('ShowAllStudents.TCGeneration')}}</th>
-        <th>{{t('ShowAllStudents.PromoteStudent')}}</th>
+      <table v-if="students.length" class="students-table">
+        <thead>
+        <tr>
+          <th>{{t('ShowAllStudents.RegistrationNo')}}</th>
+          <th>{{t('ShowAllStudents.RollNo')}}</th>
+          <th>{{t('ShowAllStudents.FirstName')}}</th>
+          <th>{{t('ShowAllStudents.LastName')}}</th>
+          <th>{{t('ShowAllStudents.Standard')}}</th>
+          <th>{{t('ShowAllStudents.AdmissionDate')}}</th>
+          <th>{{t('ShowAllStudents.Address')}}</th>
+          <th>{{t('ShowAllStudents.Mobile')}}</th>
+          <th>{{t('ShowAllStudents.Email')}}</th>
+          <th>{{t('ShowAllStudents.Status')}}</th>
+          <th>{{t('ShowAllStudents.TCGeneration')}}</th>
+          <th>{{t('ShowAllStudents.PromoteStudent')}}</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr v-for="student in students" :key="student.regNo">
+          <td>{{student.regNo}}</td>
+          <td>{{student.rollNo}}</td>
+          <td>{{student.firstName}}</td>
+          <td>{{student.lastName}}</td>
+          <td>{{student.standard}}</td>
+          <td>{{student.admissionDate}}</td>
+          <td>{{student.address}}</td>
+          <td>{{student.mobileNo}}</td>
+          <td>{{student.emailId}}</td>
+          <td>{{student.status}}</td>
+          <td v-if="student.status === 'ACTIVE'">
+            <button @click="showTCModel(student.regNo)" class="promote-button">{{ t('Promote.btnText2') }}</button>
+          </td>
+          <td v-if="student.standard != '12' && student.status == 'ACTIVE'">
+            <button @click="showPromoteModel(student.regNo)" class="promote-button">{{t('Promote.btnText')}}</button>
+          </td>
+          <td v-if="student.standard == '12' && student.status == 'ACTIVE'">
+            <button @click="showGraduationModel(student.regNo)" class="promote-button">{{t('Promote.btnText4')}}</button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
 
-      </tr>
-      </thead>
-      <tbody>
-      <tr v-for="student in students" :key="student.regNo">
-        <td>{{student.regNo}}</td>
-        <td>{{student.rollNo}}</td>
-        <td>{{student.firstName}}</td>
-        <td>{{student.lastName}}</td>
-        <td>{{student.standard}}</td>
-        <td>{{student.admissionDate}}</td>
-        <td>{{student.address}}</td>
-        <td>{{student.mobileNo}}</td>
-        <td>{{student.emailId}}</td>
-        <td>{{student.status}}</td>
-        <td v-if="student.status === 'ACTIVE'" > <button @click="showTCModel(student.regNo)" class="promote-button">{{ t('Promote.btnText2') }}</button></td>
-        <td v-if = "student.standard != '12' && student.status == 'ACTIVE'"><button @click="showPromoteModel(student.regNo)" class="promote-button">{{t('Promote.btnText')}}</button></td>
-        <td v-if="student.standard == '12' && student.status == 'ACTIVE'"><button @click="showGraduationModel(student.regNo)" class="promote-button">{{t('Promote.btnText4')}}</button></td>
-      </tr>
-      </tbody>
-    </table>
-
-
-    <div v-if="showGraduationWarning" class="modal-backdrop">
-      <div class="modal-overlay">
-        <div class="model">
-          <h3>Graduate Student?</h3>
-          <div class="button-group">
-            <button @click="confirmGraduation">Confirm</button>
-            <button @click="cancelFxn">Cancel</button>
+      <!-- Modals -->
+      <div v-if="showGraduationWarning" class="modal-backdrop">
+        <div class="modal-overlay">
+          <div class="model">
+            <h3>Graduate Student?</h3>
+            <div class="button-group">
+              <button @click="confirmGraduation">Confirm</button>
+              <button @click="cancelFxn">Cancel</button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <div v-if="showPromoteWarning" class="modal-backdrop">
-      <div class="modal-overlay">
-        <div class="model">
-          <h3>Promote Student?</h3>
-          <div class="button-group">
-            <button @click="confirmPromote">Confirm</button>
-            <button @click="cancelFxn">Cancel</button>
+      <div v-if="showPromoteWarning" class="modal-backdrop">
+        <div class="modal-overlay">
+          <div class="model">
+            <h3>Promote Student?</h3>
+            <div class="button-group">
+              <button @click="confirmPromote">Confirm</button>
+              <button @click="cancelFxn">Cancel</button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <div v-if="showGenerateTCWarning" class="modal-backdrop">
-      <div class="modal-overlay">
-        <div class="model">
-          <h3>Generate Student TC?</h3>
-          <div class="button-group">
-            <button @click="updateStatusToRESCINDED">Confirm</button>
-            <button @click="cancelFxn">Cancel</button>
+      <div v-if="showGenerateTCWarning" class="modal-backdrop">
+        <div class="modal-overlay">
+          <div class="model">
+            <h3>Generate Student TC?</h3>
+            <div class="button-group">
+              <button @click="updateStatusToRESCINDED">Confirm</button>
+              <button @click="cancelFxn">Cancel</button>
+            </div>
           </div>
         </div>
       </div>
+
+      <!-- Notifications -->
+      <div v-if="showSuccess" class="top-notification">
+        {{ successMessage }}
+      </div>
+
+      <div v-if="showFailed" class="top-notification-failed">
+        {{ failedMessage }}
+      </div>
     </div>
 
+    <!-- Show PDF Editor when TC is generated -->
 
-    <div v-if="showSuccess" class="top-notification">
-      {{ successMessage }}
-    </div>
-
-    <div v-if="showFailed" class="top-notification-failed">
-      {{ failedMessage }}
-    </div>
+    <template v-else>
+      <PDFEditor :regNo="currentStudentRegNo" @goBack="showPDFEditor = false" />
+    </template>
   </div>
-
-
+  </div>
 </template>
 
 <script setup>
-import {ref, onMounted, onUpdated, watch} from 'vue'
-import axios, {HttpStatusCode} from 'axios'
-import {useI18n} from "vue-i18n";
-const {t, availableLocales, locale}  = useI18n();
-import { PDFDocument, StandardFonts, rgb } from 'pdf-lib'
+import { ref, onMounted } from 'vue'
+import axios from 'axios'
+import { useI18n } from "vue-i18n";
+import PDFEditor from './PDFEditor.vue'
+
+const { t } = useI18n();
+
 const students = ref([])
 const loading = ref(true)
 const error = ref(null)
-const TC = ref(null)
+const showPDFEditor = ref(false)
 
 const showGraduationWarning = ref(false)
 const showPromoteWarning = ref(false)
@@ -110,30 +126,27 @@ const successMessage = ref("")
 const showFailed = ref(false)
 const failedMessage = ref("")
 
-const cancelFxn = async() => {
-  showGraduationWarning.value=false;
-  showPromoteWarning.value=false;
-  showGenerateTCWarning.value=false;
-  console.log("cancelled")
+const cancelFxn = () => {
+  showGraduationWarning.value = false;
+  showPromoteWarning.value = false;
+  showGenerateTCWarning.value = false;
 }
 
 const confirmGraduation = async () => {
   try {
     await axios.get(`http://localhost:8080/student/status/${currentStudentRegNo.value}`);
-    window.open(`http://localhost:8080/pdf/generate/${currentStudentRegNo.value}`, '_blank');
+    showPDFEditor.value = true;
     successMessage.value = `Transfer certificate generated for ID ${currentStudentRegNo.value}`;
     showSuccess.value = true;
     setTimeout(() => (showSuccess.value = false), 3000);
   } catch (err) {
     showFailed.value = true;
     failedMessage.value = 'Failed to graduate!'
-    showGraduationWarning.value = false
     setTimeout(() => (showFailed.value = false), 3000);
   } finally {
     showGraduationWarning.value = false;
   }
 };
-
 
 const confirmPromote = async () => {
   try {
@@ -141,10 +154,10 @@ const confirmPromote = async () => {
     successMessage.value = `Student ID ${currentStudentRegNo.value} promoted successfully!`;
     showSuccess.value = true;
     setTimeout(() => (showSuccess.value = false), 3000);
+    fetchStudents(); // Refresh the list
   } catch (error) {
     showFailed.value = true;
     failedMessage.value = 'Failed to promote!'
-    showPromoteWarning.value = false
     setTimeout(() => (showFailed.value = false), 3000);
   } finally {
     showPromoteWarning.value = false;
@@ -154,10 +167,7 @@ const confirmPromote = async () => {
 const updateStatusToRESCINDED = async () => {
   try {
     await axios.get(`http://localhost:8080/student/status/tc/${currentStudentRegNo.value}`);
-
-    // ✅ Open the PDF in a new tab
-    window.open(`http://localhost:8080/pdf/generate/${currentStudentRegNo.value}`, '_blank');
-
+    showPDFEditor.value = true;
     showSuccess.value = true;
     setTimeout(() => (showSuccess.value = false), 3000);
   } catch (error) {
@@ -171,8 +181,10 @@ const updateStatusToRESCINDED = async () => {
 
 const fetchStudents = async () => {
   try {
+    loading.value = true;
     const response = await axios.get('http://localhost:8080/student')
     students.value = response.data
+    error.value = null;
   } catch (err) {
     error.value = err.response?.data?.message || 'Failed to fetch students.'
   } finally {
@@ -180,60 +192,28 @@ const fetchStudents = async () => {
   }
 }
 
-const showTCModel = (regNo) =>{
+const showTCModel = (regNo) => {
   currentStudentRegNo.value = regNo;
   showGenerateTCWarning.value = true;
 }
 
-
-// const promoteStudent = async (regNo) => {
-//   try {
-//     const res = await axios.get(`http://localhost:8080/student/promoted/${regNo}`)
-//     alert(`Student ID ${regNo} promoted successfully!`)
-//
-//   } catch (error) {
-//     console.error('Error:', error)
-//     alert('Failed to promote student. The Student is Already Graduated')
-//   }
-// }
-
-const showGraduationModel = (regNo) =>{
+const showGraduationModel = (regNo) => {
   currentStudentRegNo.value = regNo;
   showGraduationWarning.value = true;
 }
 
-const showPromoteModel = (regNo) =>{
+const showPromoteModel = (regNo) => {
   currentStudentRegNo.value = regNo;
   showPromoteWarning.value = true;
-}
-
-/*const UpdateStudentStatus = async (regNo) => {
-  const res = await axios.get(`http://localhost:8080/student/status/${regNo}`)
-  await generateEditablePDF(regNo);
-}*/
-const fetchStudentsById = async (regId) => {
-  try {
-    const response = await axios.get(`http://localhost:8080/student/${regId}`)
-    // if (response.data.standard === 12 && response.data.Status === 'ACTIVE') {
-    return response.data
-  } catch (err) {
-    error.value = err.response?.data?.message || 'Failed to fetch students.'
-    throw new Error("No such Student");
-  } finally {
-    loading.value = false
-  }
 }
 
 onMounted(() => {
   fetchStudents()
 })
-
-onUpdated(()=> {
-  fetchStudents()
-})
 </script>
 
 <style scoped>
+/* Your existing styles remain exactly the same */
 .students-table-container {
   margin-top: 0;
   padding: 1.5rem;
@@ -312,15 +292,15 @@ onUpdated(()=> {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(173, 216, 230, 0.5); /* light blue transparent */
+  background-color: rgba(173, 216, 230, 0.5);
   z-index: 999;
   display: flex;
   justify-content: center;
   align-items: center;
-  backdrop-filter: blur(1px); /* Optional: adds blur effect */
+  backdrop-filter: blur(1px);
 }
 
-.modal-overlay  {
+.modal-overlay {
   background-color: #ffeeba;
   color: #856404;
   border: 1px solid #ffc107;
@@ -400,7 +380,6 @@ onUpdated(()=> {
   }
 }
 
-/* Responsive tweaks for smaller screens */
 @media (max-width: 768px) {
   .students-table-container {
     padding: 1rem;
