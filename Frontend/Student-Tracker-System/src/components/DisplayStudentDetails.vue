@@ -115,7 +115,7 @@
           <h3>{{t('ShowAllStudents.promote_student_title')}}</h3>
           <div class="button-group">
             <button @click="confirmPromote">{{ t('ShowAllStudents.confirm') }}</button>
-            <button @click="cancelFxn">{{ t('ShowAllStudents.hello') }}</button>
+            <button @click="cancelFxn">{{ t('ShowAllStudents.cancel') }}</button>
           </div>
         </div>
       </div>

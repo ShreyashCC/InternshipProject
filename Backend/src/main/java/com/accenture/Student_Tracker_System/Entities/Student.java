@@ -4,12 +4,13 @@ import com.accenture.Student_Tracker_System.Enums.Status;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import java.util.Date;
 
 @Entity
-@Getter @Setter
+@Data
 public class Student {
 
     @Id

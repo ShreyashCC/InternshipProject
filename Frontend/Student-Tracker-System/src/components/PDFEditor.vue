@@ -1,7 +1,7 @@
 <template>
   <div class="pdf-editor-wrapper">
     <div class="pdf-editor-header">
-      <button @click="$emit('goBack')" class="go-back-btn">⬅ Go Back</button>
+      <button @click="$emit('goBack')" class="go-back-btn">{{t('ShowAllStudents.GO_BACK')}}</button>
     </div>
     <iframe
         :src="pdfUrl"
@@ -13,7 +13,8 @@
 
 <script setup>
 import { computed } from 'vue'
-
+import { useI18n } from 'vue-i18n'
+const { t } = useI18n()
 const props = defineProps({
   regNo: {
     type: String,

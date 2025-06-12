@@ -1,11 +1,12 @@
 package com.accenture.Student_Tracker_System.DTOs;
 import com.accenture.Student_Tracker_System.Enums.Status;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.util.Date;
 
-@Getter@Setter
+@Data
 public class StudentDTO {
 
     private Integer regNo;

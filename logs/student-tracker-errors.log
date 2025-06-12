@@ -3,3 +3,5 @@
 2025-06-12 02:39:15 ERROR com.accenture.Student_Tracker_System.Services.StudentService [StudentService.lambda$getStudentById$0:51] - Student not found with ID: 2
 2025-06-12 09:12:52 ERROR com.accenture.Student_Tracker_System.Services.StudentService [StudentService.lambda$getStudentById$0:51] - Student not found with ID: 2
 2025-06-12 09:12:58 ERROR com.accenture.Student_Tracker_System.Services.StudentService [StudentService.lambda$getStudentById$0:51] - Student not found with ID: 3
+2025-06-12 14:03:53 ERROR com.accenture.Student_Tracker_System.Controllers.StudentController [StudentController.getStudent:37] - Invalid registration number format: Manthan
+

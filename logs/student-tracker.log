@@ -8131,3 +8131,240 @@ Address: 5A-404 Shagun Residency Nr.Iskon Temple Jahangirpura
 2025-06-12 10:02:41 DEBUG com.accenture.Student_Tracker_System.Services.StudentService [StudentService.getAllStudents:57] - Fetching all students
 2025-06-12 10:02:41 DEBUG com.accenture.Student_Tracker_System.Services.StudentService [StudentService.getStudentById:48] - Fetching student by ID: 5
 2025-06-12 10:05:59 DEBUG com.accenture.Student_Tracker_System.Services.StudentService [StudentService.getAllStudents:57] - Fetching all students
+2025-06-12 10:13:37 DEBUG com.accenture.Student_Tracker_System.Services.StudentService [StudentService.getAllStudents:57] - Fetching all students
+2025-06-12 10:34:22 DEBUG com.accenture.Student_Tracker_System.Services.StudentService [StudentService.getAllStudents:57] - Fetching all students
+2025-06-12 10:34:29 DEBUG com.accenture.Student_Tracker_System.Services.StudentService [StudentService.getRollList:104] - Getting roll list for standard: 10
+2025-06-12 10:34:29 DEBUG com.accenture.Student_Tracker_System.Services.StudentService [StudentService.getNextAvailableRollNo:29] - Calculating next available roll number from existing list: []
+2025-06-12 10:34:29 INFO  com.accenture.Student_Tracker_System.Services.StudentService [StudentService.getNextAvailableRollNo:38] - No gaps found, assigning next roll number: 1
+2025-06-12 10:34:29 INFO  com.accenture.Student_Tracker_System.Services.StudentService [StudentService.saveStudent:43] - Saving new student: Student Details: 
+Firstname: Manthan Lastname: Modi
+Roll.No: 1 Class: 10
+Mobile.No: 08160612616 EmailId: manthanmodi2003@gmail.com
+AdmissionDate: Thu Jun 12 10:34:29 IST 2025 Status: ACTIVE
+Address: 5A-404 Shagun Residency Nr.Iskon Temple Jahangirpura
+
+2025-06-12 10:34:30 DEBUG com.accenture.Student_Tracker_System.Services.StudentService [StudentService.getAllStudents:57] - Fetching all students
+2025-06-12 10:34:33 DEBUG com.accenture.Student_Tracker_System.Services.StudentService [StudentService.getStudentById:48] - Fetching student by ID: 6
+2025-06-12 10:34:33 INFO  com.accenture.Student_Tracker_System.Services.StudentService [StudentService.changeStudentStatusToRESCINDED:98] - Setting status to RESCINDED for student: 6
+2025-06-12 10:34:33 DEBUG com.accenture.Student_Tracker_System.Services.StudentService [StudentService.getAllStudents:57] - Fetching all students
+2025-06-12 10:34:33 DEBUG com.accenture.Student_Tracker_System.Services.StudentService [StudentService.getStudentById:48] - Fetching student by ID: 6
+2025-06-12 12:42:04 DEBUG com.accenture.Student_Tracker_System.Services.StudentService [StudentService.getRollList:104] - Getting roll list for standard: 12
+2025-06-12 12:42:04 DEBUG com.accenture.Student_Tracker_System.Services.StudentService [StudentService.getNextAvailableRollNo:29] - Calculating next available roll number from existing list: [1, 2, 3, 4]
+2025-06-12 12:42:04 INFO  com.accenture.Student_Tracker_System.Services.StudentService [StudentService.getNextAvailableRollNo:38] - No gaps found, assigning next roll number: 5
+2025-06-12 12:42:04 INFO  com.accenture.Student_Tracker_System.Services.StudentService [StudentService.saveStudent:43] - Saving new student: Student Details: 
+Firstname: Manthan Lastname: Modi
+Roll.No: 5 Class: 12
+Mobile.No: 08160612616 EmailId: manthanmodi2003@gmail.com
+AdmissionDate: Thu Jun 12 12:42:04 IST 2025 Status: ACTIVE
+Address: 5A-404 Shagun Residency Nr.Iskon Temple Jahangirpura
+
+2025-06-12 12:42:08 DEBUG com.accenture.Student_Tracker_System.Services.StudentService [StudentService.getAllStudents:57] - Fetching all students
+2025-06-12 12:42:11 DEBUG com.accenture.Student_Tracker_System.Services.StudentService [StudentService.getStudentById:48] - Fetching student by ID: 7
+2025-06-12 12:42:11 INFO  com.accenture.Student_Tracker_System.Services.StudentService [StudentService.changeStudentStatusToRESCINDED:98] - Setting status to RESCINDED for student: 7
+2025-06-12 12:42:11 DEBUG com.accenture.Student_Tracker_System.Services.StudentService [StudentService.getAllStudents:57] - Fetching all students
+2025-06-12 12:42:11 DEBUG com.accenture.Student_Tracker_System.Services.StudentService [StudentService.getStudentById:48] - Fetching student by ID: 7
+2025-06-12 12:45:40 DEBUG com.accenture.Student_Tracker_System.Services.StudentService [StudentService.getRollList:104] - Getting roll list for standard: 12
+2025-06-12 12:45:40 DEBUG com.accenture.Student_Tracker_System.Services.StudentService [StudentService.getNextAvailableRollNo:29] - Calculating next available roll number from existing list: [1, 2, 3, 4, 5]
+2025-06-12 12:45:40 INFO  com.accenture.Student_Tracker_System.Services.StudentService [StudentService.getNextAvailableRollNo:38] - No gaps found, assigning next roll number: 6
+2025-06-12 12:45:40 INFO  com.accenture.Student_Tracker_System.Services.StudentService [StudentService.saveStudent:43] - Saving new student: Student Details: 
+Firstname: Manthan Lastname: Modi
+Roll.No: 6 Class: 12
+Mobile.No: 08160612616 EmailId: manthanmodi2003@gmail.com
+AdmissionDate: Thu Jun 12 12:45:40 IST 2025 Status: ACTIVE
+Address: 5A-404 Shagun Residency Nr.Iskon Temple Jahangirpura
+
+2025-06-12 12:45:43 DEBUG com.accenture.Student_Tracker_System.Services.StudentService [StudentService.getAllStudents:57] - Fetching all students
+2025-06-12 12:45:52 DEBUG com.accenture.Student_Tracker_System.Services.StudentService [StudentService.getStudentById:48] - Fetching student by ID: 8
+2025-06-12 12:45:52 INFO  com.accenture.Student_Tracker_System.Services.StudentService [StudentService.changeStudentStatus:86] - Changing student status based on standard for: 8
+2025-06-12 12:45:52 INFO  com.accenture.Student_Tracker_System.Services.StudentService [StudentService.changeStudentStatus:89] - Student graduated: 8
+2025-06-12 12:45:52 DEBUG com.accenture.Student_Tracker_System.Services.StudentService [StudentService.getAllStudents:57] - Fetching all students
+2025-06-12 12:45:52 DEBUG com.accenture.Student_Tracker_System.Services.StudentService [StudentService.getStudentById:48] - Fetching student by ID: 8
+2025-06-12 12:46:46 DEBUG com.accenture.Student_Tracker_System.Services.StudentService [StudentService.getAllStudents:57] - Fetching all students
+2025-06-12 12:46:57 DEBUG com.accenture.Student_Tracker_System.Services.StudentService [StudentService.getStudentById:48] - Fetching student by ID: 1
+2025-06-12 12:47:01 DEBUG com.accenture.Student_Tracker_System.Services.StudentService [StudentService.getStudentById:48] - Fetching student by ID: 2
+2025-06-12 12:47:04 DEBUG com.accenture.Student_Tracker_System.Services.StudentService [StudentService.getStudentById:48] - Fetching student by ID: 3
+2025-06-12 12:47:12 DEBUG com.accenture.Student_Tracker_System.Services.StudentService [StudentService.getRollList:104] - Getting roll list for standard: 1
+2025-06-12 12:47:12 DEBUG com.accenture.Student_Tracker_System.Services.StudentService [StudentService.getNextAvailableRollNo:29] - Calculating next available roll number from existing list: []
+2025-06-12 12:47:12 INFO  com.accenture.Student_Tracker_System.Services.StudentService [StudentService.getNextAvailableRollNo:38] - No gaps found, assigning next roll number: 1
+2025-06-12 12:47:12 INFO  com.accenture.Student_Tracker_System.Services.StudentService [StudentService.saveStudent:43] - Saving new student: Student Details: 
+Firstname: Manthan Lastname: Modi
+Roll.No: 1 Class: 1
+Mobile.No: 08160612616 EmailId: manthanmodi2003@gmail.com
+AdmissionDate: Thu Jun 12 12:47:12 IST 2025 Status: ACTIVE
+Address: 5A-404 Shagun Residency Nr.Iskon Temple Jahangirpura
+
+2025-06-12 12:47:17 DEBUG com.accenture.Student_Tracker_System.Services.StudentService [StudentService.getStudentById:48] - Fetching student by ID: 4
+2025-06-12 12:47:18 DEBUG com.accenture.Student_Tracker_System.Services.StudentService [StudentService.getAllStudents:57] - Fetching all students
+2025-06-12 12:47:22 DEBUG com.accenture.Student_Tracker_System.Services.StudentService [StudentService.getStudentById:48] - Fetching student by ID: 9
+2025-06-12 13:52:52 INFO  com.accenture.Student_Tracker_System.StudentTrackerSystemApplication [StudentTrackerSystemApplication.main:12] - Application starting up
+2025-06-12 13:52:52 DEBUG com.accenture.Student_Tracker_System.StudentTrackerSystemApplication [StudentTrackerSystemApplication.main:13] - Debug mode enabled
+2025-06-12 13:52:52 WARN  com.accenture.Student_Tracker_System.StudentTrackerSystemApplication [StudentTrackerSystemApplication.main:14] - This is a warning message
+2025-06-12 13:52:53 INFO  com.accenture.Student_Tracker_System.StudentTrackerSystemApplication [StartupInfoLogger.logStarting:50] - Starting StudentTrackerSystemApplication using Java 21.0.7 with PID 68766 (/home/icarus/Documents/Projects/Student-Tracker-System/Backend/target/classes started by Zeus in /home/icarus/Documents/Projects/Student-Tracker-System)
+2025-06-12 13:52:53 DEBUG com.accenture.Student_Tracker_System.StudentTrackerSystemApplication [StartupInfoLogger.logStarting:51] - Running with Spring Boot v3.2.1, Spring v6.1.2
+2025-06-12 13:52:53 INFO  com.accenture.Student_Tracker_System.StudentTrackerSystemApplication [SpringApplication.logStartupProfileInfo:662] - No active profile set, falling back to 1 default profile: "default"
+2025-06-12 13:52:56 INFO  com.accenture.Student_Tracker_System.StudentTrackerSystemApplication [StartupInfoLogger.logStarted:56] - Started StudentTrackerSystemApplication in 3.963 seconds (process running for 5.797)
+2025-06-12 13:53:42 INFO  com.accenture.Student_Tracker_System.Controllers.StudentController [StudentController.createStudent:59] - Creating student: Manthan
+2025-06-12 13:53:42 DEBUG com.accenture.Student_Tracker_System.Services.StudentService [StudentService.getRollList:104] - Getting roll list for standard: 12
+2025-06-12 13:53:42 DEBUG com.accenture.Student_Tracker_System.Services.StudentService [StudentService.getNextAvailableRollNo:29] - Calculating next available roll number from existing list: []
+2025-06-12 13:53:42 INFO  com.accenture.Student_Tracker_System.Services.StudentService [StudentService.getNextAvailableRollNo:38] - No gaps found, assigning next roll number: 1
+2025-06-12 13:53:42 INFO  com.accenture.Student_Tracker_System.Controllers.StudentController [StudentController.createStudent:68] - Student created successfully with Roll No: 1
+2025-06-12 13:53:42 INFO  com.accenture.Student_Tracker_System.Services.StudentService [StudentService.saveStudent:43] - Saving new student: Student Details: 
+Firstname: Manthan Lastname: Modi
+Roll.No: 1 Class: 12
+Mobile.No: 08160612616 EmailId: manthanmodi2003@gmail.com
+AdmissionDate: Thu Jun 12 13:53:42 IST 2025 Status: ACTIVE
+Address: 5A-404 Shagun Residency Nr.Iskon Temple Jahangirpura
+
+2025-06-12 13:53:56 INFO  com.accenture.Student_Tracker_System.Controllers.StudentController [StudentController.createStudent:59] - Creating student: Manthan
+2025-06-12 13:53:56 DEBUG com.accenture.Student_Tracker_System.Services.StudentService [StudentService.getRollList:104] - Getting roll list for standard: 12
+2025-06-12 13:53:56 DEBUG com.accenture.Student_Tracker_System.Services.StudentService [StudentService.getNextAvailableRollNo:29] - Calculating next available roll number from existing list: [1]
+2025-06-12 13:53:56 INFO  com.accenture.Student_Tracker_System.Services.StudentService [StudentService.getNextAvailableRollNo:38] - No gaps found, assigning next roll number: 2
+2025-06-12 13:53:56 INFO  com.accenture.Student_Tracker_System.Controllers.StudentController [StudentController.createStudent:68] - Student created successfully with Roll No: 2
+2025-06-12 13:53:56 INFO  com.accenture.Student_Tracker_System.Services.StudentService [StudentService.saveStudent:43] - Saving new student: Student Details: 
+Firstname: Manthan Lastname: Modi
+Roll.No: 2 Class: 12
+Mobile.No: 08160612616 EmailId: manthanmodi2003@gmail.com
+AdmissionDate: Thu Jun 12 13:53:56 IST 2025 Status: ACTIVE
+Address: 5A-404 Shagun Residency Nr.Iskon Temple Jahangirpura
+
+2025-06-12 13:54:00 INFO  com.accenture.Student_Tracker_System.Controllers.StudentController [StudentController.getAll:48] - Fetching all students
+2025-06-12 13:54:00 DEBUG com.accenture.Student_Tracker_System.Services.StudentService [StudentService.getAllStudents:57] - Fetching all students
+2025-06-12 13:54:07 INFO  com.accenture.Student_Tracker_System.Controllers.StudentController [StudentController.changeStatus:79] - Changing status for regNo: 1
+2025-06-12 13:54:07 DEBUG com.accenture.Student_Tracker_System.Services.StudentService [StudentService.getStudentById:48] - Fetching student by ID: 1
+2025-06-12 13:54:07 INFO  com.accenture.Student_Tracker_System.Services.StudentService [StudentService.changeStudentStatus:86] - Changing student status based on standard for: 1
+2025-06-12 13:54:07 INFO  com.accenture.Student_Tracker_System.Services.StudentService [StudentService.changeStudentStatus:89] - Student graduated: 1
+2025-06-12 13:54:07 INFO  com.accenture.Student_Tracker_System.Controllers.StudentController [StudentController.changeStatus:82] - Status changed successfully for regNo: 1
+2025-06-12 13:54:07 INFO  com.accenture.Student_Tracker_System.Controllers.StudentController [StudentController.getAll:48] - Fetching all students
+2025-06-12 13:54:07 DEBUG com.accenture.Student_Tracker_System.Services.StudentService [StudentService.getAllStudents:57] - Fetching all students
+2025-06-12 13:54:07 INFO  com.accenture.Student_Tracker_System.Controllers.StudentController [StudentController.getStudent:33] - Fetching student with regNo: 1
+2025-06-12 13:54:07 DEBUG com.accenture.Student_Tracker_System.Services.StudentService [StudentService.getStudentById:48] - Fetching student by ID: 1
+2025-06-12 13:55:32 INFO  com.accenture.Student_Tracker_System.Controllers.StudentController [StudentController.getAll:48] - Fetching all students
+2025-06-12 13:55:32 DEBUG com.accenture.Student_Tracker_System.Services.StudentService [StudentService.getAllStudents:57] - Fetching all students
+2025-06-12 13:55:37 INFO  com.accenture.Student_Tracker_System.Controllers.StudentController [StudentController.changeStatusToRESCINDED:93] - Changing status to RESCINDED for regNo: 1
+2025-06-12 13:55:37 DEBUG com.accenture.Student_Tracker_System.Services.StudentService [StudentService.getStudentById:48] - Fetching student by ID: 1
+2025-06-12 13:55:37 INFO  com.accenture.Student_Tracker_System.Services.StudentService [StudentService.changeStudentStatusToRESCINDED:98] - Setting status to RESCINDED for student: 1
+2025-06-12 13:55:37 INFO  com.accenture.Student_Tracker_System.Controllers.StudentController [StudentController.changeStatusToRESCINDED:96] - Status changed to RESCINDED for regNo: 1
+2025-06-12 13:56:33 INFO  com.accenture.Student_Tracker_System.Controllers.StudentController [StudentController.createStudent:59] - Creating student: Manthan
+2025-06-12 13:56:33 DEBUG com.accenture.Student_Tracker_System.Services.StudentService [StudentService.getRollList:104] - Getting roll list for standard: 12
+2025-06-12 13:56:33 DEBUG com.accenture.Student_Tracker_System.Services.StudentService [StudentService.getNextAvailableRollNo:29] - Calculating next available roll number from existing list: [1, 2]
+2025-06-12 13:56:33 INFO  com.accenture.Student_Tracker_System.Services.StudentService [StudentService.getNextAvailableRollNo:38] - No gaps found, assigning next roll number: 3
+2025-06-12 13:56:33 INFO  com.accenture.Student_Tracker_System.Controllers.StudentController [StudentController.createStudent:68] - Student created successfully with Roll No: 3
+2025-06-12 13:56:33 INFO  com.accenture.Student_Tracker_System.Services.StudentService [StudentService.saveStudent:43] - Saving new student: Student Details: 
+Firstname: Manthan Lastname: Modi
+Roll.No: 3 Class: 12
+Mobile.No: 08160612616 EmailId: manthanmodi2003@gmail.com
+AdmissionDate: Thu Jun 12 13:56:33 IST 2025 Status: ACTIVE
+Address: 5A-404 Shagun Residency Nr.Iskon Temple Jahangirpura
+
+2025-06-12 13:56:34 INFO  com.accenture.Student_Tracker_System.Controllers.StudentController [StudentController.getAll:48] - Fetching all students
+2025-06-12 13:56:34 DEBUG com.accenture.Student_Tracker_System.Services.StudentService [StudentService.getAllStudents:57] - Fetching all students
+2025-06-12 13:56:43 INFO  com.accenture.Student_Tracker_System.Controllers.StudentController [StudentController.changeStatusToRESCINDED:93] - Changing status to RESCINDED for regNo: 1
+2025-06-12 13:56:43 DEBUG com.accenture.Student_Tracker_System.Services.StudentService [StudentService.getStudentById:48] - Fetching student by ID: 1
+2025-06-12 13:56:43 INFO  com.accenture.Student_Tracker_System.Services.StudentService [StudentService.changeStudentStatusToRESCINDED:98] - Setting status to RESCINDED for student: 1
+2025-06-12 13:56:43 INFO  com.accenture.Student_Tracker_System.Controllers.StudentController [StudentController.changeStatusToRESCINDED:96] - Status changed to RESCINDED for regNo: 1
+2025-06-12 13:57:12 INFO  com.accenture.Student_Tracker_System.Controllers.StudentController [StudentController.getStudent:33] - Fetching student with regNo: 1
+2025-06-12 13:57:12 DEBUG com.accenture.Student_Tracker_System.Services.StudentService [StudentService.getStudentById:48] - Fetching student by ID: 1
+2025-06-12 13:57:20 INFO  com.accenture.Student_Tracker_System.Controllers.StudentController [StudentController.changeStatusToRESCINDED:93] - Changing status to RESCINDED for regNo: 1
+2025-06-12 13:57:20 DEBUG com.accenture.Student_Tracker_System.Services.StudentService [StudentService.getStudentById:48] - Fetching student by ID: 1
+2025-06-12 13:57:20 INFO  com.accenture.Student_Tracker_System.Services.StudentService [StudentService.changeStudentStatusToRESCINDED:98] - Setting status to RESCINDED for student: 1
+2025-06-12 13:57:20 INFO  com.accenture.Student_Tracker_System.Controllers.StudentController [StudentController.changeStatusToRESCINDED:96] - Status changed to RESCINDED for regNo: 1
+2025-06-12 13:57:20 INFO  com.accenture.Student_Tracker_System.Controllers.StudentController [StudentController.getStudent:33] - Fetching student with regNo: 1
+2025-06-12 13:57:20 DEBUG com.accenture.Student_Tracker_System.Services.StudentService [StudentService.getStudentById:48] - Fetching student by ID: 1
+2025-06-12 13:58:51 INFO  com.accenture.Student_Tracker_System.Controllers.StudentController [StudentController.getStudent:33] - Fetching student with regNo: 1
+2025-06-12 13:58:51 DEBUG com.accenture.Student_Tracker_System.Services.StudentService [StudentService.getStudentById:48] - Fetching student by ID: 1
+2025-06-12 14:00:38 INFO  com.accenture.Student_Tracker_System.Controllers.StudentController [StudentController.getAll:48] - Fetching all students
+2025-06-12 14:00:38 DEBUG com.accenture.Student_Tracker_System.Services.StudentService [StudentService.getAllStudents:57] - Fetching all students
+2025-06-12 14:00:47 INFO  com.accenture.Student_Tracker_System.Controllers.StudentController [StudentController.changeStatusToRESCINDED:93] - Changing status to RESCINDED for regNo: 2
+2025-06-12 14:00:47 DEBUG com.accenture.Student_Tracker_System.Services.StudentService [StudentService.getStudentById:48] - Fetching student by ID: 2
+2025-06-12 14:00:47 INFO  com.accenture.Student_Tracker_System.Services.StudentService [StudentService.changeStudentStatusToRESCINDED:98] - Setting status to RESCINDED for student: 2
+2025-06-12 14:00:47 INFO  com.accenture.Student_Tracker_System.Controllers.StudentController [StudentController.changeStatusToRESCINDED:96] - Status changed to RESCINDED for regNo: 2
+2025-06-12 14:00:47 INFO  com.accenture.Student_Tracker_System.Controllers.StudentController [StudentController.getAll:48] - Fetching all students
+2025-06-12 14:00:47 DEBUG com.accenture.Student_Tracker_System.Services.StudentService [StudentService.getAllStudents:57] - Fetching all students
+2025-06-12 14:00:47 INFO  com.accenture.Student_Tracker_System.Controllers.StudentController [StudentController.getStudent:33] - Fetching student with regNo: 2
+2025-06-12 14:00:47 DEBUG com.accenture.Student_Tracker_System.Services.StudentService [StudentService.getStudentById:48] - Fetching student by ID: 2
+2025-06-12 14:02:18 INFO  com.accenture.Student_Tracker_System.Controllers.StudentController [StudentController.createStudent:59] - Creating student: Manthan
+2025-06-12 14:02:18 DEBUG com.accenture.Student_Tracker_System.Services.StudentService [StudentService.getRollList:104] - Getting roll list for standard: 12
+2025-06-12 14:02:18 DEBUG com.accenture.Student_Tracker_System.Services.StudentService [StudentService.getNextAvailableRollNo:29] - Calculating next available roll number from existing list: [1, 2, 3]
+2025-06-12 14:02:18 INFO  com.accenture.Student_Tracker_System.Services.StudentService [StudentService.getNextAvailableRollNo:38] - No gaps found, assigning next roll number: 4
+2025-06-12 14:02:18 INFO  com.accenture.Student_Tracker_System.Controllers.StudentController [StudentController.createStudent:68] - Student created successfully with Roll No: 4
+2025-06-12 14:02:18 INFO  com.accenture.Student_Tracker_System.Services.StudentService [StudentService.saveStudent:43] - Saving new student: Student Details: 
+Firstname: Manthan Lastname: Modi
+Roll.No: 4 Class: 12
+Mobile.No: 08160612616 EmailId: manthanmodi2003@gmail.com
+AdmissionDate: Thu Jun 12 14:02:18 IST 2025 Status: ACTIVE
+Address: 5A-404 Shagun Residency Nr.Iskon Temple Jahangirpura
+
+2025-06-12 14:02:20 INFO  com.accenture.Student_Tracker_System.Controllers.StudentController [StudentController.getAll:48] - Fetching all students
+2025-06-12 14:02:20 DEBUG com.accenture.Student_Tracker_System.Services.StudentService [StudentService.getAllStudents:57] - Fetching all students
+2025-06-12 14:02:23 INFO  com.accenture.Student_Tracker_System.Controllers.StudentController [StudentController.changeStatusToRESCINDED:93] - Changing status to RESCINDED for regNo: 4
+2025-06-12 14:02:23 DEBUG com.accenture.Student_Tracker_System.Services.StudentService [StudentService.getStudentById:48] - Fetching student by ID: 4
+2025-06-12 14:02:23 INFO  com.accenture.Student_Tracker_System.Services.StudentService [StudentService.changeStudentStatusToRESCINDED:98] - Setting status to RESCINDED for student: 4
+2025-06-12 14:02:23 INFO  com.accenture.Student_Tracker_System.Controllers.StudentController [StudentController.changeStatusToRESCINDED:96] - Status changed to RESCINDED for regNo: 4
+2025-06-12 14:02:23 INFO  com.accenture.Student_Tracker_System.Controllers.StudentController [StudentController.getAll:48] - Fetching all students
+2025-06-12 14:02:23 DEBUG com.accenture.Student_Tracker_System.Services.StudentService [StudentService.getAllStudents:57] - Fetching all students
+2025-06-12 14:02:23 INFO  com.accenture.Student_Tracker_System.Controllers.StudentController [StudentController.getStudent:33] - Fetching student with regNo: 4
+2025-06-12 14:02:23 DEBUG com.accenture.Student_Tracker_System.Services.StudentService [StudentService.getStudentById:48] - Fetching student by ID: 4
+2025-06-12 14:03:53 INFO  com.accenture.Student_Tracker_System.Controllers.StudentController [StudentController.getStudent:33] - Fetching student with regNo: Manthan
+2025-06-12 14:03:53 ERROR com.accenture.Student_Tracker_System.Controllers.StudentController [StudentController.getStudent:37] - Invalid registration number format: Manthan
+java.lang.NumberFormatException: For input string: "Manthan"
+	at java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:67) ~[?:?]
+	at java.base/java.lang.Integer.parseInt(Integer.java:662) ~[?:?]
+	at java.base/java.lang.Integer.parseInt(Integer.java:778) ~[?:?]
+	at com.accenture.Student_Tracker_System.Controllers.StudentController.getStudent(StudentController.java:34) ~[classes/:?]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[?:?]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:262) ~[spring-web-6.1.2.jar:6.1.2]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:190) ~[spring-web-6.1.2.jar:6.1.2]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118) ~[spring-webmvc-6.1.2.jar:6.1.2]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:917) ~[spring-webmvc-6.1.2.jar:6.1.2]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:829) ~[spring-webmvc-6.1.2.jar:6.1.2]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-6.1.2.jar:6.1.2]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089) ~[spring-webmvc-6.1.2.jar:6.1.2]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979) ~[spring-webmvc-6.1.2.jar:6.1.2]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.1.2.jar:6.1.2]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903) ~[spring-webmvc-6.1.2.jar:6.1.2]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564) ~[tomcat-embed-core-10.1.17.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.1.2.jar:6.1.2]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.17.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:205) ~[tomcat-embed-core-10.1.17.jar:10.1.17]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.17.jar:10.1.17]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-10.1.17.jar:10.1.17]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.17.jar:10.1.17]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.17.jar:10.1.17]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.1.2.jar:6.1.2]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.2.jar:6.1.2]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.17.jar:10.1.17]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.17.jar:10.1.17]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.1.2.jar:6.1.2]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.2.jar:6.1.2]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.17.jar:10.1.17]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.17.jar:10.1.17]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.1.2.jar:6.1.2]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.2.jar:6.1.2]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.17.jar:10.1.17]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.17.jar:10.1.17]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.17.jar:10.1.17]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.17.jar:10.1.17]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482) ~[tomcat-embed-core-10.1.17.jar:10.1.17]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.17.jar:10.1.17]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.17.jar:10.1.17]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.17.jar:10.1.17]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:340) ~[tomcat-embed-core-10.1.17.jar:10.1.17]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:391) ~[tomcat-embed-core-10.1.17.jar:10.1.17]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.17.jar:10.1.17]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:896) ~[tomcat-embed-core-10.1.17.jar:10.1.17]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1744) ~[tomcat-embed-core-10.1.17.jar:10.1.17]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.17.jar:10.1.17]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-10.1.17.jar:10.1.17]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.17.jar:10.1.17]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-10.1.17.jar:10.1.17]
+	at java.base/java.lang.Thread.run(Thread.java:1583) [?:?]
+2025-06-12 14:05:53 INFO  com.accenture.Student_Tracker_System.Controllers.StudentController [StudentController.getAll:48] - Fetching all students
+2025-06-12 14:05:53 DEBUG com.accenture.Student_Tracker_System.Services.StudentService [StudentService.getAllStudents:57] - Fetching all students
+2025-06-12 14:17:04 INFO  com.accenture.Student_Tracker_System.StudentTrackerSystemApplication [StudentTrackerSystemApplication.main:12] - Application starting up
+2025-06-12 14:17:04 DEBUG com.accenture.Student_Tracker_System.StudentTrackerSystemApplication [StudentTrackerSystemApplication.main:13] - Debug mode enabled
+2025-06-12 14:17:04 WARN  com.accenture.Student_Tracker_System.StudentTrackerSystemApplication [StudentTrackerSystemApplication.main:14] - This is a warning message
+2025-06-12 14:17:05 INFO  com.accenture.Student_Tracker_System.StudentTrackerSystemApplication [StartupInfoLogger.logStarting:50] - Starting StudentTrackerSystemApplication using Java 21.0.7 with PID 72183 (/home/icarus/Documents/Projects/Student-Tracker-System/Backend/target/classes started by Zeus in /home/icarus/Documents/Projects/Student-Tracker-System)
+2025-06-12 14:17:05 DEBUG com.accenture.Student_Tracker_System.StudentTrackerSystemApplication [StartupInfoLogger.logStarting:51] - Running with Spring Boot v3.2.1, Spring v6.1.2
+2025-06-12 14:17:05 INFO  com.accenture.Student_Tracker_System.StudentTrackerSystemApplication [SpringApplication.logStartupProfileInfo:662] - No active profile set, falling back to 1 default profile: "default"
+2025-06-12 14:17:12 INFO  com.accenture.Student_Tracker_System.StudentTrackerSystemApplication [StartupInfoLogger.logStarted:56] - Started StudentTrackerSystemApplication in 7.947 seconds (process running for 9.318)
