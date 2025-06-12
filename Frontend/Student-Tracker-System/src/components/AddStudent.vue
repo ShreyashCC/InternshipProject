@@ -79,12 +79,12 @@ function  showNotification(message , type){
 async function submitForm() {
   const namePattern = /^\d+$/;
   if (namePattern.test(String(form.firstName).trim()) || namePattern.test(String(form.lastName).trim())) {
-    showNotification("FirstName or LastName cannot be number", 'error');
+    showNotification(t('AddNewStudent.error_firstname_lastname_number'), 'error');
     return;
   }
   const standard = parseInt(form.standard);
   if (isNaN(standard) || standard < 1 || standard > 12) {
-    showNotification('standard must be between 1 and 12', 'error');
+    showNotification(t('AddNewStudent.error_standard_range'), 'error');
     return;
   }
   const studentData = {
@@ -96,13 +96,13 @@ async function submitForm() {
 
   try {
     const response = await axios.post('http://localhost:8080/student', studentData)
-    showNotification('Student Added Successfully!', 'success')
+    showNotification(t('AddNewStudent.success_student_added'), 'success');
     console.log(response.data)
     Object.keys(form).forEach(key => form[key] = '')
 
   } catch (error) {
     console.error('Error submitting form:', error)
-    showNotification('Failed to add Student', 'error');
+    showNotification(t('AddNewStudent.error_student_add_failed'), 'error');
   }
 }
 </script>

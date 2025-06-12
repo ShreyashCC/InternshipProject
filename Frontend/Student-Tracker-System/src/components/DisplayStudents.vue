@@ -52,10 +52,10 @@
       <div v-if="showGraduationWarning" class="modal-backdrop">
         <div class="modal-overlay">
           <div class="model">
-            <h3>Graduate Student?</h3>
+            <h3>{{ t('ShowAllStudents.graduate_student_title') }}</h3>
             <div class="button-group">
-              <button @click="confirmGraduation">Confirm</button>
-              <button @click="cancelFxn">Cancel</button>
+              <button @click="confirmGraduation">{{t('ShowAllStudents.confirm')}}</button>
+              <button @click="cancelFxn">{{t('ShowAllStudents.cancel')}}</button>
             </div>
           </div>
         </div>
@@ -64,10 +64,10 @@
       <div v-if="showPromoteWarning" class="modal-backdrop">
         <div class="modal-overlay">
           <div class="model">
-            <h3>Promote Student?</h3>
+            <h3>{{t('ShowAllStudents.promote_student_title')}}</h3>
             <div class="button-group">
-              <button @click="confirmPromote">Confirm</button>
-              <button @click="cancelFxn">Cancel</button>
+              <button @click="confirmPromote">{{t('ShowAllStudents.confirm')}}</button>
+              <button @click="cancelFxn">{{t('ShowAllStudents.cancel')}}</button>
             </div>
           </div>
         </div>
@@ -76,10 +76,10 @@
       <div v-if="showGenerateTCWarning" class="modal-backdrop">
         <div class="modal-overlay">
           <div class="model">
-            <h3>Generate Student TC?</h3>
+            <h3>{{t('ShowAllStudents.graduate_student_title')}}</h3>
             <div class="button-group">
-              <button @click="updateStatusToRESCINDED">Confirm</button>
-              <button @click="cancelFxn">Cancel</button>
+              <button @click="updateStatusToRESCINDED">{{t('ShowAllStudents.confirm')}}</button>
+              <button @click="cancelFxn">{{t('ShowAllStudents.cancel')}}</button>
             </div>
           </div>
         </div>
@@ -136,13 +136,13 @@ const confirmGraduation = async () => {
   try {
     await axios.get(`http://localhost:8080/student/status/${currentStudentRegNo.value}`);
     showPDFEditor.value = true;
-    successMessage.value = `Transfer certificate generated for ID ${currentStudentRegNo.value}`;
+    successMessage.value = t('ShowAllStudents.success_tc_generated', { regNo: currentStudentRegNo.value });
     showSuccess.value = true;
     await fetchStudents();
     setTimeout(() => (showSuccess.value = false), 3000);
   } catch (err) {
     showFailed.value = true;
-    failedMessage.value = 'Failed to graduate!'
+    failedMessage.value = t('ShowAllStudents.failed_to_graduate')
     setTimeout(() => (showFailed.value = false), 3000);
   } finally {
     showGraduationWarning.value = false;
@@ -152,13 +152,13 @@ const confirmGraduation = async () => {
 const confirmPromote = async () => {
   try {
     await axios.get(`http://localhost:8080/student/promoted/${currentStudentRegNo.value}`);
-    successMessage.value = `Student ID ${currentStudentRegNo.value} promoted successfully!`;
+    successMessage.value =  t('Promote.success', { regNo: currentStudentRegNo.value });
     showSuccess.value = true;
     await fetchStudents();
     setTimeout(() => (showSuccess.value = false), 3000);
   } catch (error) {
     showFailed.value = true;
-    failedMessage.value = 'Failed to promote!'
+    failedMessage.value =  t('Promote.failed');
     setTimeout(() => (showFailed.value = false), 3000);
   } finally {
     showPromoteWarning.value = false;

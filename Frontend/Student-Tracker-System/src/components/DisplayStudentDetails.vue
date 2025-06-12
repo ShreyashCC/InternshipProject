@@ -1,6 +1,6 @@
 <template>
   <div v-if="!showPDFeditor" class="student-details-container">
-    <h2>Student Details</h2>
+    <h2>{{ t('ShowAllStudents.StudentInformation') }}</h2>
 
     <!--    <div class="form-group">-->
     <!--      <label for="regNumber">Enter Registration Number:</label>-->
@@ -65,12 +65,12 @@
           <td>{{ student.admissionDate }}</td>
         </tr>
         </tbody>
-      <tbody>
-      <tr>
-        <td><strong>{{ t('ShowAllStudents.Address') }}</strong></td>
-        <td>{{ student.address }}</td>
-      </tr>
-      </tbody>
+        <tbody>
+        <tr>
+          <td><strong>{{ t('ShowAllStudents.Address') }}</strong></td>
+          <td>{{ student.address }}</td>
+        </tr>
+        </tbody>
         <tbody>
         <tr>
           <td><strong>{{ t('ShowAllStudents.Mobile') }}</strong></td>
@@ -92,18 +92,18 @@
         </tbody>
       </table>
       <div class = "btn-container">
-      <div v-if="student.status === 'ACTIVE'" > <button @click="showTCModel(student.regNo)" class="promote-button">{{ t('Promote.btnText2') }}</button></div>
-      <div v-if = "student.standard != '12' && student.status == 'ACTIVE'"><button @click="showPromoteModel(student.regNo)" class="promote-button">{{t('Promote.btnText')}}</button></div>
-      <div v-if="student.standard == '12' && student.status == 'ACTIVE'"><button @click="showGraduationModel(student.regNo)" class="promote-button">{{t('Promote.btnText4')}}</button></div>
+        <div v-if="student.status === 'ACTIVE'" > <button @click="showTCModel(student.regNo)" class="promote-button">{{ t('Promote.btnText2') }}</button></div>
+        <div v-if = "student.standard != '12' && student.status == 'ACTIVE'"><button @click="showPromoteModel(student.regNo)" class="promote-button">{{t('Promote.btnText')}}</button></div>
+        <div v-if="student.standard == '12' && student.status == 'ACTIVE'"><button @click="showGraduationModel(student.regNo)" class="promote-button">{{t('Promote.btnText4')}}</button></div>
       </div>
     </div>
     <div v-if="showGraduationWarning" class="modal-backdrop">
       <div class="modal-overlay">
         <div class="model">
-          <h3>Graduate Student?</h3>
+          <h3>{{ t('ShowAllStudents.graduate_student_title') }}</h3>
           <div class="button-group">
-            <button @click="confirmGraduation">Confirm</button>
-            <button @click="cancelFxn">Cancel</button>
+            <button @click="confirmGraduation">{{t('ShowAllStudents.confirm')}}</button>
+            <button @click="cancelFxn">{{t('ShowAllStudents.cancel')}}</button>
           </div>
         </div>
       </div>
@@ -112,10 +112,10 @@
     <div v-if="showPromoteWarning" class="modal-backdrop">
       <div class="modal-overlay">
         <div class="model">
-          <h3>Promote Student?</h3>
+          <h3>{{t('ShowAllStudents.promote_student_title')}}</h3>
           <div class="button-group">
-            <button @click="confirmPromote">Confirm</button>
-            <button @click="cancelFxn">Cancel</button>
+            <button @click="confirmPromote">{{ t('ShowAllStudents.confirm') }}</button>
+            <button @click="cancelFxn">{{ t('ShowAllStudents.hello') }}</button>
           </div>
         </div>
       </div>
@@ -124,10 +124,10 @@
     <div v-if="showGenerateTCWarning" class="modal-backdrop">
       <div class="modal-overlay">
         <div class="model">
-          <h3>Generate Student TC?</h3>
+          <h3>{{ t('ShowAllStudents.generate_tc_title') }}</h3>
           <div class="button-group">
-            <button @click="updateStatusToRESCINDED">Confirm</button>
-            <button @click="cancelFxn">Cancel</button>
+            <button @click="updateStatusToRESCINDED">{{t('ShowAllStudents.confirm')}}</button>
+            <button @click="cancelFxn">{{t('ShowAllStudents.confirm')}}</button>
           </div>
         </div>
       </div>
@@ -185,14 +185,13 @@ const confirmGraduation = async () => {
     await axios.get(`http://localhost:8080/student/status/${currentStudentRegNo.value}`);
     // window.open(`http://localhost:8080/pdf/generate/${currentStudentRegNo.value}`, '_blank');
     showPDFeditor.value = true;
-    successMessage.value = `Transfer certificate generated for ID ${currentStudentRegNo.value}`;
+    successMessage.value = t('ShowAllStudents.success_tc_generated', { regNo: currentStudentRegNo.value })  ;
     showSuccess.value = true;
     setTimeout(() => (showSuccess.value = false), 3000);
-
     fetchStudentDetails();
   } catch (err) {
     showFailed.value = true;
-    failedMessage.value = 'Failed to graduate!'
+    failedMessage.value = t('ShowAllStudents.failed_to_graduate');
     showGraduationWarning.value = false
     setTimeout(() => (showFailed.value = false), 3000);
   } finally {
@@ -203,14 +202,13 @@ const confirmGraduation = async () => {
 const confirmPromote = async () => {
   try {
     await axios.get(`http://localhost:8080/student/promoted/${currentStudentRegNo.value}`);
-    successMessage.value = `Student ID ${currentStudentRegNo.value} promoted successfully!`;
+    successMessage.value =  t('Promote.success', { regNo: currentStudentRegNo.value });
     showSuccess.value = true;
     setTimeout(() => (showSuccess.value = false), 3000);
-
     fetchStudentDetails();
   } catch (error) {
     showFailed.value = true;
-    failedMessage.value = 'Failed to promote!'
+    failedMessage.value = t('Promote.failed');
     showPromoteWarning.value = false
     setTimeout(() => (showFailed.value = false), 3000);
   } finally {

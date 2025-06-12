@@ -20,17 +20,17 @@
       <div v-if="showGenerateTCWarning" class="modal-backdrop">
         <div class="modal-overlay">
           <div class="model">
-            <h3>Generate Student TC?</h3>
+            <h3>{{t('ShowAllStudents.generate_tc_title')}}</h3>
             <div class="button-group">
-              <button @click="updateStatusToRESCINDED">Confirm</button>
-              <button @click="cancelFxn">Cancel</button>
+              <button @click="updateStatusToRESCINDED">{{t('ShowAllStudents.confirm')}}</button>
+              <button @click="cancelFxn">{{t('ShowAllStudents.cancel')}}</button>
             </div>
           </div>
         </div>
       </div>
 
-      <div v-if="showSuccess" class="top-notification-success">TC Generated</div>
-      <div v-if="showFailed" class="top-notification-failed">Failed to generate TC!</div>
+      <div v-if="showSuccess" class="top-notification-success">{{t('ShowAllStudents.tc_generated')}}</div>
+      <div v-if="showFailed" class="top-notification-failed">{{t('ShowAllStudents.failed_to_graduate')}}</div>
     </template>
 
     <!-- ✅ Show only PDF Editor if TC is true -->
@@ -211,9 +211,9 @@ button {
 
 .top-notification-failed {
   position: fixed;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
+  top: 80px;
+  right: -2%;
+  transform: translateX(-15%);
   background-color: #f8d7da;
   color: #721c24;
   padding: 12px 24px;

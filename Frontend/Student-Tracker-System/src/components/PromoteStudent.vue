@@ -14,21 +14,21 @@
     <div v-if="showPromoteWarning" class="modal-backdrop">
       <div class="modal-overlay">
         <div class="model">
-          <h3>Promote Student?</h3>
+          <h3>{{t('ShowAllStudents.promote_student_title')}}</h3>
           <div class="button-group">
-            <button @click="promoteStudent">Confirm</button>
-            <button @click="cancelFxn">Cancel</button>
+            <button @click="promoteStudent">{{t('ShowAllStudents.confirm')}}</button>
+            <button @click="cancelFxn">{{t('ShowAllStudents.cancel')}}</button>
           </div>
         </div>
       </div>
     </div>
 
     <div v-if="showSuccess" class="top-notification-success">
-      Student Promoted
+      {{t('Promote.success', { regNo: currentStudentRegNo.value })}}
     </div>
 
     <div v-if="showFailed" class="top-notification-failed">
-      Failed to Promote!
+      {{t('Promote.failed')}}
     </div>
   </div>
 </template>

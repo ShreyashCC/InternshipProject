@@ -38,7 +38,7 @@
       <div class="header">
         <div class="title-container">
           <h1 class="app-title">{{t('header.name')}}</h1>
-        <h1 class = "school-title">Kendriya Vidyalaya</h1>
+        <h1 class = "school-title">{{t('homeContent.schoolName')}}</h1>
         </div>
         <div class="search-bar">
           <!--          <label for="search">Search Students by Registration No:</label>-->
@@ -73,7 +73,7 @@
 </template>
 
 <script setup>
-import {ref, reactive, computed , onMounted} from 'vue'
+import {ref, reactive, computed} from 'vue'
 import AddStudentForm from './components/AddStudent.vue'
 import HomeComponent from "./components/HomeComponent.vue";
 import PromoteStudent from './components/PromoteStudent.vue'
