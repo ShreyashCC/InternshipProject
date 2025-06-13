@@ -1,10 +1,10 @@
 // src/components/__tests__/GenerateTC.spec.js
 import { mount, flushPromises } from '@vue/test-utils'
 import GenerateTC from '../GenerateTC.vue'
-import axios from 'axios'
 
 // Mock axios
 jest.mock('axios')
+import axios from 'axios'
 
 // Mock i18n
 jest.mock('vue-i18n', () => ({
@@ -21,8 +21,15 @@ jest.mock('../PDFEditor.vue', () => ({
 }))
 
 describe('GenerateTC.vue', () => {
+
     beforeEach(() => {
         axios.get.mockReset()
+        jest.useFakeTimers()  // ✅ enable fake timers
+    })
+
+    afterEach(() => {
+        jest.runOnlyPendingTimers()
+        jest.useRealTimers()  // ✅ restore real timers after each test
     })
 
     it('renders input and button elements', () => {
@@ -77,7 +84,10 @@ describe('GenerateTC.vue', () => {
         expect(wrapper.vm.TC).toBe(null)
         expect(wrapper.vm.showFailed).toBe(true)
 
-        // Wait for the failure message to disappear after 3s
+        // ✅ advance time and flush any timers to hide error after 3s
         jest.advanceTimersByTime(3000)
+        await flushPromises()
+
+        expect(wrapper.vm.showFailed).toBe(false)
     })
 })

@@ -1,6 +1,12 @@
 import { mount } from '@vue/test-utils'
 import PDFEditor from '../PDFEditor.vue'
 
+jest.mock('vue-i18n', () => ({
+    useI18n: () => ({
+        t: (key) => key  //
+    })
+}))
+
 describe('PDFEditor.vue', () => {
     it('renders iframe with correct src from regNo prop', () => {
         const wrapper = mount(PDFEditor, {
